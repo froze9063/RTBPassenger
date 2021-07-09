@@ -1,0 +1,64 @@
+name: ridethebee
+version: 1.0.0+1
+publish_to: none
+description: A new Flutter project.
+environment: 
+  sdk: '>=2.12.0 <3.0.0'
+
+dependencies: 
+  cupertino_icons: ^1.0.2
+  get: 4.1.4
+  smooth_page_indicator: ^0.2.0
+  flutter_switch: ^0.3.1
+  flutter: 
+    sdk: flutter
+
+dev_dependencies: 
+  flutter_test: 
+    sdk: flutter
+
+flutter: 
+  uses-material-design: true
+  assets:
+    - assets/img_splash_logo.png
+    - assets/image_boarding.png
+    - assets/ic_eye_open.png
+    - assets/ic_facebook.png
+    - assets/ic_twitter.png
+    - assets/img_ride_the_bee.png
+    - assets/ic_back_yellow.png
+    - assets/ic_menu.png
+    - assets/ic_notification.png
+    - assets/img_list.png
+    - assets/img_swap.png
+    - assets/ic_filter.png
+    - assets/img_circle_rtb.png
+    - assets/ic_bus.png
+    - assets/ic_close_black.png
+    - assets/ic_home.png
+    - assets/ic_book_trip.png
+    - assets/ic_ticket_details.png
+    - assets/ic_my_wallet.png
+    - assets/ic_settings.png
+    - assets/img_notif_example.png
+    - assets/ic_three_dots.png
+    - assets/ic_yellow_notification.png
+    - assets/img_barcode.png
+    - assets/img_boarding_1.png
+    - assets/img_boarding.png
+    - assets/img_baording_2.png
+    - assets/ic_google_plus.png
+    - assets/ic_back_black.png
+    - assets/img_home_background.png
+    - assets/ic_calendar.png
+    - assets/ic_yellow_dropdown.png
+    - assets/ic_yellow_circle.png
+    - assets/ic_black_circle.png
+    - assets/ic_dots.png
+    - assets/ic_filter.png
+    - assets/img_filter.png
+    - assets/ic_track.png
+    - assets/img_ridethebees.png
+    - assets/ic_bus.png
+    - assets/ic_triangle_arrow.png
+
