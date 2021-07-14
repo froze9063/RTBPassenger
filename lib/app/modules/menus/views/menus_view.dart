@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:ridethebee/app/modules/car_seats/views/car_seats_view.dart';
+import 'package:ridethebee/app/modules/cashback_wallet/views/cashback_wallet_view.dart';
+import 'package:ridethebee/app/modules/my_tickets/views/my_tickets_view.dart';
+import 'package:ridethebee/app/modules/profile/views/profile_view.dart';
+import 'package:ridethebee/app/modules/ticket_details/views/ticket_details_view.dart';
 
 import '../controllers/menus_controller.dart';
 
@@ -9,183 +13,273 @@ class MenusView extends GetView<MenusController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: Column(
+      body: Stack(
         children: [
           Container(
             width: double.maxFinite,
-            height: 135,
+            height: 350,
             decoration: BoxDecoration(
-                color: Colors.white,
-                border: Border.all(
-                    width: 1,
-                    color: Color.fromRGBO(220, 220, 220, 1.0)
-                ),
-                borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20),
+                borderRadius: BorderRadius.only(bottomLeft: Radius.circular(25),
                     bottomRight: Radius.circular(25))
             ),
-            child: Center(
-              child: Row(
-                children: [
-                  SizedBox(width: 24),
-
-                  GestureDetector(
-                    child: Image.asset("assets/ic_close_black.png", height: 36, width: 36),
-                    onTap: (){
-                      Get.back();
-                    },
-                  ),
-
-                  Expanded(child: SizedBox(),flex: 1),
-
-                  Text("Menu", style: TextStyle(
-                      color: Color.fromRGBO(63, 61, 86, 1.0), fontSize: 16,
-                      fontWeight: FontWeight.bold
-                  )),
-
-                  Expanded(child: SizedBox(),flex: 1),
-
-                  Image.asset("assets/ic_notification.png", height: 36, width: 36),
-
-                  SizedBox(width: 24),
-                ],
-              ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.only(bottomLeft: Radius.circular(25),
+                  bottomRight: Radius.circular(25)),
+              child: Image.asset("assets/img_menu_background.png",
+                  width: double.maxFinite,
+                  height: double.maxFinite, fit: BoxFit.fill),
             ),
           ),
-          
-          Expanded(child: Column(
-            children: [
-              SizedBox(height: 36),
 
-              Column(
-                children: [
-                  Container(width: double.maxFinite, height: 1, color: Color.fromRGBO(243,
-                      237, 241, 1.0)),
-                  Container(
-                    margin: EdgeInsets.only(left: 24, right: 24),
-                    width: double.maxFinite,
-                    height: 90,
-                    child: Center(
-                      child: Row(
-                        children: [
-                          Image.asset("assets/ic_home.png", height: 36, width: 36),
-                          SizedBox(width: 16),
-                          Text("Home", style: TextStyle(
-                              color: Color.fromRGBO(63, 61, 86, 1.0), fontSize: 16,
-                              fontWeight: FontWeight.bold
-                          )),
-                        ],
-                      ),
-                    ),
-                  )
-                ],
-              ),
-
-              GestureDetector(
-                child: Column(
+          Padding(
+            padding: EdgeInsets.only(left: 24, right: 24),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(padding: EdgeInsets.only(top: 45), child: Row(
                   children: [
-                    Container(width: double.maxFinite, height: 1, color: Color.fromRGBO(243,
-                        237, 241, 1.0)),
-                    Container(
-                      margin: EdgeInsets.only(left: 24, right: 24),
-                      width: double.maxFinite,
-                      height: 90,
-                      child: Center(
-                        child: Row(
+                    Text("Menu", style: TextStyle(
+                        fontSize: 24,
+                        color: Color.fromRGBO(63, 61, 86, 1.0),
+                        fontWeight: FontWeight.bold
+                    )),
+
+                    Expanded(child: SizedBox(), flex: 1),
+
+                    GestureDetector(child: Image.asset("assets/ic_close_black.png"),onTap: (){
+                      Get.back();
+                    })
+                  ],
+                )),
+
+                SizedBox(height: 57),
+
+                GestureDetector(
+                  child: Row(
+                    children: [
+                      Image.asset("assets/img_default_profile.png", height: 55, width: 55),
+                      SizedBox(width: 16),
+                      Expanded(child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text("Elizabeth Tan", style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: Color.fromRGBO(63, 61, 86, 1.0)
+                          )),
+                          SizedBox(height: 4),
+                          Text("elizabethtan@gmail.com", style: TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.bold,
+                              color: Color.fromRGBO(63, 61, 86, 1.0)
+                          ))
+                        ],
+                      ), flex: 1),
+
+                      Image.asset("assets/ic_circle_right.png", height: 24, width: 24)
+                    ],
+                  ),
+                  onTap: (){
+                    Get.to(ProfileView());
+                  },
+                ),
+
+                SizedBox(height: 24),
+
+                Card(
+                  elevation: 5,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(12))
+                  ),
+                  child: Container(
+                    margin: EdgeInsets.all(16),
+                    child: Column(
+                      children: [
+                        Column(
                           children: [
-                            Image.asset("assets/ic_book_trip.png", height: 36, width: 36),
-                            SizedBox(width: 16),
-                            Text("Book A Trip", style: TextStyle(
-                                color: Color.fromRGBO(63, 61, 86, 1.0), fontSize: 16,
-                                fontWeight: FontWeight.bold
-                            )),
+                            Row(
+                              children: [
+                                Image.asset("assets/ic_search_trips.png", height: 24, width: 24),
+                                SizedBox(width: 16),
+                                Expanded(child: Text("Search Trips", style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w700,
+                                    color: Color.fromRGBO(63, 61, 86, 1.0)
+                                )), flex: 1),
+                                Image.asset("assets/ic_graycircle_arrow.png", height: 24, width: 24)
+                              ],
+                            ),
+
+                            SizedBox(height: 24),
+
+                            Container(
+                              width: double.maxFinite,
+                              height: 1,
+                              color: Color.fromRGBO(240, 240, 239, 1.0),
+                            )
                           ],
                         ),
-                      ),
-                    )
-                  ],
+
+                        GestureDetector(
+                          child: Column(
+                            children: [
+                              SizedBox(height: 24),
+                              Row(
+                                children: [
+                                  Image.asset("assets/ic_wallet.png", height: 24, width: 24),
+                                  SizedBox(width: 16),
+                                  Expanded(child: Text("Cashback Wallet", style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w700,
+                                      color: Color.fromRGBO(63, 61, 86, 1.0)
+                                  )), flex: 1),
+                                  Image.asset("assets/ic_graycircle_arrow.png", height: 24, width: 24)
+                                ],
+                              ),
+
+                              SizedBox(height: 16),
+                            ],
+                          ),
+                          onTap: (){
+                              Get.to(() => CashbackWalletView());
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
-                onTap: (){
-                  Get.to(CarSeatsView());
-                },
-              ),
 
-              Column(
-                children: [
-                  Container(width: double.maxFinite, height: 1, color: Color.fromRGBO(243,
-                      237, 241, 1.0)),
-                  Container(
-                    margin: EdgeInsets.only(left: 24, right: 24),
-                    width: double.maxFinite,
-                    height: 90,
-                    child: Center(
-                      child: Row(
-                        children: [
-                          Image.asset("assets/ic_ticket_details.png", height: 36, width: 36),
-                          SizedBox(width: 16),
-                          Text("Ticket Details", style: TextStyle(
-                              color: Color.fromRGBO(63, 61, 86, 1.0), fontSize: 16,
-                              fontWeight: FontWeight.bold
-                          )),
-                        ],
-                      ),
+                SizedBox(height: 24),
+
+                Card(
+                  elevation: 5,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(12))
+                  ),
+                  child: Container(
+                    margin: EdgeInsets.all(16),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("My Tickets", style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500,
+                            color: Color.fromRGBO(63, 61, 86, 1.0)
+                        )),
+
+                        SizedBox(height: 24),
+
+                        GestureDetector(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+
+                              Row(
+                                children: [
+                                  Image.asset("assets/ic_ongoing.png", height: 36, width: 36),
+                                  SizedBox(width: 16),
+                                  Expanded(child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text("Ongoing", style: TextStyle(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w700,
+                                          color: Color.fromRGBO(63, 61, 86, 1.0)
+                                      )),
+                                      SizedBox(height: 8),
+                                      Text("Kuala Lumpur - Malaysia", style: TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w700,
+                                          color: Color.fromRGBO(135, 141, 156, 1.0)
+                                      ))
+                                    ],
+                                  ), flex: 1),
+                                  Image.asset("assets/ic_graycircle_arrow.png", height: 24, width: 24)
+                                ],
+                              ),
+
+                              SizedBox(height: 24),
+
+                              Container(
+                                width: double.maxFinite,
+                                height: 1,
+                                color: Color.fromRGBO(240, 240, 239, 1.0),
+                              )
+                            ],
+                          ),
+                          onTap: (){
+                            Get.to(() => TicketDetailsView());
+                          },
+                        ),
+
+                        GestureDetector(
+                          child: Column(
+                            children: [
+                              SizedBox(height: 24),
+                              Row(
+                                children: [
+                                  Image.asset("assets/ic_upcoming.png", height: 36, width: 36),
+                                  SizedBox(width: 16),
+                                  Expanded(child: Text("Upcoming", style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w700,
+                                      color: Color.fromRGBO(63, 61, 86, 1.0)
+                                  )), flex: 1),
+                                  Image.asset("assets/ic_graycircle_arrow.png", height: 24, width: 24)
+                                ],
+                              ),
+
+                              SizedBox(height: 16),
+
+                              Container(
+                                width: double.maxFinite,
+                                height: 1,
+                                color: Color.fromRGBO(240, 240, 239, 1.0),
+                              )
+                            ],
+                          ),
+                          onTap: (){
+                              Get.to(() => MyTicketsView());
+                          },
+                        ),
+
+
+                        GestureDetector(
+                          child: Column(
+                            children: [
+                              SizedBox(height: 24),
+                              Row(
+                                children: [
+                                  Image.asset("assets/ic_completed.png", height: 36, width: 36),
+                                  SizedBox(width: 16),
+                                  Expanded(child: Text("Completed", style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w700,
+                                      color: Color.fromRGBO(63, 61, 86, 1.0)
+                                  )), flex: 1),
+                                  Image.asset("assets/ic_graycircle_arrow.png", height: 24, width: 24)
+                                ],
+                              ),
+
+                              SizedBox(height: 16),
+                            ],
+                          ),
+                          onTap: (){
+                            Get.to(() => MyTicketsView());
+                          },
+                        ),
+                      ],
                     ),
-                  )
-                ],
-              ),
-
-              Column(
-                children: [
-                  Container(width: double.maxFinite, height: 1, color: Color.fromRGBO(243,
-                      237, 241, 1.0)),
-                  Container(
-                    margin: EdgeInsets.only(left: 24, right: 24),
-                    width: double.maxFinite,
-                    height: 90,
-                    child: Center(
-                      child: Row(
-                        children: [
-                          Image.asset("assets/ic_my_wallet.png", height: 36, width: 36),
-                          SizedBox(width: 16),
-                          Text("My Wallet", style: TextStyle(
-                              color: Color.fromRGBO(63, 61, 86, 1.0), fontSize: 16,
-                              fontWeight: FontWeight.bold
-                          )),
-                        ],
-                      ),
-                    ),
-                  )
-                ],
-              ),
-
-              Column(
-                children: [
-                  Container(width: double.maxFinite, height: 1, color: Color.fromRGBO(243,
-                      237, 241, 1.0)),
-                  Container(
-                    margin: EdgeInsets.only(left: 24, right: 24),
-                    width: double.maxFinite,
-                    height: 90,
-                    child: Center(
-                      child: Row(
-                        children: [
-                          Image.asset("assets/ic_settings.png", height: 36, width: 36),
-                          SizedBox(width: 16),
-                          Text("Settings", style: TextStyle(
-                              color: Color.fromRGBO(63, 61, 86, 1.0), fontSize: 16,
-                              fontWeight: FontWeight.bold
-                          )),
-                        ],
-                      ),
-                    ),
-                  )
-                ],
-              ),
-
-              Container(width: double.maxFinite, height: 1, color: Color.fromRGBO(243,
-                  237, 241, 1.0))
-            ],
-          ), flex: 1)
+                  ),
+                )
+              ],
+            ),
+          ),
         ],
       ),
     );
