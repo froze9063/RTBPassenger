@@ -23,11 +23,13 @@ class EarnedTab extends StatelessWidget {
                 SizedBox(width: 24),
                 Expanded(child: Text("Transaction History", style: TextStyle(
                   fontSize: 16,
-                  color: Color.fromRGBO(135, 141, 156, 1.0)
+                  color: Color.fromRGBO(135, 141, 156, 1.0),
+                  fontFamily: "PoppinsRegular"
                 )), flex: 1),
                 Text("Cashback", style: TextStyle(
                     fontSize: 14,
-                    color: Color.fromRGBO(20, 212, 97, 1.0)
+                    color: Color.fromRGBO(20, 212, 97, 1.0),
+                    fontFamily: "PoppinsMedium"
                 )),
                 SizedBox(width: 24),
               ],
@@ -57,13 +59,13 @@ class EarnedTab extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text("Kuala Lumpur - Penang", style: TextStyle(
-                                      color: Color.fromRGBO(63, 61, 86, 1.0), fontSize: 18,
-                                      fontWeight: FontWeight.bold
+                                      color: Color.fromRGBO(63, 61, 86, 1.0), fontSize: 14,
+                                      fontFamily: "PoppinsBold"
                                   )),
                                   SizedBox(height: 8),
                                   Text("14-06-2021", style: TextStyle(
-                                      color: Color.fromRGBO(63, 61, 86, 1.0), fontSize: 16,
-                                      fontWeight: FontWeight.normal
+                                      color: Color.fromRGBO(63, 61, 86, 1.0), fontSize: 12,
+                                      fontFamily: "PoppinsRegular"
                                   ))
                                 ],
                               ), flex: 1),
@@ -72,21 +74,30 @@ class EarnedTab extends StatelessWidget {
                                    mainAxisAlignment: MainAxisAlignment.start,
                                    crossAxisAlignment: CrossAxisAlignment.start,
                                    children: [
-                                     Image.asset("assets/ic_minus_grey.png", width: 15, height: 10),
-                                     SizedBox(width: 4),
                                      Column(
                                        mainAxisAlignment: MainAxisAlignment.start,
                                        crossAxisAlignment: CrossAxisAlignment.start,
                                        children: [
-                                         Text("\$5.00", style: TextStyle(
-                                             color: Color.fromRGBO(204, 204, 204, 1.0), fontSize: 16,
-                                             fontWeight: FontWeight.normal
-                                         )),
+                                         Row(
+                                           children: [
+                                             Image.asset("assets/ic_minus_grey.png", width: 15, height: 10),
+                                             SizedBox(width: 4),
+                                             Text("\$5.00", style: TextStyle(
+                                                 color: Color.fromRGBO(204, 204, 204, 1.0), fontSize: 16,
+                                                 fontFamily: "PoppinsMedium"
+                                             ))
+                                           ],
+                                         ),
                                          SizedBox(height: 8),
-                                         Text("\$20.00", style: TextStyle(
-                                             color: Color.fromRGBO(63, 61, 86, 1.0), fontSize: 16,
-                                             fontWeight: FontWeight.normal
-                                         ))
+                                         Row(
+                                           children: [
+                                             SizedBox(width: 15),
+                                             Text("\$20.00", style: TextStyle(
+                                                 color: Color.fromRGBO(63, 61, 86, 1.0), fontSize: 16,
+                                                 fontFamily: "PoppinsMedium"
+                                             ))
+                                           ],
+                                         )
                                        ],
                                      )
                                    ],

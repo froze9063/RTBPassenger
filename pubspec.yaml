@@ -13,6 +13,8 @@ dependencies:
   google_maps_flutter: ^1.2.0
   location: 3.1.0
   app_settings: 4.0.1+1
+  maps_launcher: ^2.0.0
+
   flutter: 
     sdk: flutter
 
@@ -111,4 +113,15 @@ flutter:
     - assets/img_menu_background.png
     - assets/img_driver_home.png
     - assets/ic_send.png
+
+  fonts:
+    - family: PoppinsBold
+      fonts:
+        - asset: assets/fonts/poppins_bold.ttf
+    - family: PoppinsMedium
+      fonts:
+        - asset: assets/fonts/poppins_medium.ttf
+    - family: PoppinsRegular
+      fonts:
+        - asset: assets/fonts/poppins_regular.ttf
 

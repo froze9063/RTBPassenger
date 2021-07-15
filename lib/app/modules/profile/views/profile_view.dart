@@ -34,7 +34,7 @@ class ProfileView extends GetView<ProfileController> {
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               fontSize: 18,
-                              fontWeight: FontWeight.bold,
+                              fontFamily: "PoppinsBold",
                               color: Color.fromRGBO(63, 61, 86, 1.0)
                           ))),
                       SizedBox(width: 24),
@@ -63,13 +63,13 @@ class ProfileView extends GetView<ProfileController> {
                                       Text("Email", style: TextStyle(
                                         fontSize: 16,
                                         color: Color.fromRGBO(135, 141, 156, 1.0),
-                                        fontWeight: FontWeight.w500
+                                          fontFamily: "PoppinsRegular"
                                       )),
                                       SizedBox(height: 8),
                                       Text("elizabethtan@gmail.com", style: TextStyle(
                                         fontSize: 16,
                                         color: Color.fromRGBO(63, 61, 86, 1.0),
-                                        fontWeight: FontWeight.w500
+                                          fontFamily: "PoppinsMedium"
                                     )),
                                   ],
                                 ),
@@ -81,13 +81,13 @@ class ProfileView extends GetView<ProfileController> {
                                     Text("Name", style: TextStyle(
                                         fontSize: 16,
                                         color: Color.fromRGBO(135, 141, 156, 1.0),
-                                        fontWeight: FontWeight.w500
+                                        fontFamily: "PoppinsRegular"
                                     )),
                                     SizedBox(height: 8),
                                     Text("Elizabeth Tan Huey Ling", style: TextStyle(
                                         fontSize: 16,
                                         color: Color.fromRGBO(63, 61, 86, 1.0),
-                                        fontWeight: FontWeight.w500
+                                        fontFamily: "PoppinsMedium"
                                     )),
                                   ],
                                 ),
@@ -99,13 +99,13 @@ class ProfileView extends GetView<ProfileController> {
                                     Text("Mobile No.", style: TextStyle(
                                         fontSize: 16,
                                         color: Color.fromRGBO(135, 141, 156, 1.0),
-                                        fontWeight: FontWeight.w500
+                                        fontFamily: "PoppinsRegular"
                                     )),
                                     SizedBox(height: 8),
                                     Text("+65 4589 0321", style: TextStyle(
                                         fontSize: 16,
                                         color: Color.fromRGBO(63, 61, 86, 1.0),
-                                        fontWeight: FontWeight.w500
+                                        fontFamily: "PoppinsMedium"
                                     )),
                                   ],
                                 ),
@@ -128,7 +128,7 @@ class ProfileView extends GetView<ProfileController> {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontSize: 16,
-                          fontWeight: FontWeight.bold,
+                          fontFamily: "PoppinsBold",
                           color: Color.fromRGBO(255, 205, 56, 1.0)
                       )),
                   SizedBox(height: 24),

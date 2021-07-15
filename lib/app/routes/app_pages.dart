@@ -4,6 +4,8 @@ import 'package:ridethebee/app/modules/boarding/bindings/boarding_binding.dart';
 import 'package:ridethebee/app/modules/boarding/views/boarding_view.dart';
 import 'package:ridethebee/app/modules/car_seats/bindings/car_seats_binding.dart';
 import 'package:ridethebee/app/modules/car_seats/views/car_seats_view.dart';
+import 'package:ridethebee/app/modules/car_seats_booked/bindings/car_seats_booked_binding.dart';
+import 'package:ridethebee/app/modules/car_seats_booked/views/car_seats_booked_view.dart';
 import 'package:ridethebee/app/modules/cashback_wallet/bindings/cashback_wallet_binding.dart';
 import 'package:ridethebee/app/modules/cashback_wallet/views/cashback_wallet_view.dart';
 import 'package:ridethebee/app/modules/edit_profile/bindings/edit_profile_binding.dart';
@@ -40,6 +42,10 @@ import 'package:ridethebee/app/modules/thank_you/bindings/thank_you_binding.dart
 import 'package:ridethebee/app/modules/thank_you/views/thank_you_view.dart';
 import 'package:ridethebee/app/modules/ticket_details/bindings/ticket_details_binding.dart';
 import 'package:ridethebee/app/modules/ticket_details/views/ticket_details_view.dart';
+import 'package:ridethebee/app/modules/ticket_details_book/bindings/ticket_details_book_binding.dart';
+import 'package:ridethebee/app/modules/ticket_details_book/views/ticket_details_book_view.dart';
+import 'package:ridethebee/app/modules/ticket_details_seat/bindings/ticket_details_seat_binding.dart';
+import 'package:ridethebee/app/modules/ticket_details_seat/views/ticket_details_seat_view.dart';
 import 'package:ridethebee/app/modules/trip_completed/bindings/trip_completed_binding.dart';
 import 'package:ridethebee/app/modules/trip_completed/views/trip_completed_view.dart';
 
@@ -155,6 +161,21 @@ class AppPages {
       name: _Paths.MESSAGES,
       page: () => MessagesView(),
       binding: MessagesBinding(),
+    ),
+    GetPage(
+      name: _Paths.TICKET_DETAILS_BOOK,
+      page: () => TicketDetailsBookView(),
+      binding: TicketDetailsBookBinding(),
+    ),
+    GetPage(
+      name: _Paths.TICKET_DETAILS_SEAT,
+      page: () => TicketDetailsSeatView(),
+      binding: TicketDetailsSeatBinding(),
+    ),
+    GetPage(
+      name: _Paths.CAR_SEATS_BOOKED,
+      page: () => CarSeatsBookedView(),
+      binding: CarSeatsBookedBinding(),
     ),
   ];
 }

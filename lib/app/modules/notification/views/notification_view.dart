@@ -19,7 +19,7 @@ class NotificationView extends GetView<NotificationController> {
                 Text("Notifications", style: TextStyle(
                     fontSize: 24,
                     color: Color.fromRGBO(63, 61, 86, 1.0),
-                    fontWeight: FontWeight.bold
+                    fontFamily: "PoppinsMedium"
                 )),
 
                 Expanded(child: SizedBox(), flex: 1),
@@ -41,7 +41,7 @@ class NotificationView extends GetView<NotificationController> {
                       Visibility(child: Padding(padding: EdgeInsets.only(left: 24),
                           child: Text(index == 0 ? "Today" : "This Week",style: TextStyle(
                               color: Color.fromRGBO(58, 58, 58, 1.0),
-                              fontWeight: FontWeight.w700
+                              fontFamily: "PoppinsMedium"
                           ))),
                         visible: index == 0 || index == 2 ? true : false,
                       ),
@@ -61,16 +61,18 @@ class NotificationView extends GetView<NotificationController> {
                                   Text("Bus Arrived", style: TextStyle(
                                       color: Color.fromRGBO(58, 58, 58, 1.0),
                                       fontSize: 16,
-                                      fontWeight: FontWeight.bold
+                                      fontFamily: "PoppinsBold"
                                   )),
                                   SizedBox(height: 4),
                                   Text("Your bus  SAB 4124, is ready for Departure, in 10 minutes.", style: TextStyle(
-                                      height: 1.5
+                                      height: 1.5,
+                                      fontFamily: "PoppinsRegular"
                                   )),
                                   SizedBox(height: 4),
                                   Text("2 Hours Ago", style: TextStyle(
                                       color: Color.fromRGBO(188, 196, 204, 1.0),
-                                      fontSize: 12
+                                      fontSize: 12,
+                                      fontFamily: "PoppinsMedium"
                                   )),
                                 ],
                               ),flex: 1),

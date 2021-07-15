@@ -33,10 +33,15 @@ class CompletedView extends StatelessWidget {
                       SizedBox(width: 16),
                       Expanded(child: TextField(
                         style: TextStyle(
-                            color: Color.fromRGBO(63, 61, 86, 1.0)
+                            color: Color.fromRGBO(63, 61, 86, 1.0),
+                            fontFamily: "PoppinsMedium",
                         ),
                         decoration: new InputDecoration.collapsed(
-                            hintText: 'Search'
+                            hintText: 'Search',
+                            hintStyle: TextStyle(
+                                fontFamily: "PoppinsRegular",
+                                color: Color.fromRGBO(135, 141, 156, 1.0)
+                            )
                         ),
                       ), flex: 1),
                       SizedBox(width: 16),
@@ -53,7 +58,8 @@ class CompletedView extends StatelessWidget {
               child: Text("Showing 6 out of 32",
                   style: TextStyle(
                       color: Color.fromRGBO(35, 35, 35, 1.0),
-                      fontSize: 14
+                      fontSize: 14,
+                      fontFamily: "PoppinsMedium"
                   ))
           ),
 
@@ -94,7 +100,7 @@ class CompletedView extends StatelessWidget {
                                         style: TextStyle(
                                             color: Color.fromRGBO(35, 35, 35, 1.0),
                                             fontSize: 14,
-                                            fontWeight: FontWeight.w700
+                                            fontFamily: "PoppinsMedium"
                                         )),
                                   ],
                                 ),
@@ -108,7 +114,7 @@ class CompletedView extends StatelessWidget {
                               Text("Fri, 14 Sep 2021", style: TextStyle(
                                   color: Color.fromRGBO(58, 58, 58, 1.0),
                                   fontSize: 14,
-                                  fontWeight: FontWeight.w500
+                                  fontFamily: "PoppinsRegular"
                               ))
                             ],
                           ),
@@ -118,7 +124,7 @@ class CompletedView extends StatelessWidget {
                               Text("Penang - Kuala Lumpur", style: TextStyle(
                                   color: Color.fromRGBO(58, 58, 58, 1.0),
                                   fontSize: 16,
-                                  fontWeight: FontWeight.w700
+                                  fontFamily: "PoppinsBold"
                               ))
                             ],
                           ),
@@ -141,7 +147,7 @@ class CompletedView extends StatelessWidget {
           },
             shrinkWrap: true,
             padding: EdgeInsets.zero,
-            itemCount: 5,
+            itemCount: 10,
             primary: false,
           ), flex: 1)
         ],

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:ridethebee/app/modules/home/views/home_view.dart';
 
 import '../controllers/thank_you_controller.dart';
 
@@ -21,7 +22,7 @@ class ThankYouView extends GetView<ThankYouController> {
                 GestureDetector(
                   child: Image.asset("assets/ic_close_black.png"),
                   onTap: (){
-                    Get.back();
+                    Get.offAll(() => HomeView());
                   },
                 ),
                 SizedBox(width: 24),
@@ -37,7 +38,7 @@ class ThankYouView extends GetView<ThankYouController> {
                 Text("Thank You!", style: TextStyle(
                     color: Color.fromRGBO(255, 205, 56, 1.0),
                     fontSize: 20,
-                    fontWeight: FontWeight.bold
+                    fontFamily: "PoppinsBold"
                 )),
                 SizedBox(height: 16),
                 Row(
@@ -49,7 +50,7 @@ class ThankYouView extends GetView<ThankYouController> {
                             color: Color.fromRGBO(135, 141, 156, 1.0),
                             height: 1.5,
                             fontSize: 16,
-                            fontWeight: FontWeight.w500
+                            fontFamily: "PoppinsRegular"
                         )), flex: 1),
                     SizedBox(width: 24)
                   ],

@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 class BoardingController extends GetxController {
 
   final count = 0.obs;
+  bool nextShowed = false;
   late PageController pageController;
 
   @override
@@ -20,4 +21,9 @@ class BoardingController extends GetxController {
   @override
   void onClose() {}
   void increment() => count.value++;
+
+  void setNextShowed(bool nextShowed){
+    this.nextShowed = nextShowed;
+    update(["next_showed"]);
+  }
 }

@@ -21,9 +21,13 @@ class EnRouteController extends GetxController {
   bool isEmergencyShowed = false;
   bool isReminderShowed = false;
   bool isMenuShowed = false;
+  bool isEnroute = true;
+
+  late PageController pageController;
 
   @override
   void onInit() {
+    pageController = new PageController();
     gmapController = Completer();
     kGooglePlex = CameraPosition(target: LatLng(1.3567349, 103.9683205), zoom: 16);
     super.onInit();

@@ -45,7 +45,7 @@ class ReviewView extends GetView<ReviewController> {
 
                                 Text("Feedback", style: TextStyle(
                                     color: Color.fromRGBO(63, 61, 86, 1.0), fontSize: 18,
-                                    fontWeight: FontWeight.bold
+                                    fontFamily: "PoppinsBold"
                                 )),
 
                                 Expanded(child: SizedBox(),flex: 1),
@@ -68,11 +68,11 @@ class ReviewView extends GetView<ReviewController> {
                             SizedBox(height: 24),
 
                             Text("John Travis Scott Travolta", style: TextStyle(
-                                color: Color.fromRGBO(63, 61, 86, 1.0), fontSize: 20,
-                                fontWeight: FontWeight.bold
+                                color: Color.fromRGBO(35, 35, 35, 1.0), fontSize: 20,
+                                fontFamily: "PoppinsBold"
                             )),
 
-                            SizedBox(height: 16),
+                            SizedBox(height: 8),
 
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -81,8 +81,8 @@ class ReviewView extends GetView<ReviewController> {
                                 Image.asset("assets/ic_black_star.png"),
                                 SizedBox(width: 8),
                                 Text("4.8 Driver Rating", style: TextStyle(
-                                    color: Color.fromRGBO(63, 61, 86, 1.0), fontSize: 14,
-                                    fontWeight: FontWeight.w500
+                                    color: Color.fromRGBO(63, 61, 86, 1.0), fontSize: 15,
+                                    fontFamily: "PoppinsMedium"
                                 ))
                               ],
                             ),
@@ -112,8 +112,9 @@ class ReviewView extends GetView<ReviewController> {
               children: [
                 SizedBox(width: 48),
                 Text("Driver Rating", style: TextStyle(
-                    fontSize: 16,
-                    color: Color.fromRGBO(135, 141, 156, 1.0)
+                    fontSize: 15,
+                    color: Color.fromRGBO(135, 141, 156, 1.0),
+                    fontFamily: "PoppinsRegular"
                 ))
               ],
             ),
@@ -138,8 +139,9 @@ class ReviewView extends GetView<ReviewController> {
               children: [
                 SizedBox(width: 48),
                 Text("Feedback", style: TextStyle(
-                    fontSize: 16,
-                    color: Color.fromRGBO(135, 141, 156, 1.0)
+                    fontSize: 15,
+                    color: Color.fromRGBO(135, 141, 156, 1.0),
+                    fontFamily: "PoppinsRegular"
                 ))
               ],
             ),
@@ -157,9 +159,10 @@ class ReviewView extends GetView<ReviewController> {
                   padding: EdgeInsets.all(16),
                   child: Text("Thank you for the smooth journey! Will def use ride the bee again on my next trip.",
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 15,
                       color: Color.fromRGBO(63, 61, 86, 1.0),
-                      height: 1.5
+                      height: 1.5,
+                      fontFamily: "PoppinsRegular"
                     ),
                   ),
                 ),

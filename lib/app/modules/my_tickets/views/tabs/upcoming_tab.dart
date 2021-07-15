@@ -17,22 +17,24 @@ class UpcomingView extends StatelessWidget{
             children: [
               Text("Filter by:", style: TextStyle(
                   color: Color.fromRGBO(135, 141, 156, 1.0),
-                  fontWeight: FontWeight.w700
+                  fontFamily: "PoppinsRegular"
               )),
               SizedBox(width: 8),
               Text("This Week", style: TextStyle(
                   color: Color.fromRGBO(63, 61, 86, 1.0),
-                  fontWeight: FontWeight.w700
+                  fontFamily: "PoppinsMedium"
               )),
               SizedBox(width: 8),
               Image.asset("assets/ic_yellow_dropdown.png", height: 16, width: 16)
             ],
           )),
 
+          SizedBox(height: 24),
+
           Expanded(child: ListView.builder(itemBuilder: (context, index){
             return GestureDetector(
               child: Container(
-                margin: EdgeInsets.only(top: 24,left: 24, right: 24),
+                margin: EdgeInsets.only(top: index == 0 ? 0 : 24,left: 24, right: 24),
                 width: double.maxFinite,
                 padding: EdgeInsets.only(left: 24, right: 24, top: 16,bottom: 16),
                 decoration: BoxDecoration(
@@ -61,7 +63,7 @@ class UpcomingView extends StatelessWidget{
                                   style: TextStyle(
                                       color: Color.fromRGBO(35, 35, 35, 1.0),
                                       fontSize: 14,
-                                      fontWeight: FontWeight.w700
+                                      fontFamily: "PoppinsMedium"
                                   ))
                             ],
                           ),
@@ -71,11 +73,11 @@ class UpcomingView extends StatelessWidget{
                           ),
                         ),
                         Expanded(child: SizedBox(), flex: 1),
-                        Text("RM35.00",
+                        Text("18-06-2021",
                             style: TextStyle(
                                 color: Color.fromRGBO(22, 212, 98, 1.0),
                                 fontSize: 18,
-                                fontWeight: FontWeight.w700
+                                fontFamily: "PoppinsBold"
                             ))
                       ],
                     ),
@@ -87,7 +89,7 @@ class UpcomingView extends StatelessWidget{
                         Container(
                           child: Text("From", style: TextStyle(
                               fontSize: 14,
-                              fontWeight: FontWeight.w700,
+                              fontFamily: "PoppinsMedium",
                               color: Color.fromRGBO(63, 61, 86, 1.0)
                           )),
                           decoration: BoxDecoration(
@@ -105,7 +107,7 @@ class UpcomingView extends StatelessWidget{
                         Container(
                           child: Text("To", style: TextStyle(
                               fontSize: 14,
-                              fontWeight: FontWeight.w700,
+                              fontFamily: "PoppinsMedium",
                               color: Color.fromRGBO(63, 61, 86, 1.0)
                           )),
                           decoration: BoxDecoration(
@@ -126,10 +128,11 @@ class UpcomingView extends StatelessWidget{
                       children: [
                         Expanded(child: Column(
                           children: [
-                            Text("TBS (Terminal Bersepadu Selatan)", style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w700,
-                                color: Color.fromRGBO(63, 61, 86, 1.0)
+                            Text("Sungai Nibong Bus Terminal", style: TextStyle(
+                                fontSize: 14,
+                                fontFamily: "PoppinsMedium",
+                                color: Color.fromRGBO(63, 61, 86, 1.0),
+                                height: 1.5
                             )),
                           ],
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -140,12 +143,13 @@ class UpcomingView extends StatelessWidget{
 
                         Expanded(child: Column(
                           children: [
-                            Text("TBS (Terminal Bersepadu Selatan)",
+                            Text("Sungai Nibong Bus Terminal",
                                 textAlign: TextAlign.end,
                                 style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w700,
-                                    color: Color.fromRGBO(63, 61, 86, 1.0)
+                                    fontSize: 14,
+                                    fontFamily: "PoppinsMedium",
+                                    color: Color.fromRGBO(63, 61, 86, 1.0),
+                                    height: 1.5
                                 )),
                           ],
                           mainAxisAlignment: MainAxisAlignment.end,
@@ -154,13 +158,13 @@ class UpcomingView extends StatelessWidget{
                       ],
                     ),
 
-                    SizedBox(height: 30),
+                    SizedBox(height: 24),
 
                     Row(
                       children: [
                         Text("10:15 AM", style: TextStyle(
                             fontSize: 18,
-                            fontWeight: FontWeight.w700,
+                            fontFamily: "PoppinsMedium",
                             color: Color.fromRGBO(63, 61, 86, 1.0)
                         )),
 
@@ -168,7 +172,7 @@ class UpcomingView extends StatelessWidget{
 
                         Text("1:05 PM", style: TextStyle(
                             fontSize: 18,
-                            fontWeight: FontWeight.w700,
+                            fontFamily: "PoppinsMedium",
                             color: Color.fromRGBO(63, 61, 86, 1.0)
                         )),
                       ],
@@ -185,7 +189,7 @@ class UpcomingView extends StatelessWidget{
           },
             shrinkWrap: true,
             padding: EdgeInsets.zero,
-            itemCount: 2,
+            itemCount: 6,
             primary: false,
           ), flex: 1)
         ],

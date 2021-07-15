@@ -1,9 +1,11 @@
 import 'package:get/get.dart';
 
 class PaymentDetailsController extends GetxController {
-  //TODO: Implement PaymentDetailsController
 
   final count = 0.obs;
+
+  bool paymentToogle = false;
+
   @override
   void onInit() {
     super.onInit();
@@ -17,4 +19,9 @@ class PaymentDetailsController extends GetxController {
   @override
   void onClose() {}
   void increment() => count.value++;
+
+  void setPaymentToogle(bool paymentToogle){
+    this.paymentToogle = paymentToogle;
+    update(["payment_toogle"]);
+  }
 }

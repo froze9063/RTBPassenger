@@ -37,7 +37,7 @@ class EditProfileView extends GetView<EditProfileController> {
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               fontSize: 18,
-                              fontWeight: FontWeight.bold,
+                              fontFamily: "PoppinsBold",
                               color: Color.fromRGBO(63, 61, 86, 1.0)
                           ))),
                       SizedBox(width: 24),
@@ -101,7 +101,7 @@ class EditProfileView extends GetView<EditProfileController> {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontSize: 16,
-                          fontWeight: FontWeight.bold,
+                          fontFamily: "PoppinsBold",
                           color: Color.fromRGBO(255, 205, 56, 1.0)
                       )),
                   SizedBox(height: 24),

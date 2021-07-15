@@ -6,6 +6,7 @@ import 'package:ridethebee/app/modules/my_tickets/views/my_tickets_view.dart';
 import 'package:ridethebee/app/modules/notification/views/notification_view.dart';
 import 'package:ridethebee/app/modules/thank_you/views/thank_you_view.dart';
 import 'package:ridethebee/app/modules/ticket_details/views/ticket_details_view.dart';
+import 'package:ridethebee/app/modules/ticket_details_book/views/ticket_details_book_view.dart';
 import 'package:ridethebee/app/modules/trip_completed/views/trip_completed_view.dart';
 
 import '../controllers/home_controller.dart';
@@ -39,7 +40,7 @@ class HomeView extends GetView<HomeController> {
 
                   Text("Search Trips", style: TextStyle(
                       color: Color.fromRGBO(63, 61, 86, 1.0), fontSize: 18,
-                      fontWeight: FontWeight.bold
+                      fontFamily: "PoppinsBold"
                   )),
 
                   Expanded(child: SizedBox(),flex: 1),
@@ -71,7 +72,7 @@ class HomeView extends GetView<HomeController> {
                         children: [
                           Expanded(child: Text("Select Date", style: TextStyle(
                               color: Color.fromRGBO(63, 61, 86, 1.0),
-                              fontWeight: FontWeight.w700
+                              fontFamily: "PoppinsMedium"
                           )), flex: 1),
                           SizedBox(width: 16),
                           Image.asset("assets/ic_calendar.png", height: 16, width: 16)
@@ -91,7 +92,7 @@ class HomeView extends GetView<HomeController> {
                         children: [
                           Text("No. Of Pax", style: TextStyle(
                             color: Color.fromRGBO(63, 61, 86, 1.0),
-                            fontWeight: FontWeight.w700
+                              fontFamily: "PoppinsMedium"
                           )),
                           SizedBox(width: 16),
                           Image.asset("assets/ic_yellow_dropdown.png", height: 16, width: 16)
@@ -133,13 +134,13 @@ class HomeView extends GetView<HomeController> {
                              Text("From", style: TextStyle(
                                color: Color.fromRGBO(135, 141, 156, 1.0),
                                fontSize: 14,
-                               fontWeight: FontWeight.w700
+                               fontFamily: "PoppinsMedium"
                              )),
                              SizedBox(height: 8),
                              Text("Kuala Lumpur", style: TextStyle(
                                  color: Color.fromRGBO(63, 61, 86, 1.0),
                                  fontSize: 16,
-                                 fontWeight: FontWeight.w700
+                                 fontFamily: "PoppinsMedium"
                              )),
                              SizedBox(height: 24),
                              Container(
@@ -151,13 +152,13 @@ class HomeView extends GetView<HomeController> {
                              Text("To", style: TextStyle(
                                  color: Color.fromRGBO(135, 141, 156, 1.0),
                                  fontSize: 14,
-                                 fontWeight: FontWeight.w700
+                                 fontFamily: "PoppinsMedium"
                              )),
                              SizedBox(height: 8),
                              Text("Penang", style: TextStyle(
                                  color: Color.fromRGBO(63, 61, 86, 1.0),
                                  fontSize: 16,
-                                 fontWeight: FontWeight.w700
+                                 fontFamily: "PoppinsMedium"
                              )),
                            ],
                          ), flex: 1),
@@ -221,7 +222,7 @@ class HomeView extends GetView<HomeController> {
                                         children: [
                                           Text("Depart Time", style: TextStyle(
                                               color: Color.fromRGBO(63, 61, 86, 1.0),
-                                              fontWeight: FontWeight.w700
+                                              fontFamily: "PoppinsMedium"
                                           )),
                                           SizedBox(width: 14),
                                           Image.asset("assets/ic_triangle_arrow.png", height: 14, width: 14)
@@ -234,7 +235,7 @@ class HomeView extends GetView<HomeController> {
                                         children: [
                                           Text("Ticket Price", style: TextStyle(
                                               color: Color.fromRGBO(63, 61, 86, 1.0),
-                                              fontWeight: FontWeight.w700
+                                              fontFamily: "PoppinsMedium"
                                           )),
                                           SizedBox(width: 14),
                                           Image.asset("assets/ic_triangle_arrow.png", height: 14, width: 14)
@@ -242,18 +243,21 @@ class HomeView extends GetView<HomeController> {
                                       )
                                     ],
                                   )),
+
+                                  SizedBox(height: 24),
+
                                   Expanded(child: ListView.builder(
                                     itemBuilder: (context,index){
                                     return GestureDetector(
                                       child: Container(
-                                        margin: EdgeInsets.only(top: 24,left: 24, right: 24),
+                                        margin: EdgeInsets.only(top: index == 0 ? 0 : 24,left: 24, right: 24),
                                         width: double.maxFinite,
                                         padding: EdgeInsets.only(left: 24, right: 24, top: 16,bottom: 16),
                                         decoration: BoxDecoration(
                                             color: Colors.white,
-                                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                                            borderRadius: BorderRadius.all(Radius.circular(16)),
                                             border: Border.all(
-                                                width: 0.5,
+                                                width: 1,
                                                 color: Color.fromRGBO(63, 61, 86, 0.5)
                                             )
                                         ),
@@ -264,7 +268,7 @@ class HomeView extends GetView<HomeController> {
                                                 Container(
                                                   child: Text("From", style: TextStyle(
                                                       fontSize: 14,
-                                                      fontWeight: FontWeight.w700,
+                                                      fontFamily: "PoppinsMedium",
                                                       color: Color.fromRGBO(63, 61, 86, 1.0)
                                                   )),
                                                   decoration: BoxDecoration(
@@ -282,7 +286,7 @@ class HomeView extends GetView<HomeController> {
                                                 Container(
                                                   child: Text("To", style: TextStyle(
                                                       fontSize: 14,
-                                                      fontWeight: FontWeight.w700,
+                                                      fontFamily: "PoppinsMedium",
                                                       color: Color.fromRGBO(63, 61, 86, 1.0)
                                                   )),
                                                   decoration: BoxDecoration(
@@ -303,9 +307,9 @@ class HomeView extends GetView<HomeController> {
                                               children: [
                                                 Expanded(child: Column(
                                                   children: [
-                                                    Text("TBS (Terminal Bersepadu Selatan)", style: TextStyle(
-                                                        fontSize: 16,
-                                                        fontWeight: FontWeight.w700,
+                                                    Text("Sungai Nibong Bus Terminal", style: TextStyle(
+                                                        fontSize: 14,
+                                                        fontFamily: "PoppinsMedium",
                                                         color: Color.fromRGBO(63, 61, 86, 1.0)
                                                     )),
                                                   ],
@@ -317,11 +321,11 @@ class HomeView extends GetView<HomeController> {
 
                                                 Expanded(child: Column(
                                                   children: [
-                                                    Text("TBS (Terminal Bersepadu Selatan)",
+                                                    Text("Sungai Nibong Bus Terminal",
                                                         textAlign: TextAlign.end,
                                                         style: TextStyle(
-                                                            fontSize: 16,
-                                                            fontWeight: FontWeight.w700,
+                                                            fontSize: 14,
+                                                            fontFamily: "PoppinsMedium",
                                                             color: Color.fromRGBO(63, 61, 86, 1.0)
                                                         )),
                                                   ],
@@ -337,7 +341,7 @@ class HomeView extends GetView<HomeController> {
                                               children: [
                                                 Text("10:15 AM", style: TextStyle(
                                                     fontSize: 18,
-                                                    fontWeight: FontWeight.w700,
+                                                    fontFamily: "PoppinsMedium",
                                                     color: Color.fromRGBO(63, 61, 86, 1.0)
                                                 )),
 
@@ -345,7 +349,7 @@ class HomeView extends GetView<HomeController> {
 
                                                 Text("1:05 PM", style: TextStyle(
                                                     fontSize: 18,
-                                                    fontWeight: FontWeight.w700,
+                                                    fontFamily: "PoppinsMedium",
                                                     color: Color.fromRGBO(63, 61, 86, 1.0)
                                                 )),
                                               ],
@@ -369,7 +373,7 @@ class HomeView extends GetView<HomeController> {
                                                           style: TextStyle(
                                                               color: Color.fromRGBO(35, 35, 35, 1.0),
                                                               fontSize: 14,
-                                                              fontWeight: FontWeight.w700
+                                                              fontFamily: "PoppinsMedium"
                                                           ))
                                                     ],
                                                   ),
@@ -383,7 +387,7 @@ class HomeView extends GetView<HomeController> {
                                                     style: TextStyle(
                                                         color: Color.fromRGBO(22, 212, 98, 1.0),
                                                         fontSize: 18,
-                                                        fontWeight: FontWeight.w700
+                                                        fontFamily: "PoppinsBold"
                                                     ))
                                               ],
                                             )
@@ -391,7 +395,7 @@ class HomeView extends GetView<HomeController> {
                                         ),
                                       ),
                                       onTap: (){
-                                        Get.to(() => TicketDetailsView());
+                                        Get.to(() => TicketDetailsBookView());
                                       },
                                     );
                                   },

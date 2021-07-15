@@ -40,7 +40,7 @@ class MyTicketsView extends GetView<MyTicketsController> {
                       Expanded(child: SizedBox(),flex: 1),
                       Text("My Tickets", style: TextStyle(
                           color: Color.fromRGBO(63, 61, 86, 1.0), fontSize: 16,
-                          fontWeight: FontWeight.bold
+                          fontFamily: "PoppinsBold"
                       )),
                       Expanded(child: SizedBox(),flex: 1),
                       Image.asset("assets/ic_notification.png", height: 28, width: 28),
@@ -55,12 +55,12 @@ class MyTicketsView extends GetView<MyTicketsController> {
                     unselectedLabelColor: Color.fromRGBO(63, 61, 86, 1.0),
                     unselectedLabelStyle: TextStyle(
                         fontSize: 16,
-                        fontWeight: FontWeight.bold
+                        fontFamily: "PoppinsMedium"
                     ),
                     labelColor: Color.fromRGBO(255, 205, 56, 1.0),
                     labelStyle: TextStyle(
                         fontSize: 16,
-                        fontWeight: FontWeight.bold
+                        fontFamily: "PoppinsBold"
                     ),
                     indicatorColor: Color.fromRGBO(255, 205, 56, 1.0),
                     indicatorWeight: 3.0,

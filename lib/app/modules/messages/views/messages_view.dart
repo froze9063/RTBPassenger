@@ -43,7 +43,7 @@ class MessagesView extends GetView<MessagesController> {
 
                                 Text("Message Driver", style: TextStyle(
                                     color: Color.fromRGBO(63, 61, 86, 1.0), fontSize: 18,
-                                    fontWeight: FontWeight.bold
+                                    fontFamily: "PoppinsBold"
                                 )),
 
                                 Expanded(child: SizedBox(),flex: 1),
@@ -67,7 +67,7 @@ class MessagesView extends GetView<MessagesController> {
 
                             Text("John Travis Scott Travolta", style: TextStyle(
                                 color: Color.fromRGBO(63, 61, 86, 1.0), fontSize: 20,
-                                fontWeight: FontWeight.bold
+                                fontFamily: "PoppinsBold"
                             )),
 
                             SizedBox(height: 16),
@@ -80,7 +80,7 @@ class MessagesView extends GetView<MessagesController> {
                                 SizedBox(width: 8),
                                 Text("4.8 Driver Rating", style: TextStyle(
                                     color: Color.fromRGBO(63, 61, 86, 1.0), fontSize: 14,
-                                    fontWeight: FontWeight.w500
+                                    fontFamily: "PoppinsMedium"
                                 ))
                               ],
                             ),
@@ -110,8 +110,8 @@ class MessagesView extends GetView<MessagesController> {
                     "driver unless needed.",
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                    color: Color.fromRGBO(63, 61, 86, 1.0), fontSize: 14,
-                    fontWeight: FontWeight.w500,
+                    color: Color.fromRGBO(63, 61, 86, 1.0), fontSize: 13,
+                    fontFamily: "PoppinsBold",
                     height: 1.5
                 )),
                 decoration: BoxDecoration(
@@ -128,8 +128,8 @@ class MessagesView extends GetView<MessagesController> {
                     Container(
                       padding: EdgeInsets.all(16),
                       child: Text("Hello ?", style: TextStyle(
-                          color: Color.fromRGBO(63, 61, 86, 1.0), fontSize: 14,
-                          fontWeight: FontWeight.w500
+                          color: Color.fromRGBO(63, 61, 86, 1.0), fontSize: 13,
+                          fontFamily: "PoppinsRegular",
                       )),
                       decoration: BoxDecoration(
                           color: Color.fromRGBO(240, 239, 250, 1.0),
@@ -151,8 +151,8 @@ class MessagesView extends GetView<MessagesController> {
                         Container(
                           padding: EdgeInsets.all(16),
                           child: Text("I’ll be right there, please wait for me!", style: TextStyle(
-                              color: Color.fromRGBO(63, 61, 86, 1.0), fontSize: 14,
-                              fontWeight: FontWeight.w500
+                              color: Color.fromRGBO(63, 61, 86, 1.0), fontSize: 13,
+                              fontFamily: "PoppinsRegular",
                           )),
                           decoration: BoxDecoration(
                               color: Color.fromRGBO(255, 205, 56, 1.0),
@@ -164,7 +164,7 @@ class MessagesView extends GetView<MessagesController> {
 
                         Text("Read", style: TextStyle(
                             color: Color.fromRGBO(195, 194, 204, 1.0), fontSize: 14,
-                            fontWeight: FontWeight.w500
+                            fontFamily: "PoppinsMedium",
                         ))
                       ],
                     ),
@@ -175,7 +175,7 @@ class MessagesView extends GetView<MessagesController> {
             },
               shrinkWrap: true,
               padding: EdgeInsets.zero,
-              itemCount: 5,
+              itemCount: 6,
               primary: false,
             ), flex: 1),
 
@@ -198,10 +198,17 @@ class MessagesView extends GetView<MessagesController> {
                       children: [
                         Expanded(child: TextField(
                           style: TextStyle(
-                              color: Color.fromRGBO(63, 61, 86, 1.0)
+                            fontFamily: "PoppinsMedium",
+                            fontSize: 15,
+                            color: Color.fromRGBO(63, 61, 86, 1.0),
                           ),
                           decoration: new InputDecoration.collapsed(
-                              hintText: 'Type a message'
+                              hintText: 'Type a message',
+                              hintStyle: TextStyle(
+                                  color: Color.fromRGBO(135, 141, 156, 1.0),
+                                  fontFamily: "PoppinsRegular",
+                                  fontSize: 15
+                              )
                           ),
                         ), flex: 1),
 

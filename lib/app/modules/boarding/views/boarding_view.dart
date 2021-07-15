@@ -25,7 +25,7 @@ class BoardingView extends GetView<BoardingController> {
               child: PageView(
                 controller: boardingController.pageController,
                 onPageChanged: (index){
-
+                  boardingController.setNextShowed(index == 2);
                 },
                 children: <Widget>[
                   Column(
@@ -47,7 +47,7 @@ class BoardingView extends GetView<BoardingController> {
                         style: TextStyle(
                             color: Color.fromRGBO(63, 61, 86, 1.0),
                             fontSize: 18.0,
-                            fontWeight: FontWeight.bold
+                            fontFamily: "PoppinsMedium"
                         ),
                       ),
 
@@ -62,7 +62,7 @@ class BoardingView extends GetView<BoardingController> {
                             color: Color.fromRGBO(144, 144, 144, 1.0),
                             fontSize: 16.0,
                             height: 1.5,
-                            fontWeight: FontWeight.w500
+                            fontFamily: "PoppinsRegular"
                         ),
                       ),
                     ],
@@ -87,7 +87,7 @@ class BoardingView extends GetView<BoardingController> {
                         style: TextStyle(
                             color: Color.fromRGBO(63, 61, 86, 1.0),
                             fontSize: 18.0,
-                            fontWeight: FontWeight.bold
+                            fontFamily: "PoppinsMedium"
                         ),
                       ),
 
@@ -102,7 +102,7 @@ class BoardingView extends GetView<BoardingController> {
                             color: Color.fromRGBO(144, 144, 144, 1.0),
                             fontSize: 16.0,
                             height: 1.5,
-                            fontWeight: FontWeight.w500
+                            fontFamily: "PoppinsRegular"
                         ),
                       ),
                     ],
@@ -127,7 +127,7 @@ class BoardingView extends GetView<BoardingController> {
                         style: TextStyle(
                             color: Color.fromRGBO(63, 61, 86, 1.0),
                             fontSize: 18.0,
-                            fontWeight: FontWeight.bold
+                            fontFamily: "PoppinsMedium"
                         ),
                       ),
 
@@ -141,7 +141,7 @@ class BoardingView extends GetView<BoardingController> {
                             color: Color.fromRGBO(144, 144, 144, 1.0),
                             fontSize: 16.0,
                             height: 1.5,
-                            fontWeight: FontWeight.w500
+                            fontFamily: "PoppinsRegular"
                         ),
                       ),
                     ],
@@ -154,8 +154,8 @@ class BoardingView extends GetView<BoardingController> {
               controller: boardingController.pageController,  // PageController
               count: 3,
               effect: WormEffect(
-                  dotWidth:  8.0,
-                  dotHeight:  8.0,
+                  dotWidth:  10.0,
+                  dotHeight:  10.0,
                   spacing: 16,
                   activeDotColor:  Color.fromRGBO(255, 205, 56, 1.0),
                   dotColor: Color.fromRGBO(230, 230, 230, 1.0)
@@ -164,13 +164,16 @@ class BoardingView extends GetView<BoardingController> {
 
             Expanded(child: SizedBox(), flex: 1),
 
-            GestureDetector(
-              child: ColoredButton(height: 55, width: double.maxFinite, title: "Next",
-                  color: Color.fromRGBO(255, 205, 56, 1.0)),
-              onTap: (){
-                Get.to(LoginView());
-              },
-            ),
+            GetBuilder<BoardingController>(
+              id: "next_showed",
+              init: BoardingController(),
+              builder: (value) => Visibility(child: GestureDetector(
+                child: ColoredButton(height: 55, width: double.maxFinite, title: "Next",
+                    color: Color.fromRGBO(255, 205, 56, 1.0)),
+                onTap: (){
+                  Get.to(LoginView());
+                },
+              ), visible: value.nextShowed)),
 
             SizedBox(height: 100)
           ],

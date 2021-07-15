@@ -72,12 +72,12 @@ class LoginView extends GetView<LoginController> {
                               Text("Sign In", style: TextStyle(
                                   color: Color.fromRGBO(63, 61, 86, 1.0),
                                   fontSize: 16,
-                                  fontWeight: FontWeight.bold))
+                                  fontFamily: "PoppinsBold"))
                             ],
                           ),
                         ),
 
-                        Padding(padding: EdgeInsets.only(left: 24, right: 24, top: 16), child: Row(
+                        /*Padding(padding: EdgeInsets.only(left: 24, right: 24, top: 16), child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
@@ -105,9 +105,9 @@ class LoginView extends GetView<LoginController> {
                             )
                           ],
                         )
-                        ),
+                        ),*/
 
-                        Padding(padding: EdgeInsets.only(left: 24,right: 24, top: 8),
+                        Padding(padding: EdgeInsets.only(left: 24,right: 24, top: 24),
                             child: CustomEditText(height: 55, width: double.maxFinite, placeholder:
                             "Email", textEditingController: loginController.emailController,
                                 isSecure: false, isPasswordField: false, backgroundColor: Colors.white)),
@@ -144,14 +144,14 @@ class LoginView extends GetView<LoginController> {
                                 Text("Remember me", style: TextStyle(
                                     fontSize: 14,
                                     color: Color.fromRGBO(220, 220, 220, 1.0),
-                                    fontWeight: FontWeight.w500)),
+                                    fontFamily: "PoppinsRegular")),
 
                                 Expanded(child: SizedBox(), flex: 1),
 
                                 Text("Forgot Password ?", style: TextStyle(
                                     fontSize: 14,
                                     color: Color.fromRGBO(255, 205, 56, 1.0),
-                                    fontWeight: FontWeight.w500))
+                                    fontFamily: "PoppinsMedium"))
                               ],
                             )),
 
@@ -166,7 +166,8 @@ class LoginView extends GetView<LoginController> {
                         Padding(padding: EdgeInsets.only(top: 16, left: 24, right: 24),
                             child: Text("Or sign in with", style: TextStyle(
                               fontSize: 14,
-                              color: Color.fromRGBO(135, 141, 156, 1.0)
+                              color: Color.fromRGBO(135, 141, 156, 1.0),
+                                fontFamily: "PoppinsRegular"
                             )),
                         ),
 
@@ -195,14 +196,14 @@ class LoginView extends GetView<LoginController> {
                     children: [
                       Text("Don't have an account ?", style: TextStyle(
                           color: Color.fromRGBO(195, 194, 204, 1.0),
-                          fontWeight: FontWeight.w500
+                          fontFamily: "PoppinsRegular"
                       )),
 
                       SizedBox(width: 4),
 
                       Text("Sign Up", style: TextStyle(
                           color: Color.fromRGBO(255, 205, 56, 1.0),
-                          fontWeight: FontWeight.bold
+                          fontFamily: "PoppinsMedium"
                       )),
                     ],
                   ),

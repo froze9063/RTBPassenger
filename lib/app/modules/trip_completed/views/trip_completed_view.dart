@@ -26,7 +26,7 @@ class TripCompletedView extends GetView<TripCompletedController> {
                     style: TextStyle(
                     fontSize: 16,
                     color: Color.fromRGBO(63, 61, 86, 1.0),
-                    fontWeight: FontWeight.bold
+                    fontFamily: "PoppinsBold"
                 )), flex: 1),
                 GestureDetector(
                   child: Image.asset("assets/ic_close_black.png"),
@@ -40,8 +40,8 @@ class TripCompletedView extends GetView<TripCompletedController> {
             SizedBox(height: 75),
             Text("Thank You!", style: TextStyle(
                 color: Color.fromRGBO(255, 205, 56, 1.0),
-                fontSize: 20,
-                fontWeight: FontWeight.bold
+                fontSize: 25,
+                fontFamily: "PoppinsBold"
             )),
             SizedBox(height: 16),
             Row(
@@ -53,7 +53,7 @@ class TripCompletedView extends GetView<TripCompletedController> {
                        color: Color.fromRGBO(135, 141, 156, 1.0),
                        height: 1.5,
                        fontSize: 16,
-                       fontWeight: FontWeight.w500
+                       fontFamily: "PoppinsRegular"
                    )), flex: 1),
                 SizedBox(width: 24),
               ],
@@ -65,7 +65,7 @@ class TripCompletedView extends GetView<TripCompletedController> {
                 style: TextStyle(
                     fontSize: 16,
                     color: Color.fromRGBO(63, 61, 86, 1.0),
-                    fontWeight: FontWeight.bold
+                    fontFamily: "PoppinsMedium"
                 )),
             Padding(padding: EdgeInsets.only(top: 36, left: 24, right: 24), child: GestureDetector(
               child: ColoredButton(height: 45, width: double.maxFinite, title: "Write Review",

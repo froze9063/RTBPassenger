@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:ridethebee/app/modules/ticket_details_seat/views/ticket_details_seat_view.dart';
 import 'package:ridethebee/app/widgets/colored_button.dart';
 
 import '../controllers/car_seats_controller.dart';
@@ -33,7 +34,7 @@ class CarSeatsView extends GetView<CarSeatsController> {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontSize: 18,
-                          fontWeight: FontWeight.bold,
+                          fontFamily: "PoppinsBold",
                           color: Color.fromRGBO(63, 61, 86, 1.0)
                       ))),
                   SizedBox(width: 24),
@@ -52,7 +53,7 @@ class CarSeatsView extends GetView<CarSeatsController> {
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               fontSize: 14,
-                              fontWeight: FontWeight.normal,
+                              fontFamily: "PoppinsRegular",
                               color: Color.fromRGBO(63, 61, 86, 1.0)
                           ))
                     ],
@@ -68,7 +69,7 @@ class CarSeatsView extends GetView<CarSeatsController> {
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               fontSize: 14,
-                              fontWeight: FontWeight.normal,
+                              fontFamily: "PoppinsRegular",
                               color: Color.fromRGBO(63, 61, 86, 1.0)
                           ))
                     ],
@@ -84,7 +85,7 @@ class CarSeatsView extends GetView<CarSeatsController> {
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               fontSize: 14,
-                              fontWeight: FontWeight.normal,
+                              fontFamily: "PoppinsRegular",
                               color: Color.fromRGBO(63, 61, 86, 1.0)
                           ))
                     ],
@@ -111,11 +112,15 @@ class CarSeatsView extends GetView<CarSeatsController> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Visibility(child: Text("A1"), visible: index % 2 == 0),
+                            Visibility(child: Text("A1", style: TextStyle(
+                              fontFamily: "PoppinsRegular",
+                            )), visible: index % 2 == 0),
                             SizedBox(width: 4),
                             Image.asset(_carSeatsController.seatsList[index], width: 36, height: 36),
                             SizedBox(width: 4),
-                            Visibility(child: Text("A2"), visible: index % 2 != 0),
+                            Visibility(child: Text("A2", style: TextStyle(
+                              fontFamily: "PoppinsRegular",
+                            )), visible: index % 2 != 0),
                           ],
                         ),
                       );
@@ -143,13 +148,13 @@ class CarSeatsView extends GetView<CarSeatsController> {
                       Text("Seat (s)", style: TextStyle(
                         fontSize: 16,
                         color: Color.fromRGBO(135, 141, 156, 1.0),
-                        fontWeight: FontWeight.w700
+                        fontFamily: "PoppinsRegular"
                       )),
                       SizedBox(height: 8),
                       Text("D3", style: TextStyle(
                           fontSize: 16,
                           color: Color.fromRGBO(63, 61, 86, 1.0),
-                          fontWeight: FontWeight.w700
+                          fontFamily: "PoppinsMedium"
                       ))
                     ],
                   ),
@@ -163,13 +168,13 @@ class CarSeatsView extends GetView<CarSeatsController> {
                       Text("Total", style: TextStyle(
                           fontSize: 16,
                           color: Color.fromRGBO(135, 141, 156, 1.0),
-                          fontWeight: FontWeight.w700
+                          fontFamily: "PoppinsRegular",
                       )),
                       SizedBox(height: 8),
                       Text("RM35.00", style: TextStyle(
                           fontSize: 20,
                           color: Color.fromRGBO(22, 212, 98, 1.0),
-                          fontWeight: FontWeight.w700
+                          fontFamily: "PoppinsBold",
                       ))
                     ],
                   ),
@@ -182,7 +187,7 @@ class CarSeatsView extends GetView<CarSeatsController> {
                 child: ColoredButton(height: 45, width: double.maxFinite, title: "Next",
                     color: Color.fromRGBO(255, 205, 56, 1.0)),
                 onTap: (){
-                    Get.back();
+                    Get.to(() => TicketDetailsSeatView());
                 },
               ))
             ],

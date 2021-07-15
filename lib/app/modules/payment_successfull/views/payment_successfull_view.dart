@@ -54,7 +54,7 @@ class PaymentSuccessfullView extends GetView<PaymentSuccessfullController> {
                               children: [
                                 Text("Payment Successful", style: TextStyle(
                                   fontSize: 16,
-                                  fontWeight: FontWeight.w700,
+                                  fontFamily: "PoppinsBold",
                                   color: Color.fromRGBO(22, 212, 98, 1.0)
                                 ))
                               ],
@@ -62,13 +62,13 @@ class PaymentSuccessfullView extends GetView<PaymentSuccessfullController> {
                             SizedBox(height: 36),
                             Text("Total Amount", style: TextStyle(
                                 fontSize: 14,
-                                fontWeight: FontWeight.normal,
-                                color: Color.fromRGBO(135, 141, 156, 1.0)
+                                fontFamily: "PoppinsRegular",
+                              color: Color.fromRGBO(135, 141, 156, 1.0),
                             )),
                             SizedBox(height: 10),
                             Text("RM25.00", style: TextStyle(
                                 fontSize: 30,
-                                fontWeight: FontWeight.bold,
+                                fontFamily: "PoppinsBold",
                                 color: Color.fromRGBO(22, 212, 98, 1.0)
                             )),
                             SizedBox(height: 24),
@@ -82,13 +82,13 @@ class PaymentSuccessfullView extends GetView<PaymentSuccessfullController> {
                               children: [
                                 Expanded(child: Text("Order Amount", style: TextStyle(
                                     fontSize: 14,
-                                    color: Color.fromRGBO(63, 61, 86, 1.0),
-                                    fontWeight: FontWeight.normal
+                                    color: Color.fromRGBO(135, 141, 156, 1.0),
+                                    fontFamily: "PoppinsRegular"
                                 )), flex: 1),
                                 Text("RM35.00", style: TextStyle(
                                   fontSize: 16,
                                   color: Color.fromRGBO(63, 61, 86, 1.0),
-                                  fontWeight: FontWeight.w500
+                                    fontFamily: "PoppinsMedium"
                                 ))
                               ],
                             ),
@@ -97,13 +97,13 @@ class PaymentSuccessfullView extends GetView<PaymentSuccessfullController> {
                               children: [
                                 Expanded(child: Text("No. Of Ticket", style: TextStyle(
                                     fontSize: 14,
-                                    color: Color.fromRGBO(63, 61, 86, 1.0),
-                                    fontWeight: FontWeight.normal
+                                    color: Color.fromRGBO(135, 141, 156, 1.0),
+                                    fontFamily: "PoppinsRegular"
                                 )), flex: 1),
                                 Text("1 ", style: TextStyle(
                                     fontSize: 16,
                                     color: Color.fromRGBO(63, 61, 86, 1.0),
-                                    fontWeight: FontWeight.w500
+                                    fontFamily: "PoppinsMedium"
                                 ))
                               ],
                             ),
@@ -112,13 +112,13 @@ class PaymentSuccessfullView extends GetView<PaymentSuccessfullController> {
                               children: [
                                 Expanded(child: Text("Used Cashback", style: TextStyle(
                                     fontSize: 14,
-                                    color: Color.fromRGBO(63, 61, 86, 1.0),
-                                    fontWeight: FontWeight.normal
+                                    color: Color.fromRGBO(135, 141, 156, 1.0),
+                                    fontFamily: "PoppinsRegular"
                                 )), flex: 1),
                                 Text("RM10.00", style: TextStyle(
                                     fontSize: 16,
                                     color: Color.fromRGBO(63, 61, 86, 1.0),
-                                    fontWeight: FontWeight.w500
+                                    fontFamily: "PoppinsMedium"
                                 ))
                               ],
                             ),
@@ -133,13 +133,13 @@ class PaymentSuccessfullView extends GetView<PaymentSuccessfullController> {
                               children: [
                                 Expanded(child: Text("Payment Method", style: TextStyle(
                                     fontSize: 14,
-                                    color: Color.fromRGBO(63, 61, 86, 1.0),
-                                    fontWeight: FontWeight.normal
+                                    color: Color.fromRGBO(135, 141, 156, 1.0),
+                                    fontFamily: "PoppinsRegular"
                                 )), flex: 1),
                                 Text("Credit / Debit Card", style: TextStyle(
                                     fontSize: 16,
                                     color: Color.fromRGBO(63, 61, 86, 1.0),
-                                    fontWeight: FontWeight.w500
+                                    fontFamily: "PoppinsMedium"
                                 ))
                               ],
                             ),
@@ -148,13 +148,13 @@ class PaymentSuccessfullView extends GetView<PaymentSuccessfullController> {
                               children: [
                                 Expanded(child: Text("Transaction ID", style: TextStyle(
                                     fontSize: 14,
-                                    color: Color.fromRGBO(63, 61, 86, 1.0),
-                                    fontWeight: FontWeight.normal
+                                    color: Color.fromRGBO(135, 141, 156, 1.0),
+                                    fontFamily: "PoppinsRegular"
                                 )), flex: 1),
                                 Text("012345", style: TextStyle(
                                     fontSize: 16,
                                     color: Color.fromRGBO(63, 61, 86, 1.0),
-                                    fontWeight: FontWeight.w500
+                                    fontFamily: "PoppinsMedium"
                                 ))
                               ],
                             ),
@@ -163,13 +163,13 @@ class PaymentSuccessfullView extends GetView<PaymentSuccessfullController> {
                               children: [
                                 Expanded(child: Text("Ticket ID", style: TextStyle(
                                     fontSize: 14,
-                                    color: Color.fromRGBO(63, 61, 86, 1.0),
-                                    fontWeight: FontWeight.normal
+                                    color: Color.fromRGBO(135, 141, 156, 1.0),
+                                    fontFamily: "PoppinsRegular"
                                 )), flex: 1),
                                 Text("543210", style: TextStyle(
                                     fontSize: 16,
                                     color: Color.fromRGBO(63, 61, 86, 1.0),
-                                    fontWeight: FontWeight.w500
+                                    fontFamily: "PoppinsMedium"
                                 ))
                               ],
                             ),
@@ -180,7 +180,7 @@ class PaymentSuccessfullView extends GetView<PaymentSuccessfullController> {
                   ), flex: 1),
                   SizedBox(height: 24),
                   Padding(padding: EdgeInsets.only(left: 24, right: 24), child: GestureDetector(
-                    child: ColoredButton(height: 45, width: double.maxFinite, title: "View Ticket",
+                    child: ColoredButton(height: 55, width: double.maxFinite, title: "View Ticket",
                         color: Color.fromRGBO(255, 205, 56, 1.0)),
                     onTap: (){
                       Get.to(() => TicketDetailsView(), arguments: {"from_status" : 1});

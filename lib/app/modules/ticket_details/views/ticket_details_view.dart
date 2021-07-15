@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:ridethebee/app/modules/car_seats/views/car_seats_view.dart';
+import 'package:ridethebee/app/modules/car_seats_booked/views/car_seats_booked_view.dart';
 import 'package:ridethebee/app/modules/en_route/views/en_route_view.dart';
 import 'package:ridethebee/app/modules/menus/views/menus_view.dart';
 import 'package:ridethebee/app/modules/notification/views/notification_view.dart';
@@ -39,7 +40,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                     Expanded(child: SizedBox(), flex: 1),
                     Text("Booking Details", style: TextStyle(
                         fontSize: 18,
-                        fontWeight: FontWeight.bold,
+                        fontFamily: "PoppinsBold",
                         color: Color.fromRGBO(63, 61, 86, 1.0)
                     )),
                     Expanded(child: SizedBox(), flex: 1),
@@ -86,7 +87,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                                         style: TextStyle(
                                             color: Color.fromRGBO(35, 35, 35, 1.0),
                                             fontSize: 14,
-                                            fontWeight: FontWeight.w700
+                                            fontFamily: "PoppinsMedium"
                                         ))
                                   ],
                                 ))
@@ -105,7 +106,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
 
                                   Text("Depart", style: TextStyle(
                                       fontSize: 14,
-                                      fontWeight: FontWeight.w500,
+                                      fontFamily: "PoppinsRegular",
                                       color: Color.fromRGBO(135, 141, 156, 1.0)
                                   )),
 
@@ -113,7 +114,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
 
                                   Text("1:05 PM", style: TextStyle(
                                       fontSize: 16,
-                                      fontWeight: FontWeight.w700,
+                                      fontFamily: "PoppinsBold",
                                       color: Color.fromRGBO(63, 61, 86, 1.0)
                                   )),
 
@@ -121,7 +122,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
 
                                   Text("12 June, Mon", style: TextStyle(
                                       fontSize: 14,
-                                      fontWeight: FontWeight.w500,
+                                      fontFamily: "PoppinsRegular",
                                       color: Color.fromRGBO(135, 141, 156, 1.0)
                                   ))
                                 ],
@@ -135,7 +136,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
 
                                   Text("Arrive", style: TextStyle(
                                       fontSize: 14,
-                                      fontWeight: FontWeight.w500,
+                                      fontFamily: "PoppinsRegular",
                                       color: Color.fromRGBO(135, 141, 156, 1.0)
                                   )),
 
@@ -143,7 +144,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
 
                                   Text("1:05 PM", style: TextStyle(
                                       fontSize: 16,
-                                      fontWeight: FontWeight.w700,
+                                      fontFamily: "PoppinsBold",
                                       color: Color.fromRGBO(63, 61, 86, 1.0)
                                   )),
 
@@ -151,7 +152,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
 
                                   Text("12 June, Mon", style: TextStyle(
                                       fontSize: 14,
-                                      fontWeight: FontWeight.w500,
+                                      fontFamily: "PoppinsRegular",
                                       color: Color.fromRGBO(135, 141, 156, 1.0)
                                   ))
                                 ],
@@ -191,31 +192,31 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                                     Text("Kuala Lumpur", style: TextStyle(
                                         color: Color.fromRGBO(135, 141, 156, 1.0),
                                         fontSize: 14,
-                                        fontWeight: FontWeight.w700
+                                        fontFamily: "PoppinsMedium"
                                     )),
                                     SizedBox(height: 8),
                                     Text("TBS (Terminal Bersepadu Selatan)", style: TextStyle(
                                         color: Color.fromRGBO(63, 61, 86, 1.0),
                                         fontSize: 16,
-                                        fontWeight: FontWeight.w700
+                                        fontFamily: "PoppinsMedium"
                                     )),
-                                    SizedBox(height: 24),
+                                    SizedBox(height: 16),
                                     Container(
                                       width: double.maxFinite,
                                       height: 1,
                                       color: Color.fromRGBO(236, 239, 241, 1.0),
                                     ),
-                                    SizedBox(height: 24),
+                                    SizedBox(height: 16),
                                     Text("Penang", style: TextStyle(
                                         color: Color.fromRGBO(135, 141, 156, 1.0),
                                         fontSize: 14,
-                                        fontWeight: FontWeight.w700
+                                        fontFamily: "PoppinsMedium"
                                     )),
                                     SizedBox(height: 8),
                                     Text("Sungai Nibong Bus Terminal", style: TextStyle(
                                         color: Color.fromRGBO(63, 61, 86, 1.0),
                                         fontSize: 16,
-                                        fontWeight: FontWeight.w700
+                                        fontFamily: "PoppinsMedium"
                                     )),
                                   ],
                                 ), flex: 1),
@@ -242,13 +243,13 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                                   Text("Company", style: TextStyle(
                                       color: Color.fromRGBO(135, 141, 156, 1.0),
                                       fontSize: 12,
-                                      fontWeight: FontWeight.w500
+                                      fontFamily: "PoppinsRegular"
                                   )),
                                   SizedBox(height: 8),
                                   Text("Ride The Bee", style: TextStyle(
                                       color: Color.fromRGBO(63, 61, 86, 1.0),
                                       fontSize: 16,
-                                      fontWeight: FontWeight.w700
+                                      fontFamily: "PoppinsMedium"
                                   ))
                                 ],
                               ), flex: 1),
@@ -257,7 +258,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                             ],
                           ),
 
-                          SizedBox(height: 16),
+                          SizedBox(height: 8),
 
                           Row(
                             children: [
@@ -269,13 +270,12 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                                   Text("Seat (s)", style: TextStyle(
                                       color: Color.fromRGBO(135, 141, 156, 1.0),
                                       fontSize: 12,
-                                      fontWeight: FontWeight.w500
+                                      fontFamily: "PoppinsRegular"
                                   )),
-                                  SizedBox(height: 8),
                                   Text("D3", style: TextStyle(
                                       color: Color.fromRGBO(63, 61, 86, 1.0),
                                       fontSize: 16,
-                                      fontWeight: FontWeight.w700
+                                      fontFamily: "PoppinsBold"
                                   ))
                                 ],
                               ), flex: 1),
@@ -286,7 +286,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                                   children: [
                                     Text("View Seating", style: TextStyle(
                                         fontSize: 16,
-                                        fontWeight: FontWeight.bold,
+                                        fontFamily: "PoppinsMedium",
                                         color: Color.fromRGBO(255, 205, 56, 1.0)
                                     )),
                                     SizedBox(width: 16),
@@ -295,7 +295,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                                   ],
                                 ),
                                 onTap: (){
-                                  Get.to(() => CarSeatsView());
+                                  Get.to(() => CarSeatsBookedView());
                                 },
                               ),
                             ],
@@ -312,7 +312,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                                   Text("Pick-up point", style: TextStyle(
                                       color: Color.fromRGBO(135, 141, 156, 1.0),
                                       fontSize: 14,
-                                      fontWeight: FontWeight.normal
+                                      fontFamily: "PoppinsRegular"
                                   )),
 
                                   SizedBox(height: 8),
@@ -320,7 +320,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                                   Text("Bay 5", style: TextStyle(
                                       color: Color.fromRGBO(63, 61, 86, 1.0),
                                       fontSize: 18,
-                                      fontWeight: FontWeight.bold
+                                      fontFamily: "PoppinsMedium"
                                   ))
                                 ],
                               ), flex: 1),
@@ -330,7 +330,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                                   Text("Drop-off point", style: TextStyle(
                                       color: Color.fromRGBO(135, 141, 156, 1.0),
                                       fontSize: 14,
-                                      fontWeight: FontWeight.normal
+                                      fontFamily: "PoppinsRegular"
                                   )),
 
                                   SizedBox(height: 8),
@@ -338,7 +338,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                                   Text("Bay 1", style: TextStyle(
                                       color: Color.fromRGBO(63, 61, 86, 1.0),
                                       fontSize: 18,
-                                      fontWeight: FontWeight.bold
+                                      fontFamily: "PoppinsMedium"
                                   ))
                                 ],
                               ), flex: 1)
@@ -409,15 +409,10 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
 
                 Padding(padding: EdgeInsets.only(bottom: 24), child: GestureDetector(
                   child: ColoredButton(height: 45, width: double.maxFinite,
-                      title: _ticketDetailsController.fromStatus == 0 ? "Next" : "View Map",
+                      title: "View Map",
                       color: Color.fromRGBO(63, 61, 86, 1.0)),
                   onTap: (){
-                    if(_ticketDetailsController.fromStatus == 0){
-                      Get.off(() => PaymentDetailsView());
-                    }
-                    else{
-                      Get.to(() => EnRouteView());
-                    }
+                    Get.to(() => EnRouteView());
                   },
                 )),
               ],

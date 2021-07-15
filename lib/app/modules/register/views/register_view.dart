@@ -44,7 +44,9 @@ class RegisterView extends GetView<RegisterController> {
               ),
             ),
 
-            Padding(
+            Container(
+              width: double.maxFinite,
+              height: double.maxFinite,
                 padding: EdgeInsets.only(left: 24, right: 24, bottom: 24),
                 child: Column(
                   children: [
@@ -69,7 +71,7 @@ class RegisterView extends GetView<RegisterController> {
                             Text("Create an Account", style: TextStyle(
                                 fontSize: 16,
                                 color: Color.fromRGBO(63, 61, 86, 1.0),
-                                fontWeight: FontWeight.bold
+                                fontFamily: "PoppinsBold"
                             )),
 
                             Padding(padding: EdgeInsets.only(top: 16),
@@ -125,14 +127,14 @@ class RegisterView extends GetView<RegisterController> {
                                 Text("I have agreed with", style: TextStyle(
                                     fontSize: 12,
                                     color: Color.fromRGBO(112, 112, 112, 1.0),
-                                    fontWeight: FontWeight.w500)),
+                                    fontFamily: "PoppinsRegular")),
 
                                 SizedBox(width: 4),
 
                                 Text("Terms & Conditions.", style: TextStyle(
                                     fontSize: 12,
                                     color: Color.fromRGBO(255, 205, 56, 1.0),
-                                    fontWeight: FontWeight.w500))
+                                    fontFamily: "PoppinsMedium"))
                               ],
                             ),
 

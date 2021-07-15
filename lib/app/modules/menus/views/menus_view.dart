@@ -42,7 +42,7 @@ class MenusView extends GetView<MenusController> {
                     Text("Menu", style: TextStyle(
                         fontSize: 24,
                         color: Color.fromRGBO(63, 61, 86, 1.0),
-                        fontWeight: FontWeight.bold
+                        fontFamily: "PoppinsMedium"
                     )),
 
                     Expanded(child: SizedBox(), flex: 1),
@@ -66,13 +66,13 @@ class MenusView extends GetView<MenusController> {
                         children: [
                           Text("Elizabeth Tan", style: TextStyle(
                               fontSize: 18,
-                              fontWeight: FontWeight.bold,
+                              fontFamily: "PoppinsBold",
                               color: Color.fromRGBO(63, 61, 86, 1.0)
                           )),
                           SizedBox(height: 4),
                           Text("elizabethtan@gmail.com", style: TextStyle(
                               fontSize: 12,
-                              fontWeight: FontWeight.bold,
+                              fontFamily: "PoppinsMedium",
                               color: Color.fromRGBO(63, 61, 86, 1.0)
                           ))
                         ],
@@ -105,7 +105,7 @@ class MenusView extends GetView<MenusController> {
                                 SizedBox(width: 16),
                                 Expanded(child: Text("Search Trips", style: TextStyle(
                                     fontSize: 14,
-                                    fontWeight: FontWeight.w700,
+                                    fontFamily: "PoppinsMedium",
                                     color: Color.fromRGBO(63, 61, 86, 1.0)
                                 )), flex: 1),
                                 Image.asset("assets/ic_graycircle_arrow.png", height: 24, width: 24)
@@ -132,7 +132,7 @@ class MenusView extends GetView<MenusController> {
                                   SizedBox(width: 16),
                                   Expanded(child: Text("Cashback Wallet", style: TextStyle(
                                       fontSize: 14,
-                                      fontWeight: FontWeight.w700,
+                                      fontFamily: "PoppinsMedium",
                                       color: Color.fromRGBO(63, 61, 86, 1.0)
                                   )), flex: 1),
                                   Image.asset("assets/ic_graycircle_arrow.png", height: 24, width: 24)
@@ -166,7 +166,7 @@ class MenusView extends GetView<MenusController> {
                       children: [
                         Text("My Tickets", style: TextStyle(
                             fontSize: 18,
-                            fontWeight: FontWeight.w500,
+                            fontFamily: "PoppinsMedium",
                             color: Color.fromRGBO(63, 61, 86, 1.0)
                         )),
 
@@ -188,13 +188,13 @@ class MenusView extends GetView<MenusController> {
                                     children: [
                                       Text("Ongoing", style: TextStyle(
                                           fontSize: 14,
-                                          fontWeight: FontWeight.w700,
+                                          fontFamily: "PoppinsMedium",
                                           color: Color.fromRGBO(63, 61, 86, 1.0)
                                       )),
                                       SizedBox(height: 8),
                                       Text("Kuala Lumpur - Malaysia", style: TextStyle(
                                           fontSize: 12,
-                                          fontWeight: FontWeight.w700,
+                                          fontFamily: "PoppinsRegular",
                                           color: Color.fromRGBO(135, 141, 156, 1.0)
                                       ))
                                     ],
@@ -227,7 +227,7 @@ class MenusView extends GetView<MenusController> {
                                   SizedBox(width: 16),
                                   Expanded(child: Text("Upcoming", style: TextStyle(
                                       fontSize: 14,
-                                      fontWeight: FontWeight.w700,
+                                      fontFamily: "PoppinsMedium",
                                       color: Color.fromRGBO(63, 61, 86, 1.0)
                                   )), flex: 1),
                                   Image.asset("assets/ic_graycircle_arrow.png", height: 24, width: 24)
@@ -259,7 +259,7 @@ class MenusView extends GetView<MenusController> {
                                   SizedBox(width: 16),
                                   Expanded(child: Text("Completed", style: TextStyle(
                                       fontSize: 14,
-                                      fontWeight: FontWeight.w700,
+                                      fontFamily: "PoppinsMedium",
                                       color: Color.fromRGBO(63, 61, 86, 1.0)
                                   )), flex: 1),
                                   Image.asset("assets/ic_graycircle_arrow.png", height: 24, width: 24)

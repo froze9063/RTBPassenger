@@ -57,7 +57,7 @@ class CashbackWalletView extends GetView<CashbackWalletController> {
 
                                 Text("Cashback Wallet", style: TextStyle(
                                     color: Color.fromRGBO(63, 61, 86, 1.0), fontSize: 18,
-                                    fontWeight: FontWeight.bold
+                                  fontFamily: "PoppinsBold",
                                 )),
 
                                 Expanded(child: SizedBox(),flex: 1),
@@ -73,18 +73,18 @@ class CashbackWalletView extends GetView<CashbackWalletController> {
                               ],
                             ),
 
-                            SizedBox(height: 36),
+                            SizedBox(height: 24),
 
                             Text("Total Wallet Balance", style: TextStyle(
                                 color: Color.fromRGBO(63, 61, 86, 1.0), fontSize: 14,
-                                fontWeight: FontWeight.w500
+                                fontFamily: "PoppinsMedium",
                             )),
 
                             SizedBox(height: 8),
 
                             Text("RM10.00", style: TextStyle(
                                 color: Color.fromRGBO(63, 61, 86, 1.0), fontSize: 36,
-                                fontWeight: FontWeight.bold
+                                fontFamily: "PoppinsBold"
                             ))
                           ],
                         )
@@ -102,15 +102,15 @@ class CashbackWalletView extends GetView<CashbackWalletController> {
                     height: 75,
                     child:  TabBar(
                       controller: _cashbackWalletController.tabController,
-                      unselectedLabelColor: Color.fromRGBO(124, 108, 108, 1.0),
+                      unselectedLabelColor: Color.fromRGBO(63, 61, 86, 1.0),
                       unselectedLabelStyle: TextStyle(
                           fontSize: 16,
-                          fontWeight: FontWeight.bold
+                          fontFamily: "PoppinsMedium"
                       ),
                       labelColor: Color.fromRGBO(255, 205, 56, 1.0),
                       labelStyle: TextStyle(
                           fontSize: 16,
-                          fontWeight: FontWeight.bold
+                          fontFamily: "PoppinsBold"
                       ),
                       indicatorColor: Color.fromRGBO(255, 205, 56, 1.0),
                       indicatorWeight: 3.0,
