@@ -27,7 +27,7 @@ class TicketDetailsSeatView extends GetView<TicketDetailsSeatController> {
                 Row(
                   children: [
                     GestureDetector(
-                      child: Image.asset("assets/ic_menu.png", height: 24, width: 24),
+                      child: Image.asset("assets/ic_black_left.png", height: 20, width: 20),
                       onTap: (){
                         Get.to(() => MenusView());
                       },
@@ -39,12 +39,7 @@ class TicketDetailsSeatView extends GetView<TicketDetailsSeatController> {
                         color: Color.fromRGBO(63, 61, 86, 1.0)
                     )),
                     Expanded(child: SizedBox(), flex: 1),
-                    GestureDetector(
-                      child: Image.asset("assets/ic_notification.png", height: 24, width: 24),
-                      onTap: (){
-                        Get.to(() => NotificationView());
-                      },
-                    )
+                    SizedBox(width: 24)
                   ],
                 ),
 
@@ -71,7 +66,6 @@ class TicketDetailsSeatView extends GetView<TicketDetailsSeatController> {
                             ),
                             child: Stack(
                               children: [
-                                Image.asset("assets/img_ridethebees.png",height: 30,width: 30, fit: BoxFit.cover),
                                 Padding(padding: EdgeInsets.only(top: 6), child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -105,15 +99,11 @@ class TicketDetailsSeatView extends GetView<TicketDetailsSeatController> {
                                       color: Color.fromRGBO(135, 141, 156, 1.0)
                                   )),
 
-                                  SizedBox(height: 8),
-
                                   Text("1:05 PM", style: TextStyle(
-                                      fontSize: 16,
+                                      fontSize: 20,
                                       fontFamily: "PoppinsBold",
                                       color: Color.fromRGBO(63, 61, 86, 1.0)
                                   )),
-
-                                  SizedBox(height: 8),
 
                                   Text("12 June, Mon", style: TextStyle(
                                       fontSize: 14,
@@ -135,16 +125,12 @@ class TicketDetailsSeatView extends GetView<TicketDetailsSeatController> {
                                       color: Color.fromRGBO(135, 141, 156, 1.0)
                                   )),
 
-                                  SizedBox(height: 8),
-
                                   Text("1:05 PM", style: TextStyle(
-                                      fontSize: 16,
+                                      fontSize: 20,
                                       fontFamily: "PoppinsBold",
                                       color: Color.fromRGBO(63, 61, 86, 1.0)
                                   )),
-
-                                  SizedBox(height: 8),
-
+                                  
                                   Text("12 June, Mon", style: TextStyle(
                                       fontSize: 14,
                                       fontFamily: "PoppinsRegular",
@@ -283,7 +269,10 @@ class TicketDetailsSeatView extends GetView<TicketDetailsSeatController> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
+                              SizedBox(width: 24),
                               Expanded(child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text("Ticket x 1", style: TextStyle(
                                       color: Color.fromRGBO(135, 141, 156, 1.0),
@@ -302,6 +291,8 @@ class TicketDetailsSeatView extends GetView<TicketDetailsSeatController> {
                               ), flex: 1),
 
                               Expanded(child: Column(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
                                   Text("RM35.00", style: TextStyle(
                                       color: Color.fromRGBO(135, 141, 156, 1.0),
@@ -317,7 +308,8 @@ class TicketDetailsSeatView extends GetView<TicketDetailsSeatController> {
                                       fontFamily: "PoppinsBold"
                                   ))
                                 ],
-                              ), flex: 1)
+                              ), flex: 1),
+                              SizedBox(width: 24)
                             ],
                           ),
 
@@ -383,8 +375,8 @@ class TicketDetailsSeatView extends GetView<TicketDetailsSeatController> {
                   ],
                 ), flex: 1),
 
-                Padding(padding: EdgeInsets.only(bottom: 24), child: GestureDetector(
-                  child: ColoredButton(height: 45, width: double.maxFinite,
+                Padding(padding: EdgeInsets.only(bottom: 0), child: GestureDetector(
+                  child: ColoredButton(height: 55, width: double.maxFinite,
                       title: "Next",
                       color: Color.fromRGBO(63, 61, 86, 1.0)),
                   onTap: (){

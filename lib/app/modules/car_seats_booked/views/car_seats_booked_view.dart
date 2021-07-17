@@ -47,7 +47,7 @@ class CarSeatsBookedView extends GetView<CarSeatsBookedController> {
                     children: [
                       Image.asset("assets/img_available_seat.png", width: 36, height: 36),
                       SizedBox(height: 16),
-                      Text("Available",
+                      Text("Vacant",
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               fontSize: 14,

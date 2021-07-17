@@ -18,7 +18,6 @@ class EditProfileView extends GetView<EditProfileController> {
         child: Container(
           width: double.maxFinite,
           height: double.maxFinite,
-          color: Colors.white,
           child: Stack(
             children: [
               Column(
@@ -58,31 +57,51 @@ class EditProfileView extends GetView<EditProfileController> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Padding(padding: EdgeInsets.only(top: 16),
-                                child: CustomEditText(height: 55, width: double.maxFinite, placeholder:
-                                "Your Email", textEditingController: _editProfileController.emailController,
-                                    isSecure: false, isPasswordField: false, backgroundColor: Colors.white)),
+                            Expanded(child: SingleChildScrollView(
+                              child: Column(
+                                children: [
+                                  SizedBox(height: 36),
+                                  Card(
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.all(Radius.circular(8))
+                                    ),
+                                    child: Container(
+                                      width: double.maxFinite,
+                                      padding: EdgeInsets.all(16),
+                                      child: Text("elizabethtan@gmail.com", style: TextStyle(
+                                          fontSize: 15,
+                                          color: Color.fromRGBO(63, 61, 86, 1.0),
+                                          fontFamily: "PoppinsMedium"
+                                      )),
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.all(Radius.circular(8)),
+                                          color: Color.fromRGBO(195, 194, 204, 0.5)
+                                      ),
+                                    ),
+                                  ),
 
-                            Padding(padding: EdgeInsets.only(top: 16),
-                                child: CustomEditText(height: 55, width: double.maxFinite, placeholder:
-                                "Full Name", textEditingController: _editProfileController.emailController,
-                                    isSecure: false, isPasswordField: false, backgroundColor: Colors.white)),
+                                  Padding(padding: EdgeInsets.only(top: 16),
+                                      child: CustomEditText(height: 55, width: double.maxFinite, placeholder:
+                                      "Full Name", textEditingController: _editProfileController.textEditingController,
+                                          isSecure: false, isPasswordField: false, backgroundColor: Colors.white)),
 
-                            Padding(padding: EdgeInsets.only(top: 16),
-                                child: CustomEditText(height: 55, width: double.maxFinite, placeholder:
-                                "Mobile No.", textEditingController: _editProfileController.emailController,
-                                    isSecure: false, isPasswordField: false, backgroundColor: Colors.white)),
+                                  Padding(padding: EdgeInsets.only(top: 16),
+                                      child: CustomEditText(height: 55, width: double.maxFinite, placeholder:
+                                      "Mobile No.", textEditingController: _editProfileController.phoneEditingController,
+                                          isSecure: false, isPasswordField: false, backgroundColor: Colors.white)),
 
-                            Padding(padding: EdgeInsets.only(top: 16),
-                                child: CustomEditText(height: 55, width: double.maxFinite, placeholder:
-                                "Password", textEditingController: _editProfileController.emailController,
-                                    isSecure: true, isPasswordField: true, backgroundColor: Colors.white)),
+                                  Padding(padding: EdgeInsets.only(top: 16),
+                                      child: CustomEditText(height: 55, width: double.maxFinite, placeholder:
+                                      "Password", textEditingController: _editProfileController.passwordEditingController,
+                                          isSecure: true, isPasswordField: true, backgroundColor: Colors.white)),
 
-                            Padding(padding: EdgeInsets.only(top: 16),
-                                child: CustomEditText(height: 55, width: double.maxFinite, placeholder:
-                                "Confirm Password", textEditingController: _editProfileController.emailController,
-                                    isSecure: true, isPasswordField: true, backgroundColor: Colors.white)),
-                            Expanded(child: SizedBox(), flex: 1),
+                                  Padding(padding: EdgeInsets.only(top: 16),
+                                      child: CustomEditText(height: 55, width: double.maxFinite, placeholder:
+                                      "Confirm Password", textEditingController: _editProfileController.confirmPasswordEditingController,
+                                          isSecure: true, isPasswordField: true, backgroundColor: Colors.white))
+                                ],
+                              ),
+                            ), flex: 1),
                             GestureDetector(
                               child: ColoredButton(height: 45, width: double.maxFinite, title: "Update Profile",
                                   color: Color.fromRGBO(255, 205, 56, 1.0)),
@@ -100,7 +119,7 @@ class EditProfileView extends GetView<EditProfileController> {
                   Text("Log Out",
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontFamily: "PoppinsBold",
                           color: Color.fromRGBO(255, 205, 56, 1.0)
                       )),

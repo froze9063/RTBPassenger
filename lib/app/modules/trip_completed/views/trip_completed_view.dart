@@ -75,7 +75,7 @@ class TripCompletedView extends GetView<TripCompletedController> {
               },
             )),
             Expanded(child: SizedBox(), flex: 1),
-            Image.asset("assets/img_completed.png")
+            Image.asset("assets/img_completed.png", width: double.maxFinite, fit: BoxFit.fill)
           ],
         ),
       ),

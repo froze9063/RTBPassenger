@@ -15,7 +15,6 @@ class ProfileView extends GetView<ProfileController> {
         child: Container(
           width: double.maxFinite,
           height: double.maxFinite,
-          color: Colors.white,
           child: Stack(
             children: [
               Column(
@@ -127,7 +126,7 @@ class ProfileView extends GetView<ProfileController> {
                   Text("Log Out",
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontFamily: "PoppinsBold",
                           color: Color.fromRGBO(255, 205, 56, 1.0)
                       )),

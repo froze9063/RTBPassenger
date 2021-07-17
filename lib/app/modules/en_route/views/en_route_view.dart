@@ -64,15 +64,20 @@ class EnRouteView extends GetView<EnRouteController> {
                       GestureDetector(
                         child: Image.asset("assets/ic_menu.png", width: 24, height: 24),
                         onTap: (){
-
+                           _enRouteController.setPitStop(true);
                         },
                       ),
                       Expanded(child: SizedBox(), flex: 1),
-                      Text("En Route", style: TextStyle(
-                          fontSize: 18,
-                          fontFamily: "PoppinsBold",
-                          color: Color.fromRGBO(63, 61, 86, 1.0)
-                      )),
+                      GetBuilder<EnRouteController>(
+                        id: "pit_stop",
+                        init: EnRouteController(),
+                        builder: (value) =>
+                            Text(!value.isPitStop ? "En Route" : "Pit Stop", style: TextStyle(
+                            fontSize: 18,
+                            fontFamily: "PoppinsBold",
+                            color: Color.fromRGBO(63, 61, 86, 1.0)
+                        )),
+                      ),
                       Expanded(child: SizedBox(), flex: 1),
                       GestureDetector(
                         child: Image.asset("assets/ic_notification.png", width: 24, height: 24),
@@ -169,11 +174,11 @@ class EnRouteView extends GetView<EnRouteController> {
                             children: [
                               SizedBox(width: 16),
                               Expanded(child: GetBuilder<EnRouteController>(
-                                  id: "end_route",
+                                  id: "pit_stop",
                                   init: EnRouteController(),
-                                  builder: (value) => Text(value.isEnroute ? "2 Hour 20 Min" : "You have reached your destination",
+                                  builder: (value) => Text(!value.isPitStop ? "2 Hour 20 Min" : "Pit Stop 15 minutes",
                                       style: TextStyle(
-                                        color: Color.fromRGBO(255, 205, 56, 1.0),
+                                        color: !value.isPitStop ? Color.fromRGBO(255, 205, 56, 1.0) : Color.fromRGBO(255, 140, 56, 1.0),
                                         fontSize: 17,
                                         height: 1.5,
                                         fontFamily: "PoppinsMedium",
@@ -494,7 +499,8 @@ class EnRouteView extends GetView<EnRouteController> {
                                           child: ColoredButton(height: 45, width: double.maxFinite, title: "Confirm",
                                               color: Color.fromRGBO(255, 205, 56, 1.0)),
                                           onTap: (){
-                                            value.setConfirm(!value.isConfirmShowed);
+                                            value.pageController.jumpToPage(1);
+                                            //value.setConfirm(!value.isConfirmShowed);
                                           },
                                         )),
 
@@ -516,19 +522,13 @@ class EnRouteView extends GetView<EnRouteController> {
                                         SizedBox(height: 16),
                                         Row(
                                           children: [
-                                            Expanded(child: Text("Arrival Reminder",
+                                            Expanded(child: Text("Would you like to set a reminder 15 minutes before arrival?",
                                                 textAlign: TextAlign.center,
                                                 style: TextStyle(
-                                                    fontSize: 16,
-                                                    color: Colors.black,
-                                                    fontFamily: "PoppinsBold"
-                                                )), flex: 1),
-                                            GestureDetector(
-                                              child: Image.asset("assets/ic_close_black.png", height: 24, width: 24),
-                                              onTap: (){
-                                                value.setReminder(false);
-                                              },
-                                            )
+                                                    fontSize: 15,
+                                                    color: Color.fromRGBO(63, 61, 86, 1.0),
+                                                    fontFamily: "PoppinsRegular"
+                                                )), flex: 1)
                                           ],
                                         ),
 
@@ -548,20 +548,25 @@ class EnRouteView extends GetView<EnRouteController> {
                                           ),
                                           child: Row(
                                             children: [
-                                              Expanded(child: Container(
-                                                width: double.maxFinite,
-                                                height: double.maxFinite,
-                                                decoration: BoxDecoration(
-                                                    color: Color.fromRGBO(255, 205, 56, 1.0),
-                                                    borderRadius: BorderRadius.all(Radius.circular(45))
+                                              Expanded(child: GestureDetector(
+                                                child: Container(
+                                                  width: double.maxFinite,
+                                                  height: double.maxFinite,
+                                                  decoration: BoxDecoration(
+                                                      color: Color.fromRGBO(255, 205, 56, 1.0),
+                                                      borderRadius: BorderRadius.all(Radius.circular(45))
+                                                  ),
+                                                  child: Center(
+                                                    child: Text("ON", style: TextStyle(
+                                                        color: Colors.white,
+                                                        fontSize: 16,
+                                                        fontFamily: "PoppinsBold"
+                                                    )),
+                                                  ),
                                                 ),
-                                                child: Center(
-                                                  child: Text("ON", style: TextStyle(
-                                                      color: Colors.white,
-                                                      fontSize: 16,
-                                                      fontFamily: "PoppinsBold"
-                                                  )),
-                                                ),
+                                                onTap: (){
+                                                  value.setConfirm(!value.isConfirmShowed);
+                                                },
                                               )),
                                               Expanded(child: Container(
                                                 width: double.maxFinite,
@@ -653,7 +658,7 @@ class EnRouteView extends GetView<EnRouteController> {
                                 Image.asset("assets/img_emergency.png", height: 100,width: 100),
 
                                 Padding(padding: EdgeInsets.only(top: 16,left: 24, right: 24), child: GestureDetector(
-                                  child: ColoredButton(height: 45, width: double.maxFinite, title: "Confirm",
+                                  child: ColoredButton(height: 45, width: double.maxFinite, title: "Call Driver",
                                       color: Color.fromRGBO(255, 205, 56, 1.0)),
                                   onTap: (){
 
@@ -713,6 +718,7 @@ class EnRouteView extends GetView<EnRouteController> {
                                 SizedBox(height: 16),
                                 Row(
                                   children: [
+                                    SizedBox(width: 24),
                                     Expanded(child: Text("Arrival Reminder",
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
@@ -738,7 +744,7 @@ class EnRouteView extends GetView<EnRouteController> {
                                 Container(
                                   padding: EdgeInsets.all(8),
                                   width: double.maxFinite,
-                                  height: 75,
+                                  height: 65,
                                   decoration: BoxDecoration(
                                     color: Color.fromRGBO(244, 244, 244, 1.0),
                                     borderRadius: BorderRadius.all(Radius.circular(45))

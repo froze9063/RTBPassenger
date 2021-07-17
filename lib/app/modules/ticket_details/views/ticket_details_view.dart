@@ -76,7 +76,6 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                             ),
                             child: Stack(
                               children: [
-                                Image.asset("assets/img_ridethebees.png",height: 30,width: 30, fit: BoxFit.cover),
                                 Padding(padding: EdgeInsets.only(top: 6), child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -110,15 +109,11 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                                       color: Color.fromRGBO(135, 141, 156, 1.0)
                                   )),
 
-                                  SizedBox(height: 8),
-
                                   Text("1:05 PM", style: TextStyle(
-                                      fontSize: 16,
+                                      fontSize: 20,
                                       fontFamily: "PoppinsBold",
                                       color: Color.fromRGBO(63, 61, 86, 1.0)
                                   )),
-
-                                  SizedBox(height: 8),
 
                                   Text("12 June, Mon", style: TextStyle(
                                       fontSize: 14,
@@ -140,15 +135,11 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                                       color: Color.fromRGBO(135, 141, 156, 1.0)
                                   )),
 
-                                  SizedBox(height: 8),
-
                                   Text("1:05 PM", style: TextStyle(
-                                      fontSize: 16,
+                                      fontSize: 20,
                                       fontFamily: "PoppinsBold",
                                       color: Color.fromRGBO(63, 61, 86, 1.0)
                                   )),
-
-                                  SizedBox(height: 8),
 
                                   Text("12 June, Mon", style: TextStyle(
                                       fontSize: 14,
@@ -307,7 +298,10 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Expanded(child: Column(
+                              SizedBox(width: 24),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text("Pick-up point", style: TextStyle(
                                       color: Color.fromRGBO(135, 141, 156, 1.0),
@@ -323,9 +317,13 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                                       fontFamily: "PoppinsMedium"
                                   ))
                                 ],
-                              ), flex: 1),
+                              ),
 
-                              Expanded(child: Column(
+                              Expanded(child: SizedBox(), flex: 1),
+
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text("Drop-off point", style: TextStyle(
                                       color: Color.fromRGBO(135, 141, 156, 1.0),
@@ -341,7 +339,9 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                                       fontFamily: "PoppinsMedium"
                                   ))
                                 ],
-                              ), flex: 1)
+                              ),
+
+                              SizedBox(width: 24)
                             ],
                           ),
 
@@ -407,8 +407,8 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                   ],
                 ), flex: 1),
 
-                Padding(padding: EdgeInsets.only(bottom: 24), child: GestureDetector(
-                  child: ColoredButton(height: 45, width: double.maxFinite,
+                Padding(padding: EdgeInsets.only(bottom: 0), child: GestureDetector(
+                  child: ColoredButton(height: 55, width: double.maxFinite,
                       title: "View Map",
                       color: Color.fromRGBO(63, 61, 86, 1.0)),
                   onTap: (){

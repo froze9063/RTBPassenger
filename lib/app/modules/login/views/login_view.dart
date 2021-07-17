@@ -64,7 +64,7 @@ class LoginView extends GetView<LoginController> {
                     child: Column(
                       children: [
                         Padding(
-                          padding: EdgeInsets.only(left: 16,right: 16, top: 24),
+                          padding: EdgeInsets.only(left: 36,right: 16, top: 24),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -117,7 +117,7 @@ class LoginView extends GetView<LoginController> {
                             "Password", textEditingController: loginController.emailController,
                                 isSecure: true, isPasswordField: true, backgroundColor: Colors.white)),
 
-                        Padding(padding: EdgeInsets.only(left: 24, right: 24,top: 4),
+                        Padding(padding: EdgeInsets.only(left: 24, right: 24,top: 16),
                             child: Row(
                               children: [
                                 Container(
@@ -148,14 +148,14 @@ class LoginView extends GetView<LoginController> {
 
                                 Expanded(child: SizedBox(), flex: 1),
 
-                                Text("Forgot Password ?", style: TextStyle(
+                                Text("Forgot Password?", style: TextStyle(
                                     fontSize: 14,
                                     color: Color.fromRGBO(255, 205, 56, 1.0),
                                     fontFamily: "PoppinsMedium"))
                               ],
                             )),
 
-                        Padding(padding: EdgeInsets.only(top: 36, left: 24, right: 24), child: GestureDetector(
+                        Padding(padding: EdgeInsets.only(top: 36, left: 28, right: 28), child: GestureDetector(
                           child: ColoredButton(height: 45, width: double.maxFinite, title: "Sign In",
                               color: Color.fromRGBO(255, 205, 56, 1.0)),
                           onTap: (){
@@ -194,7 +194,7 @@ class LoginView extends GetView<LoginController> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text("Don't have an account ?", style: TextStyle(
+                      Text("Don't have an account?", style: TextStyle(
                           color: Color.fromRGBO(195, 194, 204, 1.0),
                           fontFamily: "PoppinsRegular"
                       )),

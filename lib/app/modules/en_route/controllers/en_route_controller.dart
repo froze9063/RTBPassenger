@@ -22,6 +22,7 @@ class EnRouteController extends GetxController {
   bool isReminderShowed = false;
   bool isMenuShowed = false;
   bool isEnroute = true;
+  bool isPitStop = false;
 
   late PageController pageController;
 
@@ -60,6 +61,11 @@ class EnRouteController extends GetxController {
   void setReminder(bool reminder){
     this.isReminderShowed = reminder;
     update(["reminder"]);
+  }
+
+  void setPitStop(bool isPitStop){
+    this.isPitStop = isPitStop;
+    update(["pit_stop"]);
   }
 
   void checkCurrentLocation(BuildContext context) async {

@@ -33,7 +33,7 @@ class CashbackWalletView extends GetView<CashbackWalletController> {
                         ClipRRect(
                           borderRadius: BorderRadius.only(bottomLeft: Radius.circular(25),
                               bottomRight: Radius.circular(25)),
-                          child: Image.asset("assets/home_background.png",
+                          child: Image.asset("assets/img_menu_background.png",
                               width: double.maxFinite,
                               height: double.maxFinite,
                               fit: BoxFit.fill),

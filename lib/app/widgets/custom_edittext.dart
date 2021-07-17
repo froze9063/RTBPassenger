@@ -30,8 +30,10 @@ class CustomEditText extends StatelessWidget {
           child: Center(
             child: Row(
               children: [
+                SizedBox(width: 16),
                 Expanded(child: TextField(
                     controller: textEditingController,
+                    obscureText: isSecure,
                     decoration: new InputDecoration.collapsed(
                         hintText: placeholder,
                         hintStyle: TextStyle(
@@ -48,7 +50,9 @@ class CustomEditText extends StatelessWidget {
                 ), flex: 1),
 
                 Visibility(child: Image.asset("assets/ic_eye_open.png",
-                    height: 24, width: 24), visible: isPasswordField)
+                    height: 24, width: 24), visible: isPasswordField),
+
+                SizedBox(width: 16),
               ],
             ),
           ),

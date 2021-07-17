@@ -27,7 +27,7 @@ class EarnedTab extends StatelessWidget {
                   fontFamily: "PoppinsRegular"
                 )), flex: 1),
                 Text("Cashback", style: TextStyle(
-                    fontSize: 14,
+                    fontSize: 16,
                     color: Color.fromRGBO(20, 212, 97, 1.0),
                     fontFamily: "PoppinsMedium"
                 )),
@@ -64,7 +64,7 @@ class EarnedTab extends StatelessWidget {
                                   )),
                                   SizedBox(height: 8),
                                   Text("14-06-2021", style: TextStyle(
-                                      color: Color.fromRGBO(63, 61, 86, 1.0), fontSize: 12,
+                                      color: Color.fromRGBO(63, 61, 86, 1.0), fontSize: 14,
                                       fontFamily: "PoppinsRegular"
                                   ))
                                 ],
@@ -83,7 +83,7 @@ class EarnedTab extends StatelessWidget {
                                              Image.asset("assets/ic_minus_grey.png", width: 15, height: 10),
                                              SizedBox(width: 4),
                                              Text("\$5.00", style: TextStyle(
-                                                 color: Color.fromRGBO(204, 204, 204, 1.0), fontSize: 16,
+                                                 color: Color.fromRGBO(204, 204, 204, 1.0), fontSize: 14,
                                                  fontFamily: "PoppinsMedium"
                                              ))
                                            ],
@@ -93,7 +93,7 @@ class EarnedTab extends StatelessWidget {
                                            children: [
                                              SizedBox(width: 15),
                                              Text("\$20.00", style: TextStyle(
-                                                 color: Color.fromRGBO(63, 61, 86, 1.0), fontSize: 16,
+                                                 color: Color.fromRGBO(63, 61, 86, 1.0), fontSize: 14,
                                                  fontFamily: "PoppinsMedium"
                                              ))
                                            ],

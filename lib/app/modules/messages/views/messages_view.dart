@@ -16,7 +16,7 @@ class MessagesView extends GetView<MessagesController> {
           children: [
             Container(
               width: double.maxFinite,
-              height: 305,
+              height: 315,
               child: Column(
                 children: [
                   Expanded(child: Container(
@@ -164,7 +164,7 @@ class MessagesView extends GetView<MessagesController> {
 
                         Text("Read", style: TextStyle(
                             color: Color.fromRGBO(195, 194, 204, 1.0), fontSize: 14,
-                            fontFamily: "PoppinsMedium",
+                            fontFamily: "PoppinsRegular",
                         ))
                       ],
                     ),

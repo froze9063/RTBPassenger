@@ -52,8 +52,6 @@ class NotificationView extends GetView<NotificationController> {
                           padding: EdgeInsets.only(left: 24,right: 24,top: 16,bottom: 16),
                           child: Row(
                             children: [
-                              Image.asset("assets/img_notif_example.png",height: 55,width: 55),
-                              SizedBox(width: 16),
                               Expanded(child: Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,

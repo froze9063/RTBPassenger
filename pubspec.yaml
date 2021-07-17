@@ -113,6 +113,7 @@ flutter:
     - assets/img_menu_background.png
     - assets/img_driver_home.png
     - assets/ic_send.png
+    - assets/ic_black_left.png
 
   fonts:
     - family: PoppinsBold

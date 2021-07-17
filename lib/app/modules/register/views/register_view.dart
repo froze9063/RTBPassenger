@@ -63,16 +63,16 @@ class RegisterView extends GetView<RegisterController> {
                       ),
                       elevation: 1,
                       child: Padding(
-                        padding: EdgeInsets.all(16),
+                        padding: EdgeInsets.only(top: 16, bottom: 16, left: 24, right: 24),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text("Create an Account", style: TextStyle(
+                            Padding(padding: EdgeInsets.only(left: 8), child: Text("Create an account", style: TextStyle(
                                 fontSize: 16,
                                 color: Color.fromRGBO(63, 61, 86, 1.0),
                                 fontFamily: "PoppinsBold"
-                            )),
+                            ))),
 
                             Padding(padding: EdgeInsets.only(top: 16),
                                 child: CustomEditText(height: 55, width: double.maxFinite, placeholder:
