@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:ridethebee/app/modules/car_seats/views/car_seats_view.dart';
 import 'package:ridethebee/app/modules/car_seats_booked/views/car_seats_booked_view.dart';
 import 'package:ridethebee/app/modules/en_route/views/en_route_view.dart';
 import 'package:ridethebee/app/modules/menus/views/menus_view.dart';
 import 'package:ridethebee/app/modules/notification/views/notification_view.dart';
-import 'package:ridethebee/app/modules/payment_details/views/payment_details_view.dart';
 import 'package:ridethebee/app/widgets/colored_button.dart';
 
 import '../controllers/ticket_details_controller.dart';
@@ -24,7 +22,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
               height: double.maxFinite, fit: BoxFit.fill),
 
           Container(
-            padding: EdgeInsets.only(left: 24, right: 24, bottom: 24, top: 45),
+            padding: EdgeInsets.only(left: 24, right: 24, bottom: 24, top: 36),
             height: double.maxFinite,
             width: double.maxFinite,
             child: Column(
@@ -272,8 +270,8 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                               ), flex: 1),
                               GestureDetector(
                                 child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Text("View Seating", style: TextStyle(
                                         fontSize: 16,
@@ -281,7 +279,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                                         color: Color.fromRGBO(255, 205, 56, 1.0)
                                     )),
                                     SizedBox(width: 16),
-                                    Image.asset("assets/ic_yellow_right.png"),
+                                    Image.asset("assets/ic_yellow_right.png", height: 24,width: 24),
                                     SizedBox(width: 16)
                                   ],
                                 ),

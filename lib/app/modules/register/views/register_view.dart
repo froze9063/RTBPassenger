@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:ridethebee/app/callback/custom_edittext_callback.dart';
 import 'package:ridethebee/app/widgets/colored_button.dart';
 import 'package:ridethebee/app/widgets/custom_edittext.dart';
 
 import '../controllers/register_controller.dart';
 
-class RegisterView extends GetView<RegisterController> {
+class RegisterView extends GetView<RegisterController> implements CustomEdittextCallback{
 
   RegisterController registerController = Get.put(RegisterController());
 
@@ -64,90 +65,105 @@ class RegisterView extends GetView<RegisterController> {
                       elevation: 1,
                       child: Padding(
                         padding: EdgeInsets.only(top: 16, bottom: 16, left: 24, right: 24),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(padding: EdgeInsets.only(left: 8), child: Text("Create an account", style: TextStyle(
-                                fontSize: 16,
-                                color: Color.fromRGBO(63, 61, 86, 1.0),
-                                fontFamily: "PoppinsBold"
-                            ))),
+                        child: SingleChildScrollView(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(padding: EdgeInsets.only(left: 8), child: Text("Create an account", style: TextStyle(
+                                  fontSize: 16,
+                                  color: Color.fromRGBO(63, 61, 86, 1.0),
+                                  fontFamily: "PoppinsBold"
+                              ))),
 
-                            Padding(padding: EdgeInsets.only(top: 16),
-                                child: CustomEditText(height: 55, width: double.maxFinite, placeholder:
-                                "Your Email", textEditingController: registerController.emailController,
-                                    isSecure: false, isPasswordField: false, backgroundColor: Colors.white)),
+                              GetBuilder<RegisterController>(
+                                id: "border_color",
+                                init: RegisterController(),
+                                builder: (value) => Column(
+                                  children: [
+                                    Padding(padding: EdgeInsets.only(top: 16),
+                                        child: CustomEditText(height: 55, width: double.maxFinite, placeholder:
+                                        "Your Email", textEditingController: registerController.emailController,
+                                            isSecure: false, isPasswordField: false, backgroundColor: Colors.white,
+                                            borderColor: value.emailBorderColor,type: "email",customEdittextCallback: this)),
 
-                            Padding(padding: EdgeInsets.only(top: 16),
-                                child: CustomEditText(height: 55, width: double.maxFinite, placeholder:
-                                "Full Name", textEditingController: registerController.emailController,
-                                    isSecure: false, isPasswordField: false, backgroundColor: Colors.white)),
+                                    Padding(padding: EdgeInsets.only(top: 16),
+                                        child: CustomEditText(height: 55, width: double.maxFinite, placeholder:
+                                        "Full Name", textEditingController: registerController.fullnameController,
+                                            isSecure: false, isPasswordField: false, backgroundColor: Colors.white,
+                                            borderColor: value.fullnameBorderColor,type: "fullname",customEdittextCallback: this)),
 
-                            Padding(padding: EdgeInsets.only(top: 16),
-                                child: CustomEditText(height: 55, width: double.maxFinite, placeholder:
-                                "Mobile No.", textEditingController: registerController.emailController,
-                                    isSecure: false, isPasswordField: false, backgroundColor: Colors.white)),
+                                    Padding(padding: EdgeInsets.only(top: 16),
+                                        child: CustomEditText(height: 55, width: double.maxFinite, placeholder:
+                                        "Mobile No.", textEditingController: registerController.mobileController,
+                                            isSecure: false, isPasswordField: false, backgroundColor: Colors.white,
+                                            borderColor: value.mobileBorderColor,type: "mobile",customEdittextCallback: this)),
 
-                            Padding(padding: EdgeInsets.only(top: 16),
-                                child: CustomEditText(height: 55, width: double.maxFinite, placeholder:
-                                "Password", textEditingController: registerController.emailController,
-                                    isSecure: true, isPasswordField: true, backgroundColor: Colors.white)),
+                                    Padding(padding: EdgeInsets.only(top: 16),
+                                        child: CustomEditText(height: 55, width: double.maxFinite, placeholder:
+                                        "Password", textEditingController: registerController.passwordController,
+                                            isSecure: true, isPasswordField: true, backgroundColor: Colors.white,
+                                            borderColor: value.passwordBorderColor,type: "password",customEdittextCallback: this)),
 
-                            Padding(padding: EdgeInsets.only(top: 16),
-                                child: CustomEditText(height: 55, width: double.maxFinite, placeholder:
-                                "Confirm Password", textEditingController: registerController.emailController,
-                                    isSecure: true, isPasswordField: true, backgroundColor: Colors.white)),
-
-                            Expanded(child: SizedBox(), flex: 1),
-
-                            Row(
-                              children: [
-                                Container(
-                                  child: Checkbox(
-                                      value: true,
-                                      activeColor: Colors.white,
-                                      checkColor: Color.fromRGBO(255, 205, 56, 1.0),
-                                      onChanged: (value){
-
-                                      }),
-                                  decoration: BoxDecoration(
-                                      border: Border.all(
-                                          color: Color.fromRGBO(220, 220, 220, 1.0),
-                                          width: 1
-                                      ),
-                                      borderRadius: BorderRadius.all(Radius.circular(8))
-                                  ),
-                                  height: 24,
-                                  width: 24,
+                                    Padding(padding: EdgeInsets.only(top: 16),
+                                        child: CustomEditText(height: 55, width: double.maxFinite, placeholder:
+                                        "Confirm Password", textEditingController: registerController.confirmPasswordController,
+                                            isSecure: true, isPasswordField: true, backgroundColor: Colors.white,
+                                            borderColor: value.confirmPasswordBorderColor,type: "confirm",customEdittextCallback: this)),
+                                  ],
                                 ),
+                              ),
 
-                                SizedBox(width: 8),
+                              SizedBox(height: 8),
 
-                                Text("I have agreed with", style: TextStyle(
-                                    fontSize: 12,
-                                    color: Color.fromRGBO(112, 112, 112, 1.0),
-                                    fontFamily: "PoppinsRegular")),
+                              Row(
+                                children: [
+                                  Container(
+                                    child: Checkbox(
+                                        value: true,
+                                        activeColor: Colors.white,
+                                        checkColor: Color.fromRGBO(255, 205, 56, 1.0),
+                                        onChanged: (value){
 
-                                SizedBox(width: 4),
+                                        }),
+                                    decoration: BoxDecoration(
+                                        border: Border.all(
+                                            color: Color.fromRGBO(220, 220, 220, 1.0),
+                                            width: 1
+                                        ),
+                                        borderRadius: BorderRadius.all(Radius.circular(8))
+                                    ),
+                                    height: 24,
+                                    width: 24,
+                                  ),
 
-                                Text("Terms & Conditions.", style: TextStyle(
-                                    fontSize: 12,
-                                    color: Color.fromRGBO(255, 205, 56, 1.0),
-                                    fontFamily: "PoppinsMedium"))
-                              ],
-                            ),
+                                  SizedBox(width: 8),
 
-                            SizedBox(height: 16),
+                                  Text("I have agreed with", style: TextStyle(
+                                      fontSize: 12,
+                                      color: Color.fromRGBO(112, 112, 112, 1.0),
+                                      fontFamily: "PoppinsRegular")),
 
-                            Padding(padding: EdgeInsets.only(bottom: 0), child: GestureDetector(
-                              child: ColoredButton(height: 45, width: double.maxFinite, title: "Sign Up",
-                                  color: Color.fromRGBO(255, 205, 56, 1.0)),
-                              onTap: (){
+                                  SizedBox(width: 4),
 
-                              },
-                            )),
-                          ],
+                                  Text("Terms & Conditions.", style: TextStyle(
+                                      fontSize: 12,
+                                      color: Color.fromRGBO(255, 205, 56, 1.0),
+                                      fontFamily: "PoppinsMedium"))
+                                ],
+                              ),
+
+                              SizedBox(height: 24),
+
+                              Padding(padding: EdgeInsets.only(bottom: 0), child: GestureDetector(
+                                child: ColoredButton(height: 45, width: double.maxFinite, title: "Sign Up",
+                                    color: Color.fromRGBO(255, 205, 56, 1.0)),
+                                onTap: (){
+
+                                },
+                              )),
+                            ],
+                          ),
                         ),
                       ),
                     ), flex: 1)
@@ -166,5 +182,10 @@ class RegisterView extends GetView<RegisterController> {
         ),
       ),
     );
+  }
+
+  @override
+  onChanged(String text, String type) {
+    registerController.changeBorderColor(text, type);
   }
 }

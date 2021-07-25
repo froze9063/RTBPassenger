@@ -41,7 +41,7 @@ class CashbackWalletView extends GetView<CashbackWalletController> {
 
                         Column(
                           children: [
-                            SizedBox(height: 45),
+                            SizedBox(height: 36),
                             Row(
                               children: [
                                 SizedBox(width: 24),

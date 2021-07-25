@@ -175,7 +175,7 @@ class BoardingView extends GetView<BoardingController> {
                 },
               ), visible: value.nextShowed)),
 
-            SizedBox(height: 100)
+            SizedBox(height: 24)
           ],
         ),
       ),

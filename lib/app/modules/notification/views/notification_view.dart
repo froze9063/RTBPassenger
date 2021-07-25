@@ -14,7 +14,7 @@ class NotificationView extends GetView<NotificationController> {
         color: Colors.white,
         child: Column(
           children: [
-            Padding(padding: EdgeInsets.only(left: 24, right: 24, top: 45), child: Row(
+            Padding(padding: EdgeInsets.only(left: 24, right: 24, top: 36), child: Row(
               children: [
                 Text("Notifications", style: TextStyle(
                     fontSize: 24,

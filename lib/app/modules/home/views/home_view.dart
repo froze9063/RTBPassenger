@@ -2,12 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:ridethebee/app/modules/menus/views/menus_view.dart';
-import 'package:ridethebee/app/modules/my_tickets/views/my_tickets_view.dart';
 import 'package:ridethebee/app/modules/notification/views/notification_view.dart';
-import 'package:ridethebee/app/modules/thank_you/views/thank_you_view.dart';
-import 'package:ridethebee/app/modules/ticket_details/views/ticket_details_view.dart';
 import 'package:ridethebee/app/modules/ticket_details_book/views/ticket_details_book_view.dart';
-import 'package:ridethebee/app/modules/trip_completed/views/trip_completed_view.dart';
 
 import '../controllers/home_controller.dart';
 
@@ -24,7 +20,7 @@ class HomeView extends GetView<HomeController> {
               height: double.maxFinite, fit: BoxFit.cover),
           Column(
             children: [
-              SizedBox(height: 45),
+              SizedBox(height: 36),
               Row(
                 children: [
                   SizedBox(width: 24),
@@ -185,8 +181,8 @@ class HomeView extends GetView<HomeController> {
             width: double.maxFinite,
             height: double.maxFinite,
             child: DraggableScrollableSheet(
-                initialChildSize: 0.53,
-                minChildSize: 0.53,
+                initialChildSize: 0.52,
+                minChildSize: 0.52,
                 maxChildSize: 1.0,
                 expand: false,
                 builder: (context, pageController){
@@ -250,155 +246,160 @@ class HomeView extends GetView<HomeController> {
                                     itemBuilder: (context,index){
                                     return GestureDetector(
                                       child: Container(
-                                        margin: EdgeInsets.only(top: index == 0 ? 0 : 24,left: 24, right: 24),
-                                        height: 255,
+                                        margin: EdgeInsets.only(top: index == 0 ? 0 : 16,left: 24, right: 24),
+                                        height: 275,
+                                        color: Colors.white,
                                         width: double.maxFinite,
                                         child: Stack(
                                           children: [
-                                            Container(
-                                              width: double.maxFinite,
-                                              padding: EdgeInsets.only(left: 24, right: 24, top: 16,bottom: 16),
-                                              decoration: BoxDecoration(
-                                                  color: Colors.white,
-                                                  borderRadius: BorderRadius.all(Radius.circular(16)),
-                                                  border: Border.all(
-                                                      width: 1,
-                                                      color: Color.fromRGBO(63, 61, 86, 0.5)
-                                                  )
-                                              ),
-                                              child: Column(
-                                                children: [
-                                                  Row(
-                                                    children: [
-                                                      Container(
-                                                        child: Text("From", style: TextStyle(
-                                                            fontSize: 14,
-                                                            fontFamily: "PoppinsMedium",
-                                                            color: Color.fromRGBO(63, 61, 86, 1.0)
-                                                        )),
-                                                        decoration: BoxDecoration(
-                                                            color: Colors.white,
-                                                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                                                            border: Border.all(
-                                                              color: Color.fromRGBO(63, 61, 86, 1.0),
-                                                            )
-                                                        ),
-                                                        padding: EdgeInsets.only(left: 12, right: 12, top: 4,bottom: 4),
-                                                      ),
-
-                                                      Expanded(child: Image.asset("assets/ic_track.png"), flex: 1),
-
-                                                      Container(
-                                                        child: Text("To", style: TextStyle(
-                                                            fontSize: 14,
-                                                            fontFamily: "PoppinsMedium",
-                                                            color: Color.fromRGBO(63, 61, 86, 1.0)
-                                                        )),
-                                                        decoration: BoxDecoration(
-                                                            color: Colors.white,
-                                                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                                                            border: Border.all(
-                                                              color: Color.fromRGBO(63, 61, 86, 1.0),
-                                                            )
-                                                        ),
-                                                        padding: EdgeInsets.only(left: 12, right: 12, top: 4,bottom: 4),
-                                                      ),
-                                                    ],
-                                                  ),
-
-                                                  SizedBox(height: 16),
-
-                                                  Row(
-                                                    children: [
-                                                      Expanded(child: Column(
-                                                        children: [
-                                                          Text("Sungai Nibong Bus Terminal", style: TextStyle(
+                                            Positioned.fill(child: Align(
+                                              child: Container(
+                                                width: double.maxFinite,
+                                                margin: EdgeInsets.only(top: 8, bottom: 8),
+                                                padding: EdgeInsets.only(left: 24, right: 24, top: 16,bottom: 16),
+                                                decoration: BoxDecoration(
+                                                    color: Colors.white,
+                                                    borderRadius: BorderRadius.all(Radius.circular(16)),
+                                                    border: Border.all(
+                                                        width: 1,
+                                                        color: Color.fromRGBO(63, 61, 86, 0.5)
+                                                    )
+                                                ),
+                                                child: Column(
+                                                  children: [
+                                                    Row(
+                                                      children: [
+                                                        Container(
+                                                          child: Text("From", style: TextStyle(
                                                               fontSize: 14,
                                                               fontFamily: "PoppinsMedium",
                                                               color: Color.fromRGBO(63, 61, 86, 1.0)
                                                           )),
-                                                        ],
-                                                        mainAxisAlignment: MainAxisAlignment.start,
-                                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                                      ), flex: 2),
+                                                          decoration: BoxDecoration(
+                                                              color: Colors.white,
+                                                              borderRadius: BorderRadius.all(Radius.circular(20)),
+                                                              border: Border.all(
+                                                                color: Color.fromRGBO(63, 61, 86, 1.0),
+                                                              )
+                                                          ),
+                                                          padding: EdgeInsets.only(left: 12, right: 12, top: 4,bottom: 4),
+                                                        ),
 
-                                                      Expanded(child: SizedBox(), flex: 1),
+                                                        Expanded(child: Image.asset("assets/ic_track.png"), flex: 1),
 
-                                                      Expanded(child: Column(
-                                                        children: [
-                                                          Text("Sungai Nibong Bus Terminal",
-                                                              textAlign: TextAlign.end,
-                                                              style: TextStyle(
-                                                                  fontSize: 14,
-                                                                  fontFamily: "PoppinsMedium",
-                                                                  color: Color.fromRGBO(63, 61, 86, 1.0)
-                                                              )),
-                                                        ],
-                                                        mainAxisAlignment: MainAxisAlignment.end,
-                                                        crossAxisAlignment: CrossAxisAlignment.end,
-                                                      ), flex: 2),
-                                                    ],
-                                                  ),
+                                                        Container(
+                                                          child: Text("To", style: TextStyle(
+                                                              fontSize: 14,
+                                                              fontFamily: "PoppinsMedium",
+                                                              color: Color.fromRGBO(63, 61, 86, 1.0)
+                                                          )),
+                                                          decoration: BoxDecoration(
+                                                              color: Colors.white,
+                                                              borderRadius: BorderRadius.all(Radius.circular(20)),
+                                                              border: Border.all(
+                                                                color: Color.fromRGBO(63, 61, 86, 1.0),
+                                                              )
+                                                          ),
+                                                          padding: EdgeInsets.only(left: 12, right: 12, top: 4,bottom: 4),
+                                                        ),
+                                                      ],
+                                                    ),
 
-                                                  SizedBox(height: 30),
+                                                    SizedBox(height: 16),
 
-                                                  Row(
-                                                    children: [
-                                                      Text("10:15 AM", style: TextStyle(
-                                                          fontSize: 18,
-                                                          fontFamily: "PoppinsMedium",
-                                                          color: Color.fromRGBO(63, 61, 86, 1.0)
-                                                      )),
-
-                                                      Expanded(child: SizedBox(), flex: 1),
-
-                                                      Text("1:05 PM", style: TextStyle(
-                                                          fontSize: 18,
-                                                          fontFamily: "PoppinsMedium",
-                                                          color: Color.fromRGBO(63, 61, 86, 1.0)
-                                                      )),
-                                                    ],
-                                                  ),
-
-                                                  SizedBox(height: 16),
-
-                                                  Row(
-                                                    children: [
-                                                      Image.asset("assets/img_ridethebees.png",height: 45, width: 45),
-                                                      SizedBox(width: 16),
-                                                      Container(
-                                                        padding: EdgeInsets.only(top: 8, bottom: 8, left: 16, right: 16),
-                                                        child: Row(
-                                                          mainAxisAlignment: MainAxisAlignment.center,
-                                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                                    Row(
+                                                      children: [
+                                                        Expanded(child: Column(
                                                           children: [
-                                                            Image.asset("assets/ic_bus.png", width: 12, height: 12, fit: BoxFit.cover),
-                                                            SizedBox(width: 4),
-                                                            Text("SAB 4124",
-                                                                style: TextStyle(
-                                                                    color: Color.fromRGBO(35, 35, 35, 1.0),
-                                                                    fontSize: 14,
-                                                                    fontFamily: "PoppinsMedium"
-                                                                ))
+                                                            Text("Sungai Nibong Bus Terminal", style: TextStyle(
+                                                                fontSize: 14,
+                                                                fontFamily: "PoppinsMedium",
+                                                                color: Color.fromRGBO(63, 61, 86, 1.0)
+                                                            )),
                                                           ],
+                                                          mainAxisAlignment: MainAxisAlignment.start,
+                                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                                        ), flex: 2),
+
+                                                        Expanded(child: SizedBox(), flex: 1),
+
+                                                        Expanded(child: Column(
+                                                          children: [
+                                                            Text("Sungai Nibong Bus Terminal",
+                                                                textAlign: TextAlign.end,
+                                                                style: TextStyle(
+                                                                    fontSize: 14,
+                                                                    fontFamily: "PoppinsMedium",
+                                                                    color: Color.fromRGBO(63, 61, 86, 1.0)
+                                                                )),
+                                                          ],
+                                                          mainAxisAlignment: MainAxisAlignment.end,
+                                                          crossAxisAlignment: CrossAxisAlignment.end,
+                                                        ), flex: 2),
+                                                      ],
+                                                    ),
+
+                                                    SizedBox(height: 30),
+
+                                                    Row(
+                                                      children: [
+                                                        Text("10:15 AM", style: TextStyle(
+                                                            fontSize: 18,
+                                                            fontFamily: "PoppinsMedium",
+                                                            color: Color.fromRGBO(63, 61, 86, 1.0)
+                                                        )),
+
+                                                        Expanded(child: SizedBox(), flex: 1),
+
+                                                        Text("1:05 PM", style: TextStyle(
+                                                            fontSize: 18,
+                                                            fontFamily: "PoppinsMedium",
+                                                            color: Color.fromRGBO(63, 61, 86, 1.0)
+                                                        )),
+                                                      ],
+                                                    ),
+
+                                                    SizedBox(height: 16),
+
+                                                    Row(
+                                                      children: [
+                                                        Image.asset("assets/img_ridethebees.png",height: 45, width: 45),
+                                                        SizedBox(width: 16),
+                                                        Container(
+                                                          padding: EdgeInsets.only(top: 8, bottom: 8, left: 16, right: 16),
+                                                          child: Row(
+                                                            mainAxisAlignment: MainAxisAlignment.center,
+                                                            crossAxisAlignment: CrossAxisAlignment.center,
+                                                            children: [
+                                                              Image.asset("assets/ic_bus.png", width: 12, height: 12, fit: BoxFit.cover),
+                                                              SizedBox(width: 4),
+                                                              Text("SAB 4124",
+                                                                  style: TextStyle(
+                                                                      color: Color.fromRGBO(35, 35, 35, 1.0),
+                                                                      fontSize: 14,
+                                                                      fontFamily: "PoppinsMedium"
+                                                                  ))
+                                                            ],
+                                                          ),
+                                                          decoration: BoxDecoration(
+                                                              color: Color.fromRGBO(255, 205, 56, 1.0),
+                                                              borderRadius: BorderRadius.all(Radius.circular(25))
+                                                          ),
                                                         ),
-                                                        decoration: BoxDecoration(
-                                                            color: Color.fromRGBO(255, 205, 56, 1.0),
-                                                            borderRadius: BorderRadius.all(Radius.circular(25))
-                                                        ),
-                                                      ),
-                                                      Expanded(child: SizedBox(), flex: 1),
-                                                      Text("RM35.00",
-                                                          style: TextStyle(
-                                                              color: Color.fromRGBO(22, 212, 98, 1.0),
-                                                              fontSize: 18,
-                                                              fontFamily: "PoppinsBold"
-                                                          ))
-                                                    ],
-                                                  )
-                                                ],
+                                                        Expanded(child: SizedBox(), flex: 1),
+                                                        Text("RM35.00",
+                                                            style: TextStyle(
+                                                                color: Color.fromRGBO(22, 212, 98, 1.0),
+                                                                fontSize: 18,
+                                                                fontFamily: "PoppinsBold"
+                                                            ))
+                                                      ],
+                                                    )
+                                                  ],
+                                                ),
                                               ),
-                                            ),
+                                              alignment: Alignment.center,
+                                            )),
 
                                             Column(
                                               children: [
@@ -408,9 +409,10 @@ class HomeView extends GetView<HomeController> {
                                                     Stack(
                                                       children: [
                                                         Container(
-                                                          height: 15,
+                                                          height: 20,
                                                           width: 35,
                                                           decoration: BoxDecoration(
+                                                              color: Colors.white,
                                                               borderRadius: BorderRadius.only(bottomLeft: Radius.circular(25),
                                                                   bottomRight: Radius.circular(25)),
                                                               border: Border(
@@ -431,10 +433,10 @@ class HomeView extends GetView<HomeController> {
                                                         ),
 
                                                         Container(
-                                                          height: 1,
+                                                          height: 8,
                                                           width: 35,
-                                                          color: Colors.white,
-                                                        )
+                                                          color: Colors.white
+                                                        ),
                                                       ],
                                                     ),
                                                     Expanded(child: SizedBox(), flex: 1)
@@ -449,7 +451,7 @@ class HomeView extends GetView<HomeController> {
                                                     Stack(
                                                       children: [
                                                         Container(
-                                                          height: 15,
+                                                          height: 19,
                                                           width: 35,
                                                           decoration: BoxDecoration(
                                                               color: Colors.white,
@@ -471,11 +473,12 @@ class HomeView extends GetView<HomeController> {
                                                                       width: 1)
                                                               )
                                                           ),
+                                                          margin: EdgeInsets.only(bottom: 1),
                                                         ),
 
                                                         Positioned.fill(child: Align(
                                                           child: Container(
-                                                            height: 1,
+                                                            height: 8,
                                                             width: 35,
                                                             color: Colors.white,
                                                           ),

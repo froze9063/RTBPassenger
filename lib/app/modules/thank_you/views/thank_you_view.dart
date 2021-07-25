@@ -15,7 +15,7 @@ class ThankYouView extends GetView<ThankYouController> {
         color: Colors.white,
         child: Column(
           children: [
-            SizedBox(height: 55),
+            SizedBox(height: 36),
             Row(
               children: [
                 Expanded(child: SizedBox(), flex: 1),

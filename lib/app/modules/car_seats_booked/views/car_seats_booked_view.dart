@@ -18,7 +18,7 @@ class CarSeatsBookedView extends GetView<CarSeatsBookedController> {
           height: double.maxFinite,
           child: Column(
             children: [
-              SizedBox(height: 24),
+              SizedBox(height: 12),
               Row(
                 children: [
                   SizedBox(width: 24),

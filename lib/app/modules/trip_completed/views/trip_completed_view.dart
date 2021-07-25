@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:ridethebee/app/modules/home/views/home_view.dart';
 import 'package:ridethebee/app/modules/review/views/review_view.dart';
 import 'package:ridethebee/app/widgets/colored_button.dart';
 
@@ -16,7 +17,7 @@ class TripCompletedView extends GetView<TripCompletedController> {
         color: Colors.white,
         child: Column(
           children: [
-            SizedBox(height: 55),
+            SizedBox(height: 36),
             Row(
               children: [
                 SizedBox(width: 24),
@@ -31,7 +32,7 @@ class TripCompletedView extends GetView<TripCompletedController> {
                 GestureDetector(
                   child: Image.asset("assets/ic_close_black.png"),
                   onTap: (){
-                    Get.back();
+                    Get.offAll(() => HomeView());
                   },
                 ),
                 SizedBox(width: 24),

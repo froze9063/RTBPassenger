@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:ridethebee/app/modules/car_seats/views/car_seats_view.dart';
 import 'package:ridethebee/app/modules/menus/views/menus_view.dart';
-import 'package:ridethebee/app/modules/notification/views/notification_view.dart';
 import 'package:ridethebee/app/modules/payment_details/views/payment_details_view.dart';
 import 'package:ridethebee/app/widgets/colored_button.dart';
 
@@ -19,7 +17,7 @@ class TicketDetailsSeatView extends GetView<TicketDetailsSeatController> {
               height: double.maxFinite, fit: BoxFit.fill),
 
           Container(
-            padding: EdgeInsets.only(left: 24, right: 24, bottom: 24, top: 45),
+            padding: EdgeInsets.only(left: 24, right: 24, bottom: 24, top: 36),
             height: double.maxFinite,
             width: double.maxFinite,
             child: Column(

@@ -34,14 +34,15 @@ class UpcomingView extends StatelessWidget{
           Expanded(child: ListView.builder(itemBuilder: (context, index){
             return GestureDetector(
               child: Container(
-                margin: EdgeInsets.only(top: index == 0 ? 0 : 24,left: 24, right: 24),
+                margin: EdgeInsets.only(top: index == 0 ? 0 : 16,left: 24, right: 24),
                 width: double.maxFinite,
                 color: Colors.white,
-                height: 265,
+                height: 280,
                 child: Stack(
                   children: [
                     Container(
                       width: double.maxFinite,
+                      margin: EdgeInsets.only(top: 8, bottom: 8),
                       padding: EdgeInsets.only(left: 24, right: 24, top: 16,bottom: 16),
                       decoration: BoxDecoration(
                           color: Colors.white,
@@ -197,9 +198,10 @@ class UpcomingView extends StatelessWidget{
                             Stack(
                               children: [
                                 Container(
-                                  height: 15,
+                                  height: 20,
                                   width: 35,
                                   decoration: BoxDecoration(
+                                      color: Colors.white,
                                       borderRadius: BorderRadius.only(bottomLeft: Radius.circular(25),
                                           bottomRight: Radius.circular(25)),
                                       border: Border(
@@ -220,7 +222,7 @@ class UpcomingView extends StatelessWidget{
                                 ),
 
                                 Container(
-                                  height: 1,
+                                  height: 8,
                                   width: 35,
                                   color: Colors.white,
                                 )
@@ -238,7 +240,7 @@ class UpcomingView extends StatelessWidget{
                             Stack(
                               children: [
                                 Container(
-                                  height: 15,
+                                  height: 19,
                                   width: 35,
                                   decoration: BoxDecoration(
                                       color: Colors.white,
@@ -260,11 +262,12 @@ class UpcomingView extends StatelessWidget{
                                               width: 1)
                                       )
                                   ),
+                                  margin: EdgeInsets.only(bottom: 1),
                                 ),
 
                                 Positioned.fill(child: Align(
                                   child: Container(
-                                    height: 1,
+                                    height: 8,
                                     width: 35,
                                     color: Colors.white,
                                   ),

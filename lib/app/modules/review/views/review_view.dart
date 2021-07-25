@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:ridethebee/app/modules/home/views/home_view.dart';
 import 'package:ridethebee/app/modules/thank_you/views/thank_you_view.dart';
 import 'package:ridethebee/app/widgets/colored_button.dart';
 
@@ -36,7 +37,7 @@ class ReviewView extends GetView<ReviewController> {
 
                         Column(
                           children: [
-                            SizedBox(height: 45),
+                            SizedBox(height: 36),
                             Row(
                               children: [
                                 SizedBox(width: 49),
@@ -53,7 +54,7 @@ class ReviewView extends GetView<ReviewController> {
                                 GestureDetector(
                                   child: Image.asset("assets/ic_close_black.png", height: 28, width: 28),
                                   onTap: (){
-                                      Get.back();
+                                    Get.offAll(() => HomeView());
                                   },
                                 ),
 

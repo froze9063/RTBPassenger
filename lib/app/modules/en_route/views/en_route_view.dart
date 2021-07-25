@@ -557,7 +557,7 @@ class EnRouteView extends GetView<EnRouteController> {
                                                       borderRadius: BorderRadius.all(Radius.circular(45))
                                                   ),
                                                   child: Center(
-                                                    child: Text("ON", style: TextStyle(
+                                                    child: Text("YES", style: TextStyle(
                                                         color: Colors.white,
                                                         fontSize: 16,
                                                         fontFamily: "PoppinsBold"
@@ -576,7 +576,7 @@ class EnRouteView extends GetView<EnRouteController> {
                                                     borderRadius: BorderRadius.all(Radius.circular(45))
                                                 ),
                                                 child: Center(
-                                                  child: Text("OFF", style: TextStyle(
+                                                  child: Text("NO", style: TextStyle(
                                                       color: Color.fromRGBO(135, 141, 156, 1.0),
                                                       fontSize: 16,
                                                       fontFamily: "PoppinsBold"
