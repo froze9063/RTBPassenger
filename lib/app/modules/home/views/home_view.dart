@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:ridethebee/app/constant/my_constant.dart';
+import 'package:ridethebee/app/modules/filter_page/views/filter_page_view.dart';
 import 'package:ridethebee/app/modules/menus/views/menus_view.dart';
 import 'package:ridethebee/app/modules/notification/views/notification_view.dart';
 import 'package:ridethebee/app/modules/ticket_details_book/views/ticket_details_book_view.dart';
@@ -273,29 +274,51 @@ class HomeView extends GetView<HomeController> {
                                 children: [
                                   Padding(padding: EdgeInsets.only(left: 24, right: 24, top: 24), child: Row(
                                     children: [
-                                      Row(
-                                        children: [
-                                          Text("Depart Time", style: TextStyle(
-                                              color: Color.fromRGBO(63, 61, 86, 1.0),
-                                              fontFamily: "PoppinsMedium"
-                                          )),
-                                          SizedBox(width: 14),
-                                          Image.asset("assets/ic_triangle_arrow.png", height: 14, width: 14)
-                                        ],
-                                      ),
+                                      GetBuilder<HomeController>(
+                                        id: "depart_time",
+                                        init: HomeController(),
+                                        builder: (value) =>GestureDetector(
+                                        child: Container(
+                                          color: Colors.white,
+                                          child: Row(
+                                            children: [
+                                              Text("Depart Time", style: TextStyle(
+                                                  color: Color.fromRGBO(63, 61, 86, 1.0),
+                                                  fontFamily: "PoppinsMedium"
+                                              )),
+                                              SizedBox(width: 14),
+                                              Image.asset(value.departTimeDown ? "assets/ic_triangle_arrow.png" : "assets/ic_triangleup_arrow.png", height: 14, width: 14)
+                                            ],
+                                          ),
+                                        ),
+                                        onTap: (){
+                                            value.setSortPriceTime(!value.departTimeDown, 0);
+                                        },
+                                      )),
 
                                       SizedBox(width: 16),
 
-                                      Row(
-                                        children: [
-                                          Text("Ticket Price", style: TextStyle(
-                                              color: Color.fromRGBO(63, 61, 86, 1.0),
-                                              fontFamily: "PoppinsMedium"
+                                      GetBuilder<HomeController>(
+                                          id: "ticket_price",
+                                          init: HomeController(),
+                                          builder: (value) =>GestureDetector(
+                                            child: Container(
+                                              color: Colors.white,
+                                              child: Row(
+                                                children: [
+                                                  Text("Ticket Price", style: TextStyle(
+                                                      color: Color.fromRGBO(63, 61, 86, 1.0),
+                                                      fontFamily: "PoppinsMedium"
+                                                  )),
+                                                  SizedBox(width: 14),
+                                                  Image.asset(value.ticketPriceDown ? "assets/ic_triangle_arrow.png" : "assets/ic_triangleup_arrow.png", height: 14, width: 14)
+                                                ],
+                                              ),
+                                            ),
+                                            onTap: (){
+                                              value.setSortPriceTime(!value.ticketPriceDown, 1);
+                                            },
                                           )),
-                                          SizedBox(width: 14),
-                                          Image.asset("assets/ic_triangle_arrow.png", height: 14, width: 14)
-                                        ],
-                                      )
                                     ],
                                   )),
 
@@ -320,7 +343,7 @@ class HomeView extends GetView<HomeController> {
                                                     color: Colors.white,
                                                     borderRadius: BorderRadius.all(Radius.circular(16)),
                                                     border: Border.all(
-                                                        width: 1,
+                                                        width: 2,
                                                         color: Color.fromRGBO(220, 220, 224, 0.5)
                                                     ),
                                                     boxShadow: [
@@ -328,7 +351,7 @@ class HomeView extends GetView<HomeController> {
                                                         color: Color.fromRGBO(220, 220, 224, 0.5),
                                                         blurRadius: 0.5,
                                                         spreadRadius: 0.5,
-                                                        offset: Offset(1.5, 1.5), // shadow direction: bottom right
+                                                        offset: Offset(0.5, 0.5), // shadow direction: bottom right
                                                       )
                                                     ]
                                                 ),
@@ -485,16 +508,16 @@ class HomeView extends GetView<HomeController> {
                                                               border: Border(
                                                                   bottom: BorderSide(
                                                                       color: Color.fromRGBO(220, 220, 224, 0.5),
-                                                                      width: 1),
+                                                                      width: 2),
                                                                   right: BorderSide(
                                                                       color: Color.fromRGBO(220, 220, 224, 0.5),
-                                                                      width: 1),
+                                                                      width: 2),
                                                                   top: BorderSide(
                                                                       color: Color.fromRGBO(220, 220, 224, 0.5),
-                                                                      width: 1),
+                                                                      width: 2),
                                                                   left: BorderSide(
                                                                       color: Color.fromRGBO(220, 220, 224, 0.5),
-                                                                      width: 1)
+                                                                      width: 2)
                                                               ),
                                                               boxShadow: [
                                                                 BoxShadow(
@@ -536,16 +559,16 @@ class HomeView extends GetView<HomeController> {
                                                               border: Border(
                                                                   bottom: BorderSide(
                                                                       color: Color.fromRGBO(220, 220, 224, 0.5),
-                                                                      width: 1),
+                                                                      width: 2),
                                                                   right: BorderSide(
                                                                       color: Color.fromRGBO(220, 220, 224, 0.5),
-                                                                      width: 1),
+                                                                      width: 2),
                                                                   top: BorderSide(
                                                                       color: Color.fromRGBO(220, 220, 224, 0.5),
-                                                                      width: 1),
+                                                                      width: 2),
                                                                   left: BorderSide(
                                                                       color: Color.fromRGBO(220, 220, 224, 0.5),
-                                                                      width: 1)
+                                                                      width: 2)
                                                               ),
                                                               boxShadow: [
                                                                 BoxShadow(
@@ -604,7 +627,7 @@ class HomeView extends GetView<HomeController> {
                                 child: Image.asset("assets/img_filter.png",width: 55,
                                     height: 55),
                                 onTap: (){
-
+                                    Get.to(() => FilterPageView());
                                 },
                               )
                             ],

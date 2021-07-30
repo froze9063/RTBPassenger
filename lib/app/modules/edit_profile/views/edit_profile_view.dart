@@ -129,7 +129,7 @@ class EditProfileView extends GetView<EditProfileController> implements CustomEd
                             ),
                           ), flex: 1),
                           GestureDetector(
-                            child: ColoredButton(height: 45, width: double.maxFinite, title: "Update Profile",
+                            child: ColoredButton(height: 55, width: double.maxFinite, title: "Update Profile",
                                 color: Color.fromRGBO(255, 205, 56, 1.0)),
                             onTap: (){
 

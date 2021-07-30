@@ -112,40 +112,52 @@ class CarSeatsView extends GetView<CarSeatsController> {
 
             SizedBox(height: 16),
 
-            Expanded(child: Container(
-              width: double.maxFinite,
-              height: double.maxFinite,
-              child: Stack(
-                children: [
-                  Image.asset("assets/img_seat_background.png", width: double.maxFinite,
-                      height: double.maxFinite, fit: BoxFit.fill),
+           GetBuilder<CarSeatsController>(
+             id: "select_seat",
+             init: CarSeatsController(),
+             builder: (value) =>  Expanded(child: Container(
+             width: double.maxFinite,
+             height: double.maxFinite,
+             child: Stack(
+               children: [
+                 Image.asset("assets/img_seat_background.png", width: double.maxFinite,
+                     height: double.maxFinite, fit: BoxFit.fill),
 
-                  Padding(padding: EdgeInsets.all(36), child:  GridView.count(
-                    childAspectRatio: 1.65,
-                    crossAxisCount: 4,
-                    children: List.generate(_carSeatsController.seatsList.length, (index) {
-                      return Center(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Visibility(child: Text("A1", style: TextStyle(
-                              fontFamily: "PoppinsRegular",
-                            )), visible: index % 2 == 0),
-                            SizedBox(width: 4),
-                            Image.asset(_carSeatsController.seatsList[index], width: 36, height: 36),
-                            SizedBox(width: 4),
-                            Visibility(child: Text("A2", style: TextStyle(
-                              fontFamily: "PoppinsRegular",
-                            )), visible: index % 2 != 0),
-                          ],
-                        ),
-                      );
-                    }),
-                  ))
-                ],
-              ),
-            ), flex: 1),
+                 Padding(padding: EdgeInsets.all(36), child:  GridView.count(
+                   childAspectRatio: 1.65,
+                   crossAxisCount: 4,
+                   children: List.generate(_carSeatsController.seatsList.length, (index) {
+                     Map mapSeat = _carSeatsController.seatsList[index];
+                     return GestureDetector(
+                       child: Center(
+                         child: Row(
+                           mainAxisAlignment: MainAxisAlignment.center,
+                           crossAxisAlignment: CrossAxisAlignment.center,
+                           children: [
+                             Visibility(child: Text("A1", style: TextStyle(
+                               fontFamily: "PoppinsRegular",
+                             )), visible: index % 2 == 0),
+                             SizedBox(width: 4),
+                             Image.asset(value.selectedSeat == index ? "assets/img_selected_seat.png" :
+                             value.parseSeatImage(mapSeat["type"]), width: 36, height: 36),
+                             SizedBox(width: 4),
+                             Visibility(child: Text("A2", style: TextStyle(
+                               fontFamily: "PoppinsRegular",
+                             )), visible: index % 2 != 0),
+                           ],
+                         ),
+                       ),
+                       onTap: (){
+                          if(mapSeat["type"] == 0){
+                            value.selectSeat(index);
+                          }
+                       },
+                     );
+                   }),
+                 ))
+               ],
+             ),
+           ), flex: 1)),
 
             Container(
               width: double.maxFinite,

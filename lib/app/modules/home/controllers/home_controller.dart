@@ -17,6 +17,20 @@ class HomeController extends GetxController {
   String selectedPax = "No. Of Pax";
   String selectedDate = "Select Date";
 
+  bool departTimeDown = true;
+  bool ticketPriceDown = true;
+
+  void setSortPriceTime(bool isDown, int type){
+    if(type == 0){
+      departTimeDown = isDown;
+      update(["depart_time"]);
+    }
+    else{
+      ticketPriceDown = isDown;
+      update(["ticket_price"]);
+    }
+  }
+
   @override
   void onInit() {
     paxList = [];

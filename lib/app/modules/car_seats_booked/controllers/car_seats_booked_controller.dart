@@ -32,12 +32,10 @@ class CarSeatsBookedController extends GetxController {
     seatsList.add("assets/img_available_seat.png");
     seatsList.add("assets/img_available_seat.png");
     seatsList.add("assets/img_selected_seat.png");
-    seatsList.add("assets/img_selected_seat.png");
     seatsList.add("assets/img_available_seat.png");
     seatsList.add("assets/img_available_seat.png");
     seatsList.add("assets/img_available_seat.png");
     seatsList.add("assets/img_available_seat.png");
-    seatsList.add("assets/img_selected_seat.png");
     seatsList.add("assets/img_available_seat.png");
     seatsList.add("assets/img_available_seat.png");
     seatsList.add("assets/img_available_seat.png");

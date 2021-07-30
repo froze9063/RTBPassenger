@@ -1,9 +1,10 @@
 import 'package:get/get.dart';
 
 class ReviewController extends GetxController {
-  //TODO: Implement ReviewController
 
   final count = 0.obs;
+  int starCount = 0;
+
   @override
   void onInit() {
     super.onInit();
@@ -17,4 +18,9 @@ class ReviewController extends GetxController {
   @override
   void onClose() {}
   void increment() => count.value++;
+
+  void setStar(int star){
+    starCount = star;
+    update(["star"]);
+  }
 }

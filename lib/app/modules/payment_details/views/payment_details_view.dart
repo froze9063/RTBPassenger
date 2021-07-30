@@ -79,57 +79,70 @@ class PaymentDetailsView extends GetView<PaymentDetailsController> {
                               color: Color.fromRGBO(135, 141, 156, 1.0)
                           )),
 
-                      ListView.builder(itemBuilder: (context, index){
-                        return Padding(
-                          padding: EdgeInsets.only(top: 24),
-                          child: Column(
-                            children: [
-                              Row(
+                      GetBuilder<PaymentDetailsController>(
+                        id: "payment",
+                        init: PaymentDetailsController(),
+                        builder: (value) => ListView.builder(itemBuilder: (context, index){
+                        Map paymentMap = _paymentDetailsController.paymentList[index];
+                        return GestureDetector(
+                          child: Container(
+                            color: Colors.white,
+                            child: Padding(
+                              padding: EdgeInsets.only(top: 24),
+                              child: Column(
                                 children: [
-                                  Image.asset(index == 0 ? "assets/ic_debit_card.png" : "assets/ic_online_booking.png",
-                                      height: 36,width: 36),
-                                  SizedBox(width: 16),
-                                  Expanded(child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                  Row(
                                     children: [
-                                      Row(
+                                      Image.asset(paymentMap["image"],
+                                          height: 36,width: 36),
+                                      SizedBox(width: 16),
+                                      Expanded(child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
-                                          Text(index == 0 ? "Credit Card / Debit Card" : "Online Banking",
-                                              style: TextStyle(
-                                                  color: Color.fromRGBO(58, 58, 58, 1.0),
-                                                  fontSize: 16,
-                                                  fontFamily: "PoppinsMedium"
-                                              ))
+                                          Row(
+                                            children: [
+                                              Text(paymentMap["name"],
+                                                  style: TextStyle(
+                                                      color: Color.fromRGBO(58, 58, 58, 1.0),
+                                                      fontSize: 16,
+                                                      fontFamily: "PoppinsMedium"
+                                                  ))
+                                            ],
+                                          ),
+                                          SizedBox(height: 8),
+                                          Row(
+                                            children: [
+                                              Text(paymentMap["description"],
+                                                  style: TextStyle(
+                                                    color: Color.fromRGBO(135, 141, 156, 1.0),
+                                                    fontSize: 14,
+                                                    fontFamily: "PoppinsRegular",
+                                                  ))
+                                            ],
+                                          ),
+                                          SizedBox(width: 24)
                                         ],
-                                      ),
-                                      SizedBox(height: 8),
-                                      Row(
-                                        children: [
-                                          Text(index == 0 ? "Use Visa, MasterCard and more" : "Internet banking log-in needed",
-                                              style: TextStyle(
-                                                color: Color.fromRGBO(135, 141, 156, 1.0),
-                                                fontSize: 14,
-                                                fontFamily: "PoppinsRegular",
-                                              ))
-                                        ],
-                                      ),
-                                      SizedBox(width: 24)
+                                      ),flex: 1),
+                                      SizedBox(width: 16),
+                                      Image.asset(value.selectedPayment == index ? "assets/ic_yellow_check.png" :
+                                      "assets/ic_unselected_payment.png", width: 24, height: 24, fit: BoxFit.cover)
                                     ],
-                                  ),flex: 1),
-                                  SizedBox(width: 16),
-                                  Image.asset(index == 0 ? "assets/ic_yellow_check.png" : "assets/ic_unselected_payment.png", width: 24, height: 24, fit: BoxFit.cover)
+                                  ),
                                 ],
                               ),
-                            ],
+                            ),
                           ),
+                          onTap: (){
+                            value.setSelectedPayment(index);
+                          },
                         );
                       },
                         shrinkWrap: true,
                         padding: EdgeInsets.zero,
-                        itemCount: 2,
+                        itemCount: _paymentDetailsController.paymentList.length,
                         primary: false,
-                      )
+                      ))
                     ],
                   ),
                 ),
@@ -228,11 +241,21 @@ class PaymentDetailsView extends GetView<PaymentDetailsController> {
                               child: Row(
                                 children: [
                                   SizedBox(width: 16),
-                                  Expanded(child: Text("Input Amount", style: TextStyle(
-                                      fontSize: 16,
-                                      color: Color.fromRGBO(135, 141,156, 1.0),
-                                      fontFamily: "PoppinsMedium"
-                                  ))),
+                                  Expanded(child: TextField(
+                                    decoration: InputDecoration.collapsed(
+                                        hintText: "Input Amount",
+                                        hintStyle: TextStyle(
+                                            fontSize: 16,
+                                            color: Color.fromRGBO(135, 141,156, 1.0),
+                                            fontFamily: "PoppinsMedium"
+                                        )
+                                    ),
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        fontFamily: "PoppinsMedium",
+                                        color: Color.fromRGBO(63, 61, 86, 1.0)
+                                    ),
+                                  )),
                                   Container(
                                     padding: EdgeInsets.only(top: 16, bottom: 16, left: 24, right: 24),
                                     decoration: BoxDecoration(
@@ -332,10 +355,21 @@ class PaymentDetailsView extends GetView<PaymentDetailsController> {
                   padding: EdgeInsets.only(left: 24, right: 24, bottom: 16, top: 16),
                   child: Row(
                     children: [
-                      Checkbox(value: false, onChanged: (value){
+                      GetBuilder<PaymentDetailsController>(
+                        id: "checkbox",
+                        init: PaymentDetailsController(),
+                        builder: (values) => Container(
+                        width: 55,
+                        height: 55,
+                        color: Colors.transparent,
+                        child: Checkbox(
+                            value: values.isChecked,
+                            activeColor: Color.fromRGBO(255, 205, 56, 1.0),
+                            onChanged: (value){
+                          values.setChecked(!values.isChecked);
+                        }),
+                      )),
 
-                      }),
-                      SizedBox(width: 16),
                       Expanded(child: RichText(
                         textAlign: TextAlign.start,
                         text: TextSpan(children: <TextSpan>[

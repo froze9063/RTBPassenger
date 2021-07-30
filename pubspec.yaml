@@ -117,6 +117,10 @@ flutter:
     - assets/img_driver_home.png
     - assets/ic_send.png
     - assets/ic_black_left.png
+    - assets/ic_white_star.png
+    - assets/ic_triangleup_arrow.png
+    - assets/ic_circle_down.png
+    - assets/ic_circle_up.png
 
   fonts:
     - family: PoppinsBold
