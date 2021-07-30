@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:ridethebee/app/constant/my_constant.dart';
 import 'package:ridethebee/app/modules/ticket_details_seat/views/ticket_details_seat_view.dart';
 import 'package:ridethebee/app/widgets/colored_button.dart';
 
@@ -19,12 +20,19 @@ class CarSeatsView extends GetView<CarSeatsController> {
         height: double.maxFinite,
         child: Column(
           children: [
-            SizedBox(height: 36),
+            SizedBox(height: MyConstant.headerTopMargin),
             Row(
               children: [
-                SizedBox(width: 24),
+                SizedBox(width: 10),
                 GestureDetector(
-                  child: Image.asset("assets/ic_new_back_yellow.png", height: 18, width: 18),
+                  child: Container(
+                    width: 55,
+                    height: 55,
+                    color: Colors.transparent,
+                    child: Center(
+                      child: Image.asset("assets/ic_new_back_yellow.png", height: 18, width: 18),
+                    ),
+                  ),
                   onTap: (){
                     Get.back();
                   },
@@ -36,7 +44,17 @@ class CarSeatsView extends GetView<CarSeatsController> {
                         fontFamily: "PoppinsBold",
                         color: Color.fromRGBO(63, 61, 86, 1.0)
                     ))),
-                SizedBox(width: 24),
+                GestureDetector(
+                  child: Container(
+                    width: 55,
+                    height: 55,
+                    color: Colors.transparent,
+                  ),
+                  onTap: (){
+                    Get.back();
+                  },
+                ),
+                SizedBox(width: 10),
               ],
             ),
             SizedBox(height: 24),

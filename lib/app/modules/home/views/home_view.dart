@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:ridethebee/app/constant/my_constant.dart';
 import 'package:ridethebee/app/modules/menus/views/menus_view.dart';
 import 'package:ridethebee/app/modules/notification/views/notification_view.dart';
 import 'package:ridethebee/app/modules/ticket_details_book/views/ticket_details_book_view.dart';
@@ -20,13 +21,20 @@ class HomeView extends GetView<HomeController> {
               height: double.maxFinite, fit: BoxFit.cover),
           Column(
             children: [
-              SizedBox(height: 36),
+              SizedBox(height: MyConstant.headerTopMargin),
               Row(
                 children: [
-                  SizedBox(width: 24),
+                  SizedBox(width: 10),
 
                   GestureDetector(
-                    child: Image.asset("assets/ic_menu.png", height: 28, width: 28),
+                    child: Container(
+                      width: 55,
+                      height: 55,
+                      color: Colors.transparent,
+                      child: Center(
+                        child: Image.asset("assets/ic_menu.png", height: 28, width: 28),
+                      ),
+                    ),
                     onTap: (){
                       Get.to(MenusView());
                     },
@@ -42,67 +50,98 @@ class HomeView extends GetView<HomeController> {
                   Expanded(child: SizedBox(),flex: 1),
 
                   GestureDetector(
-                    child: Image.asset("assets/ic_notification.png", height: 28, width: 28),
+                    child: Container(
+                      width: 55,
+                      height: 55,
+                      color: Colors.transparent,
+                      child: Center(
+                        child: Image.asset("assets/ic_notification.png", height: 28, width: 28),
+                      ),
+                    ),
                     onTap: (){
                       Get.to(NotificationView());
                     },
                   ),
 
-                  SizedBox(width: 24),
+                  SizedBox(width: 10),
                 ],
               ),
 
-              SizedBox(height: 24),
+              SizedBox(height: 8),
 
               Row(
                 children: [
                   SizedBox(width: 24),
-                  Expanded(child: Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(8))
-                    ),
-                    elevation: 2,
-                    child: Padding(
-                      padding: EdgeInsets.only(left: 24, right: 24,top: 16,bottom: 16),
-                      child: Row(
-                        children: [
-                          Expanded(child: Text("Select Date", style: TextStyle(
-                              color: Color.fromRGBO(63, 61, 86, 1.0),
-                              fontFamily: "PoppinsMedium"
-                          )), flex: 1),
-                          SizedBox(width: 16),
-                          Image.asset("assets/ic_calendar.png", height: 16, width: 16)
-                        ],
+                  Expanded(child: GestureDetector(
+                    child: GetBuilder<HomeController>(
+                      id: "select_date",
+                      init: HomeController(),
+                      builder: (value) => Container(
+                        color: Colors.transparent,
+                        child: Card(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.all(Radius.circular(8))
+                          ),
+                          elevation: 2,
+                          child: Padding(
+                            padding: EdgeInsets.only(left: 24, right: 24,top: 16,bottom: 16),
+                            child: Row(
+                              children: [
+                                Expanded(child: Text(value.selectedDate, style: TextStyle(
+                                    color: Color.fromRGBO(63, 61, 86, 1.0),
+                                    fontFamily: "PoppinsMedium"
+                                )), flex: 1),
+                                SizedBox(width: 16),
+                                Image.asset("assets/ic_calendar.png", height: 16, width: 16)
+                              ],
+                            ),
+                          ),
+                        ),
                       ),
                     ),
+                    onTap: (){
+                        homeController.showCalendar(context);
+                    },
                   ), flex: 1),
 
-                  Card(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(8))
-                    ),
-                    elevation: 2,
-                    child: Padding(
-                      padding: EdgeInsets.only(left: 24, right: 24,top: 16,bottom: 16),
-                      child: Row(
-                        children: [
-                          Text("No. Of Pax", style: TextStyle(
-                            color: Color.fromRGBO(63, 61, 86, 1.0),
-                              fontFamily: "PoppinsMedium"
-                          )),
-                          SizedBox(width: 16),
-                          Image.asset("assets/ic_yellow_dropdown.png", height: 16, width: 16)
-                        ],
+                  GetBuilder<HomeController>(
+                    id: "pax",
+                    init: HomeController(),
+                    builder: (value) => GestureDetector(
+                    child: Container(
+                      color: Colors.transparent,
+                      width: 166,
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(8))
+                        ),
+                        elevation: 2,
+                        child: Padding(
+                          padding: EdgeInsets.only(left: 24, right: 24,top: 16,bottom: 16),
+                          child: Row(
+                            children: [
+                              Text(value.selectedPax, style: TextStyle(
+                                  color: Color.fromRGBO(63, 61, 86, 1.0),
+                                  fontFamily: "PoppinsMedium"
+                              )),
+                              SizedBox(width: 16),
+                              Image.asset("assets/ic_yellow_dropdown.png", height: 16, width: 16)
+                            ],
+                          ),
+                        ),
                       ),
                     ),
-                  ),
+                    onTap: (){
+                      value.setPaxListShow(true);
+                    },
+                  )),
                   SizedBox(width: 24),
                 ],
               ),
 
               Container(
                 width: double.maxFinite,
-                margin: EdgeInsets.only(left: 24, right: 24, top: 16),
+                margin: EdgeInsets.only(left: 24, right: 24, top: 8),
                  child: Card(
                    shape: RoundedRectangleBorder(
                        borderRadius: BorderRadius.all(Radius.circular(8))
@@ -123,21 +162,30 @@ class HomeView extends GetView<HomeController> {
 
                          SizedBox(width: 16),
 
-                         Expanded(child: Column(
+                         GetBuilder<HomeController>(
+                           id: "switch_location",
+                           init: HomeController(),
+                           builder: (value) => Expanded(child: Column(
                            mainAxisAlignment: MainAxisAlignment.start,
                            crossAxisAlignment: CrossAxisAlignment.start,
                            children: [
                              Text("From", style: TextStyle(
-                               color: Color.fromRGBO(135, 141, 156, 1.0),
-                               fontSize: 14,
-                               fontFamily: "PoppinsMedium"
-                             )),
-                             SizedBox(height: 8),
-                             Text("Kuala Lumpur", style: TextStyle(
-                                 color: Color.fromRGBO(63, 61, 86, 1.0),
-                                 fontSize: 16,
+                                 color: Color.fromRGBO(135, 141, 156, 1.0),
+                                 fontSize: 14,
                                  fontFamily: "PoppinsMedium"
                              )),
+                             SizedBox(height: 8),
+                             TextField(
+                                 controller: homeController.fromController,
+                                 decoration: InputDecoration.collapsed(hintText:
+                                 "From"
+                                 ),
+                                 style: TextStyle(
+                                     color: Color.fromRGBO(63, 61, 86, 1.0),
+                                     fontSize: 16,
+                                     fontFamily: "PoppinsMedium"
+                                 )
+                             ),
                              SizedBox(height: 24),
                              Container(
                                width: double.maxFinite,
@@ -151,23 +199,34 @@ class HomeView extends GetView<HomeController> {
                                  fontFamily: "PoppinsMedium"
                              )),
                              SizedBox(height: 8),
-                             Text("Penang", style: TextStyle(
-                                 color: Color.fromRGBO(63, 61, 86, 1.0),
-                                 fontSize: 16,
-                                 fontFamily: "PoppinsMedium"
-                             )),
+                             TextField(
+                                 controller: homeController.toController,
+                                 decoration: InputDecoration.collapsed(hintText:
+                                 "To"
+                                 ),
+                                 style: TextStyle(
+                                     color: Color.fromRGBO(63, 61, 86, 1.0),
+                                     fontSize: 16,
+                                     fontFamily: "PoppinsMedium"
+                                 )
+                             ),
                            ],
-                         ), flex: 1),
+                         ), flex: 1)),
 
                          SizedBox(width: 16),
 
-                         Container(
-                           padding: EdgeInsets.all(16),
-                           child: Image.asset("assets/ic_filter.png", height: 16, width: 16),
-                           decoration: BoxDecoration(
-                             color: Color.fromRGBO(240, 242, 247, 1.0),
-                             borderRadius: BorderRadius.all(Radius.circular(8))
+                         GestureDetector(
+                           child: Container(
+                             padding: EdgeInsets.all(16),
+                             child: Image.asset("assets/ic_filter.png", height: 16, width: 16),
+                             decoration: BoxDecoration(
+                                 color: Color.fromRGBO(240, 242, 247, 1.0),
+                                 borderRadius: BorderRadius.all(Radius.circular(8))
+                             ),
                            ),
+                           onTap: (){
+                             homeController.switchLocation();
+                           },
                          )
                        ],
                      ),
@@ -181,8 +240,8 @@ class HomeView extends GetView<HomeController> {
             width: double.maxFinite,
             height: double.maxFinite,
             child: DraggableScrollableSheet(
-                initialChildSize: 0.52,
-                minChildSize: 0.52,
+                initialChildSize: 0.55,
+                minChildSize: 0.55,
                 maxChildSize: 1.0,
                 expand: false,
                 builder: (context, pageController){
@@ -262,8 +321,16 @@ class HomeView extends GetView<HomeController> {
                                                     borderRadius: BorderRadius.all(Radius.circular(16)),
                                                     border: Border.all(
                                                         width: 1,
-                                                        color: Color.fromRGBO(63, 61, 86, 0.5)
-                                                    )
+                                                        color: Color.fromRGBO(220, 220, 224, 0.5)
+                                                    ),
+                                                    boxShadow: [
+                                                      BoxShadow(
+                                                        color: Color.fromRGBO(220, 220, 224, 0.5),
+                                                        blurRadius: 0.5,
+                                                        spreadRadius: 0.5,
+                                                        offset: Offset(1.5, 1.5), // shadow direction: bottom right
+                                                      )
+                                                    ]
                                                 ),
                                                 child: Column(
                                                   children: [
@@ -417,18 +484,26 @@ class HomeView extends GetView<HomeController> {
                                                                   bottomRight: Radius.circular(25)),
                                                               border: Border(
                                                                   bottom: BorderSide(
-                                                                      color: Color.fromRGBO(63, 61, 86, 0.5),
+                                                                      color: Color.fromRGBO(220, 220, 224, 0.5),
                                                                       width: 1),
                                                                   right: BorderSide(
-                                                                      color: Color.fromRGBO(63, 61, 86, 0.5),
+                                                                      color: Color.fromRGBO(220, 220, 224, 0.5),
                                                                       width: 1),
                                                                   top: BorderSide(
-                                                                      color: Color.fromRGBO(63, 61, 86, 0.5),
+                                                                      color: Color.fromRGBO(220, 220, 224, 0.5),
                                                                       width: 1),
                                                                   left: BorderSide(
-                                                                      color: Color.fromRGBO(63, 61, 86, 0.5),
+                                                                      color: Color.fromRGBO(220, 220, 224, 0.5),
                                                                       width: 1)
-                                                              )
+                                                              ),
+                                                              boxShadow: [
+                                                                BoxShadow(
+                                                                  color: Color.fromRGBO(220, 220, 224, 0.5),
+                                                                  blurRadius: 0.5,
+                                                                  spreadRadius: 0.5,
+                                                                  offset: Offset(0.5, 0.5), // shadow direction: bottom right
+                                                                )
+                                                              ]
                                                           ),
                                                         ),
 
@@ -460,18 +535,26 @@ class HomeView extends GetView<HomeController> {
                                                                   topRight: Radius.circular(25)),
                                                               border: Border(
                                                                   bottom: BorderSide(
-                                                                      color: Color.fromRGBO(63, 61, 86, 0.5),
+                                                                      color: Color.fromRGBO(220, 220, 224, 0.5),
                                                                       width: 1),
                                                                   right: BorderSide(
-                                                                      color: Color.fromRGBO(63, 61, 86, 0.5),
+                                                                      color: Color.fromRGBO(220, 220, 224, 0.5),
                                                                       width: 1),
                                                                   top: BorderSide(
-                                                                      color: Color.fromRGBO(63, 61, 86, 0.5),
+                                                                      color: Color.fromRGBO(220, 220, 224, 0.5),
                                                                       width: 1),
                                                                   left: BorderSide(
-                                                                      color: Color.fromRGBO(63, 61, 86, 0.5),
+                                                                      color: Color.fromRGBO(220, 220, 224, 0.5),
                                                                       width: 1)
-                                                              )
+                                                              ),
+                                                              boxShadow: [
+                                                                BoxShadow(
+                                                                  color: Color.fromRGBO(220, 220, 224, 0.5),
+                                                                  blurRadius: 0.5,
+                                                                  spreadRadius: 0.5,
+                                                                  offset: Offset(-0.5, -0.5), // shadow direction: bottom right
+                                                                )
+                                                              ]
                                                           ),
                                                           margin: EdgeInsets.only(bottom: 1),
                                                         ),
@@ -499,9 +582,10 @@ class HomeView extends GetView<HomeController> {
                                       },
                                     );
                                   },
+                                    physics: ClampingScrollPhysics(),
                                     shrinkWrap: true,
                                     padding: EdgeInsets.zero,
-                                    itemCount: 5,
+                                    itemCount: 3,
                                     primary: false,
                                     controller: pageController,
                                   ), flex: 1)
@@ -530,7 +614,86 @@ class HomeView extends GetView<HomeController> {
                     ),
                   );
                 }),
-          )
+          ),
+
+          GetBuilder<HomeController>(
+              id: "paxlist",
+              init: HomeController(),
+              builder: (value) => Visibility(child: GestureDetector(
+                child: Container(
+                  width: double.maxFinite,
+                  height: double.maxFinite,
+                  color: Colors.transparent,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(height: 157),
+                      Row(
+                        children: [
+                          Expanded(child: SizedBox(), flex: 1),
+                          Container(
+                            margin: EdgeInsets.only(right: 27),
+                            width: 159,
+                            height: 105,
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                border: Border.all(
+                                    width: 0.2,
+                                    color: Colors.grey.withOpacity(0.5)
+                                )
+                            ),
+                            child: MediaQuery.removePadding(
+                                context: context,
+                                child: ListView.builder(
+                                  itemBuilder: (context,index){
+                                    return GestureDetector(
+                                      child: Container(
+                                        color: Colors.white,
+                                        width: double.maxFinite,
+                                        padding: EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
+                                        child: Column(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Text(homeController.paxList[index], style: TextStyle(
+                                              fontSize: 16,
+                                              color: Color.fromRGBO(135, 141, 156, 1.0),
+                                              fontFamily: "PoppinsRegular",
+                                            )),
+
+                                            SizedBox(height: 8),
+
+                                            Container(
+                                              height: 1,
+                                              width: double.maxFinite,
+                                              color: Color.fromRGBO(234, 237, 241, 1.0),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                      onTap: (){
+                                        homeController.setPax(homeController.paxList[index]);
+                                      },
+                                    );
+                                  },
+                                  shrinkWrap: true,
+                                  primary: false,
+                                  padding: EdgeInsets.zero,
+                                  itemCount: homeController.paxList.length,
+                                )),
+                          )
+                        ],
+                      ),
+
+                      SizedBox(height: 8)
+                    ],
+                  ),
+                ),
+                onTap: (){
+                  value.setPaxListShow(false);
+                },
+              ), visible: value.isPaxListShowed))
         ],
       ),
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:ridethebee/app/constant/my_constant.dart';
 
 import '../controllers/messages_controller.dart';
 
@@ -34,43 +35,55 @@ class MessagesView extends GetView<MessagesController> {
 
                         Column(
                           children: [
-                            SizedBox(height: 45),
+                            SizedBox(height: MyConstant.headerTopMargin),
                             Row(
                               children: [
-                                SizedBox(width: 49),
-
-                                Expanded(child: SizedBox(),flex: 1),
-
-                                Text("Message Driver", style: TextStyle(
-                                    color: Color.fromRGBO(63, 61, 86, 1.0), fontSize: 18,
-                                    fontFamily: "PoppinsBold"
-                                )),
-
-                                Expanded(child: SizedBox(),flex: 1),
-
+                                SizedBox(width: 10),
                                 GestureDetector(
-                                  child: Image.asset("assets/ic_close_black.png", height: 28, width: 28),
+                                  child: Container(
+                                    width: 55,
+                                    height: 55,
+                                    color: Colors.transparent,
+                                  ),
                                   onTap: (){
-                                      Get.back();
+
                                   },
                                 ),
-
-                                SizedBox(width: 24),
+                                Expanded(child: Text(
+                                    "Message Driver",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        color: Color.fromRGBO(63, 61, 86, 1.0),
+                                        fontFamily: "PoppinsBold"
+                                    )), flex: 1),
+                                GestureDetector(
+                                  child: Container(
+                                    width: 55,
+                                    height: 55,
+                                    color: Colors.transparent,
+                                    child: Center(
+                                      child: Image.asset("assets/ic_close_black.png",height: 24, width: 20),
+                                    ),
+                                  ),
+                                  onTap: (){
+                                    Get.back();
+                                  },
+                                ),
+                                SizedBox(width: 10),
                               ],
                             ),
 
-                            SizedBox(height: 24),
-
                             Image.asset("assets/img_driver_home.png", width: 100, height: 100),
 
-                            SizedBox(height: 24),
+                            SizedBox(height: 16),
 
                             Text("John Travis Scott Travolta", style: TextStyle(
                                 color: Color.fromRGBO(63, 61, 86, 1.0), fontSize: 20,
                                 fontFamily: "PoppinsBold"
                             )),
 
-                            SizedBox(height: 16),
+                            SizedBox(height: 8),
 
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,

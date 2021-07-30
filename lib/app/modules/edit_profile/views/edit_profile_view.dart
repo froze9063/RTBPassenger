@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:ridethebee/app/callback/custom_edittext_callback.dart';
+import 'package:ridethebee/app/constant/my_constant.dart';
 import 'package:ridethebee/app/widgets/colored_button.dart';
 import 'package:ridethebee/app/widgets/custom_edittext.dart';
 
@@ -20,29 +21,42 @@ class EditProfileView extends GetView<EditProfileController> implements CustomEd
         height: double.maxFinite,
         child: Stack(
           children: [
+            Positioned(
+                child: GestureDetector(
+                  child: Container(
+                    width: 55,
+                    height: 55,
+                    color: Colors.transparent,
+                    child: Center(
+                      child: Image.asset(
+                          "assets/ic_new_back_yellow.png", width: 24,
+                          height: 24),
+                    ),
+                  ),
+                  onTap: (){
+                    Get.back();
+                  },
+                ), top: 45, left: 1),
+
+            Container(
+              margin: EdgeInsets.only(top: 59),
+              width: double.maxFinite,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text("Edit Profile", style: TextStyle(
+                      fontSize: 16,
+                      color: Color.fromRGBO(63, 61, 86, 1.0),
+                      fontFamily: "PoppinsBold"
+                  ), textAlign: TextAlign.center,)
+                ],
+              ),
+            ),
+
             Column(
               children: [
-                SizedBox(height: 36),
-                Row(
-                  children: [
-                    SizedBox(width: 24),
-                    GestureDetector(
-                      child: Image.asset("assets/ic_new_back_yellow.png", height: 18, width: 18),
-                      onTap: (){
-                        Get.back();
-                      },
-                    ),
-                    Expanded(child: Text("Edit Profile",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            fontSize: 18,
-                            fontFamily: "PoppinsBold",
-                            color: Color.fromRGBO(63, 61, 86, 1.0)
-                        ))),
-                    SizedBox(width: 24),
-                  ],
-                ),
-                SizedBox(height: 36),
+                SizedBox(height: 135),
                 Expanded(child: Container(
                   width: double.maxFinite,
                   height: double.maxFinite,
@@ -140,7 +154,7 @@ class EditProfileView extends GetView<EditProfileController> implements CustomEd
             ),
 
             Container(
-              margin: EdgeInsets.only(top: 75),
+              margin: EdgeInsets.only(top: 115),
               width: double.maxFinite,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,

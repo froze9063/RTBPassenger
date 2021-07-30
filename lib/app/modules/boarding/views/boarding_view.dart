@@ -15,7 +15,6 @@ class BoardingView extends GetView<BoardingController> {
       body: Container(
         height: double.maxFinite,
         width: double.maxFinite,
-        margin: EdgeInsets.only(left: 36,right: 36),
         child: Column(
           children: [
             SizedBox(height: 135),
@@ -28,7 +27,7 @@ class BoardingView extends GetView<BoardingController> {
                   boardingController.setNextShowed(index == 2);
                 },
                 children: <Widget>[
-                  Column(
+                  Padding(padding: EdgeInsets.only(left: 36, right: 36), child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -66,9 +65,9 @@ class BoardingView extends GetView<BoardingController> {
                         ),
                       ),
                     ],
-                  ),
+                  )),
 
-                  Column(
+                  Padding(padding: EdgeInsets.only(left: 36, right: 36), child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -106,9 +105,9 @@ class BoardingView extends GetView<BoardingController> {
                         ),
                       ),
                     ],
-                  ),
+                  )),
 
-                  Column(
+                  Padding(padding: EdgeInsets.only(left: 36, right: 36), child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -145,7 +144,7 @@ class BoardingView extends GetView<BoardingController> {
                         ),
                       ),
                     ],
-                  ),
+                  )),
                 ],
               ),
             ),
@@ -164,16 +163,16 @@ class BoardingView extends GetView<BoardingController> {
 
             Expanded(child: SizedBox(), flex: 1),
 
-            GetBuilder<BoardingController>(
-              id: "next_showed",
-              init: BoardingController(),
-              builder: (value) => Visibility(child: GestureDetector(
-                child: ColoredButton(height: 55, width: double.maxFinite, title: "Next",
-                    color: Color.fromRGBO(255, 205, 56, 1.0)),
-                onTap: (){
-                  Get.to(LoginView());
-                },
-              ), visible: value.nextShowed)),
+            Padding(padding: EdgeInsets.only(left: 36, right: 36), child: GetBuilder<BoardingController>(
+                id: "next_showed",
+                init: BoardingController(),
+                builder: (value) => Visibility(child: GestureDetector(
+                  child: ColoredButton(height: 55, width: double.maxFinite, title: "Next",
+                      color: Color.fromRGBO(255, 205, 56, 1.0)),
+                  onTap: (){
+                    Get.to(LoginView());
+                  },
+                ), visible: value.nextShowed))),
 
             SizedBox(height: 24)
           ],

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:ridethebee/app/constant/my_constant.dart';
 import 'package:ridethebee/app/modules/home/views/home_view.dart';
 import 'package:ridethebee/app/modules/thank_you/views/thank_you_view.dart';
 import 'package:ridethebee/app/widgets/colored_button.dart';
@@ -37,36 +38,48 @@ class ReviewView extends GetView<ReviewController> {
 
                         Column(
                           children: [
-                            SizedBox(height: 36),
+                            SizedBox(height: MyConstant.headerTopMargin),
                             Row(
                               children: [
-                                SizedBox(width: 49),
-
-                                Expanded(child: SizedBox(),flex: 1),
-
-                                Text("Feedback", style: TextStyle(
-                                    color: Color.fromRGBO(63, 61, 86, 1.0), fontSize: 18,
-                                    fontFamily: "PoppinsBold"
-                                )),
-
-                                Expanded(child: SizedBox(),flex: 1),
-
+                                SizedBox(width: 10),
                                 GestureDetector(
-                                  child: Image.asset("assets/ic_close_black.png", height: 28, width: 28),
+                                  child: Container(
+                                    width: 55,
+                                    height: 55,
+                                    color: Colors.transparent,
+                                  ),
+                                  onTap: (){
+
+                                  },
+                                ),
+                                Expanded(child: Text(
+                                    "Trip Completed",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        color: Color.fromRGBO(63, 61, 86, 1.0),
+                                        fontFamily: "PoppinsBold"
+                                    )), flex: 1),
+                                GestureDetector(
+                                  child: Container(
+                                    width: 55,
+                                    height: 55,
+                                    color: Colors.transparent,
+                                    child: Center(
+                                      child: Image.asset("assets/ic_close_black.png",height: 24, width: 20),
+                                    ),
+                                  ),
                                   onTap: (){
                                     Get.offAll(() => HomeView());
                                   },
                                 ),
-
-                                SizedBox(width: 24),
+                                SizedBox(width: 10),
                               ],
                             ),
 
-                            SizedBox(height: 24),
-
                             Image.asset("assets/img_driver_home.png", width: 100, height: 100),
 
-                            SizedBox(height: 24),
+                            SizedBox(height: 16),
 
                             Text("John Travis Scott Travolta", style: TextStyle(
                                 color: Color.fromRGBO(35, 35, 35, 1.0), fontSize: 20,

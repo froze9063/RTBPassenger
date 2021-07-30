@@ -46,7 +46,7 @@ class LoginView extends GetView<LoginController> implements CustomEdittextCallba
             ),
 
             SingleChildScrollView(
-              child:             Column(
+              child: Column(
                 children: [
                   SizedBox(height: 75),
 
@@ -168,7 +168,7 @@ class LoginView extends GetView<LoginController> implements CustomEdittextCallba
                               )),
 
                           Padding(padding: EdgeInsets.only(top: 36, left: 28, right: 28), child: GestureDetector(
-                            child: ColoredButton(height: 45, width: double.maxFinite, title: "Sign In",
+                            child: ColoredButton(height: 55, width: double.maxFinite, title: "Sign In",
                                 color: Color.fromRGBO(255, 205, 56, 1.0)),
                             onTap: (){
                               Get.to(HomeView());
@@ -199,7 +199,7 @@ class LoginView extends GetView<LoginController> implements CustomEdittextCallba
                     ),
                   ),
 
-                  Padding(padding: EdgeInsets.only(left: 24,right: 24,bottom: 36), child: GestureDetector(
+                  Padding(padding: EdgeInsets.only(left: 24,right: 24,bottom: 36, top: 36), child: GestureDetector(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 
 import 'package:get/get.dart';
+import 'package:ridethebee/app/constant/my_constant.dart';
 import 'package:ridethebee/app/modules/payment_successfull/views/payment_successfull_view.dart';
 import 'package:ridethebee/app/widgets/colored_button.dart';
 
@@ -20,34 +21,54 @@ class PaymentDetailsView extends GetView<PaymentDetailsController> {
           Expanded(child: SingleChildScrollView(
             child: Column(
               children: [
+                SizedBox(height: MyConstant.headerTopMargin),
+
+                Row(
+                  children: [
+                    SizedBox(width: 10),
+                    GestureDetector(
+                      child: Container(
+                        width: 55,
+                        height: 55,
+                        color: Colors.transparent,
+                        child: Center(
+                          child: Image.asset("assets/ic_new_back_yellow.png", height: 18, width: 18),
+                        ),
+                      ),
+                      onTap: (){
+                        Get.back();
+                      },
+                    ),
+                    Expanded(child: Text("Payment Details",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontFamily: "PoppinsBold",
+                            color: Color.fromRGBO(63, 61, 86, 1.0)
+                        ))),
+                    GestureDetector(
+                      child: Container(
+                        width: 55,
+                        height: 55,
+                        color: Colors.transparent,
+                      ),
+                      onTap: (){
+
+                      },
+                    ),
+                    SizedBox(width: 10),
+                  ],
+                ),
+
                 Container(
                   width: double.maxFinite,
-                  padding: EdgeInsets.only(top: 36,bottom: 24,right: 24,left: 24),
+                  padding: EdgeInsets.only(bottom: 24,
+                      right: 24,left: 24),
                   color: Colors.white,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Row(
-                        children: [
-                          GestureDetector(
-                            child: Image.asset("assets/ic_new_back_yellow.png", height: 18, width: 18),
-                            onTap: (){
-                              Get.back();
-                            },
-                          ),
-                          Expanded(child: Text("Payment Details",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: "PoppinsBold",
-                                  color: Color.fromRGBO(63, 61, 86, 1.0)
-                              ))),
-                          SizedBox(width: 24),
-                        ],
-                      ),
-
                       SizedBox(height: 24),
 
                       Text("Select Payment Method",

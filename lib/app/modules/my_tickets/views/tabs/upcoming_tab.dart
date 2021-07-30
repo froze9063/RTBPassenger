@@ -37,7 +37,7 @@ class UpcomingView extends StatelessWidget{
                 margin: EdgeInsets.only(top: index == 0 ? 0 : 16,left: 24, right: 24),
                 width: double.maxFinite,
                 color: Colors.white,
-                height: 280,
+                height: 285,
                 child: Stack(
                   children: [
                     Container(
@@ -49,8 +49,16 @@ class UpcomingView extends StatelessWidget{
                           borderRadius: BorderRadius.all(Radius.circular(10)),
                           border: Border.all(
                               width: 0.5,
-                              color: Color.fromRGBO(63, 61, 86, 0.5)
-                          )
+                              color: Color.fromRGBO(220, 220, 224, 0.5)
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Color.fromRGBO(220, 220, 224, 0.5),
+                              blurRadius: 0.5,
+                              spreadRadius: 0.5,
+                              offset: Offset(1.5, 1.5), // shadow direction: bottom right
+                            )
+                          ]
                       ),
                       child: Column(
                         children: [
@@ -206,18 +214,26 @@ class UpcomingView extends StatelessWidget{
                                           bottomRight: Radius.circular(25)),
                                       border: Border(
                                           bottom: BorderSide(
-                                              color: Color.fromRGBO(63, 61, 86, 0.5),
+                                              color: Color.fromRGBO(220, 220, 224, 0.5),
                                               width: 1),
                                           right: BorderSide(
-                                              color: Color.fromRGBO(63, 61, 86, 0.5),
+                                              color: Color.fromRGBO(220, 220, 224, 0.5),
                                               width: 1),
                                           top: BorderSide(
-                                              color: Color.fromRGBO(63, 61, 86, 0.5),
+                                              color: Color.fromRGBO(220, 220, 224, 0.5),
                                               width: 1),
                                           left: BorderSide(
-                                              color: Color.fromRGBO(63, 61, 86, 0.5),
+                                              color: Color.fromRGBO(220, 220, 224, 0.5),
                                               width: 1)
-                                      )
+                                      ),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Color.fromRGBO(220, 220, 224, 0.5),
+                                          blurRadius: 0.5,
+                                          spreadRadius: 0.5,
+                                          offset: Offset(0.5, 0.5), // shadow direction: bottom right
+                                        )
+                                      ]
                                   ),
                                 ),
 
@@ -249,18 +265,26 @@ class UpcomingView extends StatelessWidget{
                                           topRight: Radius.circular(25)),
                                       border: Border(
                                           bottom: BorderSide(
-                                              color: Color.fromRGBO(63, 61, 86, 0.5),
+                                              color: Color.fromRGBO(220, 220, 224, 0.5),
                                               width: 1),
                                           right: BorderSide(
-                                              color: Color.fromRGBO(63, 61, 86, 0.5),
+                                              color: Color.fromRGBO(220, 220, 224, 0.5),
                                               width: 1),
                                           top: BorderSide(
-                                              color: Color.fromRGBO(63, 61, 86, 0.5),
+                                              color: Color.fromRGBO(220, 220, 224, 0.5),
                                               width: 1),
                                           left: BorderSide(
-                                              color: Color.fromRGBO(63, 61, 86, 0.5),
+                                              color: Color.fromRGBO(220, 220, 224, 0.5),
                                               width: 1)
-                                      )
+                                      ),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Color.fromRGBO(220, 220, 224, 0.5),
+                                          blurRadius: 0.5,
+                                          spreadRadius: 0.5,
+                                          offset: Offset(-0.5, -0.5), // shadow direction: bottom right
+                                        )
+                                      ]
                                   ),
                                   margin: EdgeInsets.only(bottom: 1),
                                 ),

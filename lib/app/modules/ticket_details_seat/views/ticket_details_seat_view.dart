@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:ridethebee/app/constant/my_constant.dart';
 import 'package:ridethebee/app/modules/menus/views/menus_view.dart';
 import 'package:ridethebee/app/modules/payment_details/views/payment_details_view.dart';
 import 'package:ridethebee/app/widgets/colored_button.dart';
@@ -17,17 +18,25 @@ class TicketDetailsSeatView extends GetView<TicketDetailsSeatController> {
               height: double.maxFinite, fit: BoxFit.fill),
 
           Container(
-            padding: EdgeInsets.only(left: 24, right: 24, bottom: 24, top: 36),
+            padding: EdgeInsets.only(bottom: 24, top: MyConstant.headerTopMargin),
             height: double.maxFinite,
             width: double.maxFinite,
             child: Column(
               children: [
                 Row(
                   children: [
+                    SizedBox(width: 10),
                     GestureDetector(
-                      child: Image.asset("assets/ic_black_left.png", height: 20, width: 20),
+                      child: Container(
+                        width: 55,
+                        height: 55,
+                        color: Colors.transparent,
+                        child: Center(
+                          child: Image.asset("assets/ic_black_left.png", height: 20, width: 20),
+                        ),
+                      ),
                       onTap: (){
-                        Get.to(() => MenusView());
+                        Get.back();
                       },
                     ),
                     Expanded(child: SizedBox(), flex: 1),
@@ -37,7 +46,17 @@ class TicketDetailsSeatView extends GetView<TicketDetailsSeatController> {
                         color: Color.fromRGBO(63, 61, 86, 1.0)
                     )),
                     Expanded(child: SizedBox(), flex: 1),
-                    SizedBox(width: 24)
+                    GestureDetector(
+                      child: Container(
+                        width: 55,
+                        height: 55,
+                        color: Colors.transparent,
+                      ),
+                      onTap: (){
+
+                      },
+                    ),
+                    SizedBox(width: 10),
                   ],
                 ),
 
@@ -46,7 +65,7 @@ class TicketDetailsSeatView extends GetView<TicketDetailsSeatController> {
                     Container(
                       width: double.maxFinite,
                       height: double.maxFinite,
-                      margin: EdgeInsets.only(top: 24, bottom: 16),
+                      margin: EdgeInsets.only(bottom: 16, left: 24, right: 24),
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.all(Radius.circular(25))
@@ -326,7 +345,7 @@ class TicketDetailsSeatView extends GetView<TicketDetailsSeatController> {
                           Row(
                             children: [
                               Container(
-                                width: 16,
+                                width: 40,
                                 height: 45,
                                 decoration: BoxDecoration(
                                     color: Color.fromRGBO(255, 201, 41, 1.0),
@@ -356,7 +375,7 @@ class TicketDetailsSeatView extends GetView<TicketDetailsSeatController> {
                               ), flex: 1),
 
                               Container(
-                                width: 16,
+                                width: 40,
                                 height: 45,
                                 decoration: BoxDecoration(
                                     color: Color.fromRGBO(255, 201, 41, 1.0),
@@ -373,7 +392,7 @@ class TicketDetailsSeatView extends GetView<TicketDetailsSeatController> {
                   ],
                 ), flex: 1),
 
-                Padding(padding: EdgeInsets.only(bottom: 0), child: GestureDetector(
+                Padding(padding: EdgeInsets.only(bottom: 0, left: 24, right: 24), child: GestureDetector(
                   child: ColoredButton(height: 55, width: double.maxFinite,
                       title: "Next",
                       color: Color.fromRGBO(63, 61, 86, 1.0)),

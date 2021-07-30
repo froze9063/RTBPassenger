@@ -114,7 +114,7 @@ class RegisterView extends GetView<RegisterController> implements CustomEdittext
                                 ),
                               ),
 
-                              SizedBox(height: 8),
+                              SizedBox(height: 36),
 
                               Row(
                                 children: [
@@ -153,7 +153,7 @@ class RegisterView extends GetView<RegisterController> implements CustomEdittext
                                 ],
                               ),
 
-                              SizedBox(height: 24),
+                              SizedBox(height: 16),
 
                               Padding(padding: EdgeInsets.only(bottom: 0), child: GestureDetector(
                                 child: ColoredButton(height: 45, width: double.maxFinite, title: "Sign Up",

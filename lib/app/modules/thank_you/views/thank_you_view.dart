@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:ridethebee/app/constant/my_constant.dart';
 import 'package:ridethebee/app/modules/home/views/home_view.dart';
 
 import '../controllers/thank_you_controller.dart';
@@ -15,19 +16,44 @@ class ThankYouView extends GetView<ThankYouController> {
         color: Colors.white,
         child: Column(
           children: [
-            SizedBox(height: 36),
-            Row(
-              children: [
-                Expanded(child: SizedBox(), flex: 1),
-                GestureDetector(
-                  child: Image.asset("assets/ic_close_black.png"),
-                  onTap: (){
-                    Get.offAll(() => HomeView());
-                  },
+            SizedBox(height: MyConstant.headerTopMargin),
+          Row(
+            children: [
+              SizedBox(width: 10),
+              GestureDetector(
+                child: Container(
+                  width: 55,
+                  height: 55,
+                  color: Colors.transparent,
                 ),
-                SizedBox(width: 24),
-              ],
-            ),
+                onTap: (){
+
+                },
+              ),
+              Expanded(child: Text(
+                  "",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontSize: 16,
+                      color: Color.fromRGBO(63, 61, 86, 1.0),
+                      fontFamily: "PoppinsBold"
+                  )), flex: 1),
+              GestureDetector(
+                child: Container(
+                  width: 55,
+                  height: 55,
+                  color: Colors.transparent,
+                  child: Center(
+                    child: Image.asset("assets/ic_close_black.png",height: 24, width: 20),
+                  ),
+                ),
+                onTap: (){
+                  Get.offAll(() => HomeView());
+                },
+              ),
+              SizedBox(width: 10),
+            ],
+          ),
             SizedBox(height: 150),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,

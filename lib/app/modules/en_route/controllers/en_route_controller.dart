@@ -24,6 +24,10 @@ class EnRouteController extends GetxController {
   bool isEnroute = true;
   bool isPitStop = false;
 
+  int reminderType = 0;
+  int arrivalReminderType = 0;
+  int pageType = 0;
+
   late PageController pageController;
 
   @override
@@ -42,6 +46,19 @@ class EnRouteController extends GetxController {
   @override
   void onClose() {}
   void increment() => count.value++;
+
+  void setArrivalType(int reminderType){
+    this.reminderType = reminderType;
+    update(["reminder_color"]);
+    if(reminderType == 0){
+      setConfirm(!isConfirmShowed);
+    }
+  }
+
+  void setReminderArrivalType(int reminderType){
+    this.arrivalReminderType = reminderType;
+    update(["reminder_arrival"]);
+  }
 
   void setMenuShowed(bool isMenuShowed){
     this.isMenuShowed = isMenuShowed;
@@ -66,6 +83,12 @@ class EnRouteController extends GetxController {
   void setPitStop(bool isPitStop){
     this.isPitStop = isPitStop;
     update(["pit_stop"]);
+    setPageType(1);
+  }
+
+  void setPageType(int page){
+    this.pageType = page;
+    update(["page_type"]);
   }
 
   void checkCurrentLocation(BuildContext context) async {
