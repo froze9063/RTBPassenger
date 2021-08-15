@@ -126,6 +126,7 @@ class CarSeatsView extends GetView<CarSeatsController> {
                  Padding(padding: EdgeInsets.all(36), child:  GridView.count(
                    childAspectRatio: 1.65,
                    crossAxisCount: 4,
+                   padding: EdgeInsets.zero,
                    children: List.generate(_carSeatsController.seatsList.length, (index) {
                      Map mapSeat = _carSeatsController.seatsList[index];
                      return GestureDetector(
@@ -134,22 +135,22 @@ class CarSeatsView extends GetView<CarSeatsController> {
                            mainAxisAlignment: MainAxisAlignment.center,
                            crossAxisAlignment: CrossAxisAlignment.center,
                            children: [
-                             Visibility(child: Text("A1", style: TextStyle(
+                             Visibility(child: Text("${mapSeat["name"]}", style: TextStyle(
                                fontFamily: "PoppinsRegular",
                              )), visible: index % 2 == 0),
                              SizedBox(width: 4),
                              Image.asset(value.selectedSeat == index ? "assets/img_selected_seat.png" :
                              value.parseSeatImage(mapSeat["type"]), width: 36, height: 36),
                              SizedBox(width: 4),
-                             Visibility(child: Text("A2", style: TextStyle(
+                             Visibility(child: Text(mapSeat["name"], style: TextStyle(
                                fontFamily: "PoppinsRegular",
                              )), visible: index % 2 != 0),
                            ],
                          ),
                        ),
                        onTap: (){
-                          if(mapSeat["type"] == 0){
-                            value.selectSeat(index);
+                          if(mapSeat["type"] == 0 || mapSeat["type"] == 3){
+                            value.selectSeat(index,0);
                           }
                        },
                      );
@@ -167,49 +168,53 @@ class CarSeatsView extends GetView<CarSeatsController> {
 
             SizedBox(height: 24),
 
-            Row(
-              children: [
-                SizedBox(width: 24),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Seat (s)", style: TextStyle(
+            GetBuilder<CarSeatsController>(
+              id: "seat_list",
+              init: CarSeatsController(),
+              builder: (value) => Row(
+                children: [
+                  SizedBox(width: 24),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("Seat (s)", style: TextStyle(
+                          fontSize: 16,
+                          color: Color.fromRGBO(135, 141, 156, 1.0),
+                          fontFamily: "PoppinsRegular"
+                      )),
+                      SizedBox(height: 8),
+                      Text(value.strSelectedSeat, style: TextStyle(
+                          fontSize: 16,
+                          color: Color.fromRGBO(63, 61, 86, 1.0),
+                          fontFamily: "PoppinsMedium"
+                      ))
+                    ],
+                  ),
+
+                  Expanded(child: SizedBox(), flex: 1),
+
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("Total", style: TextStyle(
                         fontSize: 16,
                         color: Color.fromRGBO(135, 141, 156, 1.0),
-                        fontFamily: "PoppinsRegular"
-                    )),
-                    SizedBox(height: 8),
-                    Text("D3", style: TextStyle(
-                        fontSize: 16,
-                        color: Color.fromRGBO(63, 61, 86, 1.0),
-                        fontFamily: "PoppinsMedium"
-                    ))
-                  ],
-                ),
+                        fontFamily: "PoppinsRegular",
+                      )),
+                      SizedBox(height: 8),
+                      Text("RM${value.strPrice}", style: TextStyle(
+                        fontSize: 20,
+                        color: Color.fromRGBO(22, 212, 98, 1.0),
+                        fontFamily: "PoppinsBold",
+                      ))
+                    ],
+                  ),
 
-                Expanded(child: SizedBox(), flex: 1),
-
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Total", style: TextStyle(
-                      fontSize: 16,
-                      color: Color.fromRGBO(135, 141, 156, 1.0),
-                      fontFamily: "PoppinsRegular",
-                    )),
-                    SizedBox(height: 8),
-                    Text("RM35.00", style: TextStyle(
-                      fontSize: 20,
-                      color: Color.fromRGBO(22, 212, 98, 1.0),
-                      fontFamily: "PoppinsBold",
-                    ))
-                  ],
-                ),
-
-                SizedBox(width: 24),
-              ],
+                  SizedBox(width: 24),
+                ],
+              ),
             ),
 
             Padding(padding: EdgeInsets.all(24), child: GestureDetector(

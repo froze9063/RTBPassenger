@@ -2,19 +2,26 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:ridethebee/app/callback/custom_edittext_callback.dart';
+import 'package:ridethebee/app/callback/login_callback.dart';
+import 'package:ridethebee/app/callback/password_callback.dart';
 import 'package:ridethebee/app/modules/home/views/home_view.dart';
 import 'package:ridethebee/app/modules/register/views/register_view.dart';
 import 'package:ridethebee/app/widgets/colored_button.dart';
 import 'package:ridethebee/app/widgets/custom_edittext.dart';
+import 'package:ridethebee/app/widgets/custom_loading.dart';
+import 'package:ridethebee/app/widgets/custom_toast.dart';
 
 import '../controllers/login_controller.dart';
 
-class LoginView extends GetView<LoginController> implements CustomEdittextCallback {
+class LoginView extends GetView<LoginController> implements CustomEdittextCallback,
+    LoginCallback, PasswordCallback{
 
   LoginController loginController = Get.put(LoginController());
+  late BuildContext _buildContext;
 
   @override
   Widget build(BuildContext context) {
+    _buildContext = context;
     return Scaffold(
       body: Container(
         width: double.maxFinite,
@@ -117,14 +124,16 @@ class LoginView extends GetView<LoginController> implements CustomEdittextCallba
                                     child: CustomEditText(height: 55, width: double.maxFinite, placeholder:
                                     "Email", textEditingController: loginController.emailController,
                                         isSecure: false, isPasswordField: false, backgroundColor: Colors.white,
-                                        borderColor: value.emailBorderColor,type: "email",customEdittextCallback: this)),
+                                        borderColor: value.emailBorderColor,type: "email",customEdittextCallback: this,
+                                        passwordCallback: this,
+                                    )),
 
                                 Padding(padding: EdgeInsets.only(left: 24,right: 24, top: 16),
                                     child: CustomEditText(height: 55, width: double.maxFinite, placeholder:
                                     "Password", textEditingController: loginController.passwordController,
-                                        isSecure: true, isPasswordField: true, backgroundColor: Colors.white,
+                                        isSecure: value.isPasswordSecured, isPasswordField: true, backgroundColor: Colors.white,
                                         borderColor: value.passwordBorderColor,type: "password"
-                                        ,customEdittextCallback: this)),
+                                        ,customEdittextCallback: this, passwordCallback: this)),
                               ],
                             ),
                           ),
@@ -132,23 +141,33 @@ class LoginView extends GetView<LoginController> implements CustomEdittextCallba
                           Padding(padding: EdgeInsets.only(left: 24, right: 24,top: 16),
                               child: Row(
                                 children: [
-                                  Container(
-                                    child: Checkbox(
-                                        value: true,
-                                        activeColor: Colors.white,
-                                        checkColor: Color.fromRGBO(255, 205, 56, 1.0),
-                                        onChanged: (value){
-
-                                        }),
-                                    decoration: BoxDecoration(
-                                        border: Border.all(
-                                            color: Color.fromRGBO(220, 220, 220, 1.0),
-                                            width: 1
+                                  GetBuilder<LoginController>(
+                                    id: "remember_me",
+                                    init: LoginController(),
+                                    builder: (value) => GestureDetector(
+                                      child: Container(
+                                        child: Checkbox(
+                                            value: value.isRememberMe,
+                                            activeColor: Colors.white,
+                                            side: BorderSide(color: Colors.white),
+                                            checkColor: Color.fromRGBO(255, 205, 56, 1.0),
+                                            onChanged: (values){
+                                              value.setRememberMe();
+                                            }),
+                                        decoration: BoxDecoration(
+                                            border: Border.all(
+                                                color: Color.fromRGBO(220, 220, 220, 1.0),
+                                                width: 1
+                                            ),
+                                            borderRadius: BorderRadius.all(Radius.circular(8))
                                         ),
-                                        borderRadius: BorderRadius.all(Radius.circular(8))
+                                        height: 24,
+                                        width: 24,
+                                      ),
+                                      onTap: (){
+                                          value.setRememberMe();
+                                      },
                                     ),
-                                    height: 24,
-                                    width: 24,
                                   ),
 
                                   SizedBox(width: 8),
@@ -171,11 +190,12 @@ class LoginView extends GetView<LoginController> implements CustomEdittextCallba
                             child: ColoredButton(height: 55, width: double.maxFinite, title: "Sign In",
                                 color: Color.fromRGBO(255, 205, 56, 1.0)),
                             onTap: (){
-                              Get.to(HomeView());
+                              loginController.login(this);
+                              //Get.to(HomeView());
                             },
                           )),
 
-                          Padding(padding: EdgeInsets.only(top: 16, left: 24, right: 24),
+                        /*  Padding(padding: EdgeInsets.only(top: 16, left: 24, right: 24),
                             child: Text("Or sign in with", style: TextStyle(
                                 fontSize: 14,
                                 color: Color.fromRGBO(135, 141, 156, 1.0),
@@ -193,7 +213,9 @@ class LoginView extends GetView<LoginController> implements CustomEdittextCallba
 
                               Image.asset("assets/ic_google_plus.png",width: 30,height: 30),
                             ],
-                          ))
+                          ))*/
+
+                          SizedBox(height: 36)
                         ],
                       ),
                     ),
@@ -233,6 +255,29 @@ class LoginView extends GetView<LoginController> implements CustomEdittextCallba
   @override
   onChanged(String text, String type) {
     loginController.changeBorderColor(text, type);
+  }
+
+  @override
+  void onLoginLoading() {
+    CustomLoading.showLoadingDialog(_buildContext);
+  }
+
+  @override
+  void onLoginSuccess(String message, String status) {
+    Get.back();
+    CustomToast.showToast(message);
+    Get.offAll(() => HomeView());
+  }
+
+  @override
+  void onLoginFailed(int errorCode, String message) {
+    Get.back();
+    CustomToast.showToast(message);
+  }
+
+  @override
+  void onPasswordClicked(String type) {
+    loginController.setPasswordSecured(type);
   }
 }
 

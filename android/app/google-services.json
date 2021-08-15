@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "95907858112",
+    "project_id": "ridethebee-47220",
+    "storage_bucket": "ridethebee-47220.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:95907858112:android:d032759dbfc5a87abe8f25",
+        "android_client_info": {
+          "package_name": "com.vecapitalasiaia.rtb.ridethebee"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "95907858112-elmilcihnbiv6jqgr6fu9jv73un5gnvc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjaGBC-1CYSPfjVCh6UVjjG3hjSDfinIw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "95907858112-elmilcihnbiv6jqgr6fu9jv73un5gnvc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

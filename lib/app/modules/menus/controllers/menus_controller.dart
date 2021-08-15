@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class MenusController extends GetxController {
   //TODO: Implement MenusController
@@ -14,8 +15,13 @@ class MenusController extends GetxController {
   Color upcomingColor = Colors.white;
   Color ongoingColor = Colors.white;
 
+  String name = "";
+  String email = "";
+  String urlImage = "";
+
   @override
   void onInit() {
+    loadUser();
     super.onInit();
   }
 
@@ -27,6 +33,15 @@ class MenusController extends GetxController {
   @override
   void onClose() {}
   void increment() => count.value++;
+
+  void loadUser(){
+    SharedPreferences.getInstance().then((prefs){
+      name = prefs.getString("name") ?? "";
+      email = prefs.getString("email") ?? "";
+      urlImage = prefs.getString("img") ?? "";
+      update(["profile"]);
+    });
+  }
 
   void setSearchColor(Color color){
     this.searchColor = color;

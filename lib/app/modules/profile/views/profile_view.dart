@@ -15,150 +15,171 @@ class ProfileView extends GetView<ProfileController> {
       body: Container(
         width: double.maxFinite,
         height: double.maxFinite,
-        child: Stack(
-          children: [
-            Positioned(
-                child: GestureDetector(
-                  child: Container(
-                    width: 55,
-                    height: 55,
-                    color: Colors.transparent,
-                    child: Center(
-                      child: Image.asset(
-                          "assets/ic_new_back_yellow.png", width: 24,
-                          height: 24),
+        child: GetBuilder<ProfileController>(
+          id: "profile",
+          init: ProfileController(),
+          builder: (profile_value) => Stack(
+            children: [
+              Positioned(
+                  child: GestureDetector(
+                    child: Container(
+                      width: 55,
+                      height: 55,
+                      color: Colors.transparent,
+                      child: Center(
+                        child: Image.asset(
+                            "assets/ic_new_back_yellow.png", width: 24,
+                            height: 24),
+                      ),
                     ),
-                  ),
-                  onTap: (){
-                    Get.back();
-                  },
-                ), top: 45, left: 1),
+                    onTap: (){
+                      Get.back();
+                    },
+                  ), top: 45, left: 1),
 
-            Container(
-              margin: EdgeInsets.only(top: 59),
-              width: double.maxFinite,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text("Profile", style: TextStyle(
-                      fontSize: 16,
-                      color: Color.fromRGBO(63, 61, 86, 1.0),
-                      fontFamily: "PoppinsBold"
-                  ), textAlign: TextAlign.center,)
-                ],
+              Container(
+                margin: EdgeInsets.only(top: 59),
+                width: double.maxFinite,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text("Profile", style: TextStyle(
+                        fontSize: 16,
+                        color: Color.fromRGBO(63, 61, 86, 1.0),
+                        fontFamily: "PoppinsBold"
+                    ), textAlign: TextAlign.center,)
+                  ],
+                ),
               ),
-            ),
 
-            Column(
-              children: [
-                SizedBox(height: 135),
-                Expanded(child: Container(
-                  width: double.maxFinite,
-                  height: double.maxFinite,
-                  child: Card(
-                    elevation: 1,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(25))
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.all(24),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(height: 16),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text("Email", style: TextStyle(
-                                  fontSize: 16,
-                                  color: Color.fromRGBO(135, 141, 156, 1.0),
-                                  fontFamily: "PoppinsRegular"
-                              )),
-                              SizedBox(height: 8),
-                              Text("elizabethtan@gmail.com", style: TextStyle(
-                                  fontSize: 16,
-                                  color: Color.fromRGBO(63, 61, 86, 1.0),
-                                  fontFamily: "PoppinsMedium"
-                              )),
-                            ],
-                          ),
-                          SizedBox(height: 24),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text("Name", style: TextStyle(
-                                  fontSize: 16,
-                                  color: Color.fromRGBO(135, 141, 156, 1.0),
-                                  fontFamily: "PoppinsRegular"
-                              )),
-                              SizedBox(height: 8),
-                              Text("Elizabeth Tan Huey Ling", style: TextStyle(
-                                  fontSize: 16,
-                                  color: Color.fromRGBO(63, 61, 86, 1.0),
-                                  fontFamily: "PoppinsMedium"
-                              )),
-                            ],
-                          ),
-                          SizedBox(height: 24),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text("Mobile No.", style: TextStyle(
-                                  fontSize: 16,
-                                  color: Color.fromRGBO(135, 141, 156, 1.0),
-                                  fontFamily: "PoppinsRegular"
-                              )),
-                              SizedBox(height: 8),
-                              Text("+65 4589 0321", style: TextStyle(
-                                  fontSize: 16,
-                                  color: Color.fromRGBO(63, 61, 86, 1.0),
-                                  fontFamily: "PoppinsMedium"
-                              )),
-                            ],
-                          ),
-                          Expanded(child: SizedBox(), flex: 1),
-                          GestureDetector(
-                            child: ColoredButton(height: 55, width: double.maxFinite, title: "Edit Profile",
-                                color: Color.fromRGBO(255, 205, 56, 1.0)),
-                            onTap: (){
-                              Get.to(EditProfileView());
-                            },
-                          )
-                        ],
+              Column(
+                children: [
+                  SizedBox(height: 135),
+                  Expanded(child: Container(
+                    width: double.maxFinite,
+                    height: double.maxFinite,
+                    child: Card(
+                      elevation: 1,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(25))
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.all(24),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(height: 16),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text("Email", style: TextStyle(
+                                    fontSize: 16,
+                                    color: Color.fromRGBO(135, 141, 156, 1.0),
+                                    fontFamily: "PoppinsRegular"
+                                )),
+                                SizedBox(height: 8),
+                                Text(profile_value.email, style: TextStyle(
+                                    fontSize: 16,
+                                    color: Color.fromRGBO(63, 61, 86, 1.0),
+                                    fontFamily: "PoppinsMedium"
+                                )),
+                              ],
+                            ),
+                            SizedBox(height: 24),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text("Name", style: TextStyle(
+                                    fontSize: 16,
+                                    color: Color.fromRGBO(135, 141, 156, 1.0),
+                                    fontFamily: "PoppinsRegular"
+                                )),
+                                SizedBox(height: 8),
+                                Text(profile_value.name, style: TextStyle(
+                                    fontSize: 16,
+                                    color: Color.fromRGBO(63, 61, 86, 1.0),
+                                    fontFamily: "PoppinsMedium"
+                                )),
+                              ],
+                            ),
+                            SizedBox(height: 24),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text("Mobile No.", style: TextStyle(
+                                    fontSize: 16,
+                                    color: Color.fromRGBO(135, 141, 156, 1.0),
+                                    fontFamily: "PoppinsRegular"
+                                )),
+                                SizedBox(height: 8),
+                                Text(profile_value.phone, style: TextStyle(
+                                    fontSize: 16,
+                                    color: Color.fromRGBO(63, 61, 86, 1.0),
+                                    fontFamily: "PoppinsMedium"
+                                )),
+                              ],
+                            ),
+                            Expanded(child: SizedBox(), flex: 1),
+                            GestureDetector(
+                              child: ColoredButton(height: 55, width: double.maxFinite, title: "Edit Profile",
+                                  color: Color.fromRGBO(255, 205, 56, 1.0)),
+                              onTap: (){
+                                Get.to(() => EditProfileView())?.then((value) => profile_value.loadUser());
+                              },
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   ),
-                ),
-                ),
-                SizedBox(height: 24),
-                Text("Log Out",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        fontSize: 14,
-                        fontFamily: "PoppinsBold",
-                        color: Color.fromRGBO(255, 205, 56, 1.0)
-                    )),
-                SizedBox(height: 24),
-              ],
-            ),
+                  ),
 
-            Container(
-              margin: EdgeInsets.only(top: 115),
-              width: double.maxFinite,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Image.asset("assets/img_default_profile.png", height: 55, width: 55)
+                  GestureDetector(
+                    child: Container(
+                      color: Colors.transparent,
+                      child: Column(
+                        children: [
+                          SizedBox(height: 24),
+                          Text("Log Out",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  fontFamily: "PoppinsBold",
+                                  color: Color.fromRGBO(255, 205, 56, 1.0)
+                              )),
+                          SizedBox(height: 24),
+                        ],
+                      ),
+                    ),
+                    onTap: (){
+                      profile_value.logout();
+                    },
+                  )
                 ],
               ),
-            )
-          ],
+
+              Container(
+                margin: EdgeInsets.only(top: 115),
+                width: double.maxFinite,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    profile_value.urlImage.isNotEmpty ? CircleAvatar(
+                      backgroundColor: Colors.transparent,
+                      radius: 28.0,
+                      backgroundImage: NetworkImage("https://ridethebee-staging.vecapital.asia/storage/app/passengers/${profile_value.urlImage}"),
+                    ) : Image.asset("assets/img_default_profile.png", height: 55, width: 55)
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

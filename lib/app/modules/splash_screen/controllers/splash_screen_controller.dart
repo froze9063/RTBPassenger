@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 import 'dart:async';
 
 import 'package:ridethebee/app/modules/boarding/views/boarding_view.dart';
+import 'package:ridethebee/app/modules/home/views/home_view.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreenController extends GetxController {
 
@@ -23,7 +25,15 @@ class SplashScreenController extends GetxController {
 
   void setSplash(){
     Timer(Duration(seconds: 2), () async {
-      Get.to(BoardingView());
+      SharedPreferences.getInstance().then((prefs) {
+        String token = prefs.getString("access_token") ?? "";
+        if(token.isNotEmpty){
+          Get.to(HomeView());
+        }
+        else{
+          Get.to(BoardingView());
+        }
+      });
     });
   }
 }

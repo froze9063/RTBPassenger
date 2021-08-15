@@ -2,17 +2,24 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:ridethebee/app/callback/custom_edittext_callback.dart';
+import 'package:ridethebee/app/callback/password_callback.dart';
+import 'package:ridethebee/app/callback/register_callback.dart';
 import 'package:ridethebee/app/widgets/colored_button.dart';
 import 'package:ridethebee/app/widgets/custom_edittext.dart';
+import 'package:ridethebee/app/widgets/custom_loading.dart';
+import 'package:ridethebee/app/widgets/custom_toast.dart';
 
 import '../controllers/register_controller.dart';
 
-class RegisterView extends GetView<RegisterController> implements CustomEdittextCallback{
+class RegisterView extends GetView<RegisterController> implements CustomEdittextCallback,
+    RegisterCallback, PasswordCallback{
 
   RegisterController registerController = Get.put(RegisterController());
+  late BuildContext _buildContext;
 
   @override
   Widget build(BuildContext context) {
+    _buildContext = context;
     return Scaffold(
       backgroundColor: Colors.white,
       body: Container(
@@ -85,31 +92,39 @@ class RegisterView extends GetView<RegisterController> implements CustomEdittext
                                         child: CustomEditText(height: 55, width: double.maxFinite, placeholder:
                                         "Your Email", textEditingController: registerController.emailController,
                                             isSecure: false, isPasswordField: false, backgroundColor: Colors.white,
-                                            borderColor: value.emailBorderColor,type: "email",customEdittextCallback: this)),
+                                            borderColor: value.emailBorderColor,type: "email",customEdittextCallback: this,
+                                            passwordCallback: this,
+                                        )),
 
                                     Padding(padding: EdgeInsets.only(top: 16),
                                         child: CustomEditText(height: 55, width: double.maxFinite, placeholder:
                                         "Full Name", textEditingController: registerController.fullnameController,
                                             isSecure: false, isPasswordField: false, backgroundColor: Colors.white,
-                                            borderColor: value.fullnameBorderColor,type: "fullname",customEdittextCallback: this)),
+                                            borderColor: value.fullnameBorderColor,type: "fullname",customEdittextCallback: this,
+                                            passwordCallback: this,
+                                        )),
 
                                     Padding(padding: EdgeInsets.only(top: 16),
                                         child: CustomEditText(height: 55, width: double.maxFinite, placeholder:
                                         "Mobile No.", textEditingController: registerController.mobileController,
                                             isSecure: false, isPasswordField: false, backgroundColor: Colors.white,
-                                            borderColor: value.mobileBorderColor,type: "mobile",customEdittextCallback: this)),
+                                            borderColor: value.mobileBorderColor,type: "mobile",customEdittextCallback: this,
+                                            passwordCallback: this,
+                                        )),
 
                                     Padding(padding: EdgeInsets.only(top: 16),
                                         child: CustomEditText(height: 55, width: double.maxFinite, placeholder:
                                         "Password", textEditingController: registerController.passwordController,
-                                            isSecure: true, isPasswordField: true, backgroundColor: Colors.white,
-                                            borderColor: value.passwordBorderColor,type: "password",customEdittextCallback: this)),
+                                            isSecure: value.isPasswordSecured, isPasswordField: true, backgroundColor: Colors.white,
+                                            borderColor: value.passwordBorderColor,type: "password",customEdittextCallback: this,
+                                            passwordCallback: this,
+                                        )),
 
                                     Padding(padding: EdgeInsets.only(top: 16),
                                         child: CustomEditText(height: 55, width: double.maxFinite, placeholder:
                                         "Confirm Password", textEditingController: registerController.confirmPasswordController,
-                                            isSecure: true, isPasswordField: true, backgroundColor: Colors.white,
-                                            borderColor: value.confirmPasswordBorderColor,type: "confirm",customEdittextCallback: this)),
+                                            isSecure: value.isPasswordConfirmSecured, isPasswordField: true, backgroundColor: Colors.white,
+                                            borderColor: value.confirmPasswordBorderColor,type: "confirm",customEdittextCallback: this, passwordCallback: this,)),
                                   ],
                                 ),
                               ),
@@ -159,7 +174,7 @@ class RegisterView extends GetView<RegisterController> implements CustomEdittext
                                 child: ColoredButton(height: 45, width: double.maxFinite, title: "Sign Up",
                                     color: Color.fromRGBO(255, 205, 56, 1.0)),
                                 onTap: (){
-
+                                    registerController.register(this);
                                 },
                               )),
                             ],
@@ -187,5 +202,34 @@ class RegisterView extends GetView<RegisterController> implements CustomEdittext
   @override
   onChanged(String text, String type) {
     registerController.changeBorderColor(text, type);
+  }
+
+  @override
+  void onRegisterLoading() {
+    CustomLoading.showLoadingDialog(_buildContext);
+  }
+
+  @override
+  void onRegisterSuccess(String message, String status) {
+    if(status == "success"){
+      Get.back();
+      Get.back();
+      CustomToast.showToast(message);
+    }
+    else {
+      Get.back();
+      CustomToast.showToast(message);
+    }
+  }
+
+  @override
+  void onRegisterFailed(int errorCode, String message) {
+    Get.back();
+    CustomToast.showToast(message);
+  }
+
+  @override
+  void onPasswordClicked(String type) {
+     registerController.setPasswordToogle(type);
   }
 }

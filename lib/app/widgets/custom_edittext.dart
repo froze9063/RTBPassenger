@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ridethebee/app/callback/custom_edittext_callback.dart';
+import 'package:ridethebee/app/callback/password_callback.dart';
 
 class CustomEditText extends StatelessWidget {
 
@@ -14,10 +15,13 @@ class CustomEditText extends StatelessWidget {
   Color borderColor = Colors.white;
   String type = "";
   CustomEdittextCallback customEdittextCallback;
+  PasswordCallback passwordCallback;
 
   CustomEditText({required this.height, required this.width, required this.placeholder,
     required this.textEditingController, required this.isSecure, required this.isPasswordField,required
-    this.backgroundColor, required this.borderColor, required this.type, required this.customEdittextCallback});
+    this.backgroundColor, required this.borderColor, required this.type, required this.customEdittextCallback,
+    required this.passwordCallback
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +42,7 @@ class CustomEditText extends StatelessWidget {
 
                 Expanded(child: TextField(
                   controller: textEditingController,
+                  obscureText: isSecure,
                   decoration: new InputDecoration.collapsed(
                       hintText: placeholder,
                       hintStyle: TextStyle(
@@ -56,10 +61,20 @@ class CustomEditText extends StatelessWidget {
                   },
                 ), flex: 1),
 
-                Visibility(child: Image.asset("assets/ic_eye_open.png",
-                    height: 24, width: 24), visible: isPasswordField),
-
-                SizedBox(width: 16)
+                Visibility(child: GestureDetector(
+                  child: Container(
+                    width: 55,
+                    height: double.maxFinite,
+                    color: Colors.transparent,
+                    child: Center(
+                      child: Image.asset("assets/ic_eye_open.png",
+                          height: 24, width: 24),
+                    ),
+                  ),
+                  onTap: (){
+                    passwordCallback.onPasswordClicked(type);
+                  },
+                ), visible: isPasswordField),
               ],
             ),
           ),

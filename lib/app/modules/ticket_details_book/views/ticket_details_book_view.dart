@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:ridethebee/app/constant/my_constant.dart';
-import 'package:ridethebee/app/modules/car_seats/views/car_seats_view.dart';
-import 'package:ridethebee/app/modules/menus/views/menus_view.dart';
 import 'package:ridethebee/app/widgets/colored_button.dart';
 
 import '../controllers/ticket_details_book_controller.dart';
@@ -20,7 +18,10 @@ class TicketDetailsBookView extends GetView<TicketDetailsBookController> {
           Image.asset("assets/home_background.png", width: double.maxFinite,
               height: double.maxFinite, fit: BoxFit.fill),
 
-          Container(
+          GetBuilder<TicketDetailsBookController>(
+            id: "detail_trip",
+            init: TicketDetailsBookController(),
+            builder: (detail_value) => Container(
             padding: EdgeInsets.only(bottom: 24,top: MyConstant.headerTopMargin),
             height: double.maxFinite,
             width: double.maxFinite,
@@ -39,7 +40,7 @@ class TicketDetailsBookView extends GetView<TicketDetailsBookController> {
                         ),
                       ),
                       onTap: (){
-                          Get.back();
+                        Get.back();
                       },
                     ),
                     Expanded(child: SizedBox(), flex: 1),
@@ -92,7 +93,7 @@ class TicketDetailsBookView extends GetView<TicketDetailsBookController> {
                                   children: [
                                     Image.asset("assets/ic_bus.png", width: 16, height: 16, fit: BoxFit.cover),
                                     SizedBox(width: 8),
-                                    Text("SAB 4124",
+                                    Text(detail_value.tripModel.bus_no,
                                         style: TextStyle(
                                             color: Color.fromRGBO(35, 35, 35, 1.0),
                                             fontSize: 14,
@@ -104,162 +105,177 @@ class TicketDetailsBookView extends GetView<TicketDetailsBookController> {
                             ),
                           ),
 
-                          Row(
-                            children: [
-                              SizedBox(width: 24),
-                              Expanded(child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  SizedBox(height: 24),
-
-                                  Text("Depart", style: TextStyle(
-                                      fontSize: 14,
-                                      fontFamily: "PoppinsRegular",
-                                      color: Color.fromRGBO(135, 141, 156, 1.0)
-                                  )),
-
-                                  Text("1:05 PM", style: TextStyle(
-                                      fontSize: 20,
-                                      fontFamily: "PoppinsBold",
-                                      color: Color.fromRGBO(63, 61, 86, 1.0)
-                                  )),
-
-                                  Text("12 June, Mon", style: TextStyle(
-                                      fontSize: 14,
-                                      fontFamily: "PoppinsRegular",
-                                      color: Color.fromRGBO(135, 141, 156, 1.0)
-                                  ))
-                                ],
-                              ), flex: 1),
-
-                              Expanded(child: Column(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                crossAxisAlignment: CrossAxisAlignment.end,
-                                children: [
-                                  SizedBox(height: 24),
-
-                                  Text("Arrive", style: TextStyle(
-                                      fontSize: 14,
-                                      fontFamily: "PoppinsRegular",
-                                      color: Color.fromRGBO(135, 141, 156, 1.0)
-                                  )),
-
-                                  Text("1:05 PM", style: TextStyle(
-                                      fontSize: 20,
-                                      fontFamily: "PoppinsBold",
-                                      color: Color.fromRGBO(63, 61, 86, 1.0)
-                                  )),
-
-                                  Text("12 June, Mon", style: TextStyle(
-                                      fontSize: 14,
-                                      fontFamily: "PoppinsRegular",
-                                      color: Color.fromRGBO(135, 141, 156, 1.0)
-                                  ))
-                                ],
-                              ), flex: 1),
-
-                              SizedBox(width: 24),
-                            ],
-                          ),
-
-                          Container(
-                            margin: EdgeInsets.only(top: 24, left: 24, right: 24),
-                            width: double.maxFinite,
-                            height: 1,
-                            color: Color.fromRGBO(240, 240, 239, 1.0),
-                          ),
-
-                          Padding(
-                            padding: EdgeInsets.all(16),
-                            child: Row(
+                          Expanded(child: SingleChildScrollView(
+                            child: Column(
                               children: [
-                                Column(
+                                Row(
                                   children: [
-                                    Image.asset("assets/ic_yellow_circle.png", width: 16, height: 16),
-                                    SizedBox(height: 8),
-                                    Image.asset("assets/ic_dots.png", width: 8, height: 55),
-                                    SizedBox(height: 8),
-                                    Image.asset("assets/ic_end_dot.png", width: 16, height: 16),
+                                    SizedBox(width: 24),
+                                    Expanded(child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        SizedBox(height: 24),
+
+                                        Text("Depart", style: TextStyle(
+                                            fontSize: 14,
+                                            fontFamily: "PoppinsRegular",
+                                            color: Color.fromRGBO(135, 141, 156, 1.0)
+                                        )),
+
+                                        Text(detail_value.tripModel.depart_time, style: TextStyle(
+                                            fontSize: 20,
+                                            fontFamily: "PoppinsBold",
+                                            color: Color.fromRGBO(63, 61, 86, 1.0)
+                                        )),
+
+                                        Text(detail_value.tripModel.date, style: TextStyle(
+                                            fontSize: 14,
+                                            fontFamily: "PoppinsRegular",
+                                            color: Color.fromRGBO(135, 141, 156, 1.0)
+                                        ))
+                                      ],
+                                    ), flex: 1),
+
+                                    Expanded(child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      crossAxisAlignment: CrossAxisAlignment.end,
+                                      children: [
+                                        SizedBox(height: 24),
+
+                                        Text("Arrive", style: TextStyle(
+                                            fontSize: 14,
+                                            fontFamily: "PoppinsRegular",
+                                            color: Color.fromRGBO(135, 141, 156, 1.0)
+                                        )),
+
+                                        Text(detail_value.tripModel.arrival_time, style: TextStyle(
+                                            fontSize: 20,
+                                            fontFamily: "PoppinsBold",
+                                            color: Color.fromRGBO(63, 61, 86, 1.0)
+                                        )),
+
+                                        Text(detail_value.tripModel.date, style: TextStyle(
+                                            fontSize: 14,
+                                            fontFamily: "PoppinsRegular",
+                                            color: Color.fromRGBO(135, 141, 156, 1.0)
+                                        ))
+                                      ],
+                                    ), flex: 1),
+
+                                    SizedBox(width: 24),
                                   ],
                                 ),
 
-                                SizedBox(width: 16),
+                                Container(
+                                  margin: EdgeInsets.only(top: 24, left: 24, right: 24),
+                                  width: double.maxFinite,
+                                  height: 1,
+                                  color: Color.fromRGBO(240, 240, 239, 1.0),
+                                ),
 
-                                Expanded(child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                Padding(
+                                  padding: EdgeInsets.all(16),
+                                  child: Row(
+                                    children: [
+                                      Column(
+                                        children: [
+                                          Image.asset("assets/ic_yellow_circle.png", width: 16, height: 16),
+                                          SizedBox(height: 8),
+                                          Image.asset("assets/ic_dots.png", width: 8, height: 55),
+                                          SizedBox(height: 8),
+                                          Image.asset("assets/ic_end_dot.png", width: 16, height: 16),
+                                        ],
+                                      ),
+
+                                      SizedBox(width: 16),
+
+                                      Expanded(child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Text(detail_value.tripModel.from, style: TextStyle(
+                                              color: Color.fromRGBO(135, 141, 156, 1.0),
+                                              fontSize: 14,
+                                              fontFamily: "PoppinsMedium"
+                                          )),
+                                          SizedBox(height: 8),
+                                          Text(detail_value.tripModel.station_from, style: TextStyle(
+                                              color: Color.fromRGBO(63, 61, 86, 1.0),
+                                              fontSize: 16,
+                                              fontFamily: "PoppinsMedium"
+                                          )),
+                                          SizedBox(height: 16),
+                                          Container(
+                                            width: double.maxFinite,
+                                            height: 1,
+                                            color: Color.fromRGBO(236, 239, 241, 1.0),
+                                          ),
+                                          SizedBox(height: 16),
+                                          Text(detail_value.tripModel.to, style: TextStyle(
+                                              color: Color.fromRGBO(135, 141, 156, 1.0),
+                                              fontSize: 14,
+                                              fontFamily: "PoppinsMedium"
+                                          )),
+                                          SizedBox(height: 8),
+                                          Text(detail_value.tripModel.station_to, style: TextStyle(
+                                              color: Color.fromRGBO(63, 61, 86, 1.0),
+                                              fontSize: 16,
+                                              fontFamily: "PoppinsMedium"
+                                          )),
+                                        ],
+                                      ), flex: 1),
+
+                                      SizedBox(width: 16),
+                                    ],
+                                  ),
+                                ),
+
+                                Container(
+                                  margin: EdgeInsets.only(left: 24, right: 24,bottom: 16),
+                                  width: double.maxFinite,
+                                  height: 1,
+                                  color: Color.fromRGBO(236, 239, 241, 1.0),
+                                ),
+
+                                Row(
                                   children: [
-                                    Text("Kuala Lumpur", style: TextStyle(
-                                        color: Color.fromRGBO(135, 141, 156, 1.0),
-                                        fontSize: 14,
-                                        fontFamily: "PoppinsMedium"
-                                    )),
-                                    SizedBox(height: 8),
-                                    Text("TBS (Terminal Bersepadu Selatan)", style: TextStyle(
-                                        color: Color.fromRGBO(63, 61, 86, 1.0),
-                                        fontSize: 16,
-                                        fontFamily: "PoppinsMedium"
-                                    )),
-                                    SizedBox(height: 16),
-                                    Container(
-                                      width: double.maxFinite,
-                                      height: 1,
-                                      color: Color.fromRGBO(236, 239, 241, 1.0),
-                                    ),
-                                    SizedBox(height: 16),
-                                    Text("Penang", style: TextStyle(
-                                        color: Color.fromRGBO(135, 141, 156, 1.0),
-                                        fontSize: 14,
-                                        fontFamily: "PoppinsMedium"
-                                    )),
-                                    SizedBox(height: 8),
-                                    Text("Sungai Nibong Bus Terminal", style: TextStyle(
-                                        color: Color.fromRGBO(63, 61, 86, 1.0),
-                                        fontSize: 16,
-                                        fontFamily: "PoppinsMedium"
-                                    )),
-                                  ],
-                                ), flex: 1),
+                                    SizedBox(width: 24),
+                                    Expanded(child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text("Company", style: TextStyle(
+                                            color: Color.fromRGBO(135, 141, 156, 1.0),
+                                            fontSize: 12,
+                                            fontFamily: "PoppinsRegular"
+                                        )),
+                                        SizedBox(height: 8),
+                                        Text(detail_value.tripModel.client, style: TextStyle(
+                                            color: Color.fromRGBO(63, 61, 86, 1.0),
+                                            fontSize: 16,
+                                            fontFamily: "PoppinsMedium"
+                                        ))
+                                      ],
+                                    ), flex: 1),
 
-                                SizedBox(width: 16),
+                                    CircleAvatar(
+                                      backgroundColor: Color.fromRGBO(255, 205, 56, 1.0),
+                                      radius: 22.0,
+                                      child: CircleAvatar(
+                                        backgroundColor: Colors.transparent,
+                                        radius: 20.0,
+                                        backgroundImage: NetworkImage(detail_value.tripModel.client_img),
+                                      ),
+                                    ),
+                                    SizedBox(width: 16)
+                                  ],
+                                )
                               ],
                             ),
-                          ),
+                          ), flex: 1),
 
-                          Container(
-                            margin: EdgeInsets.only(left: 24, right: 24,bottom: 16),
-                            width: double.maxFinite,
-                            height: 1,
-                            color: Color.fromRGBO(236, 239, 241, 1.0),
-                          ),
-
-                          Row(
-                            children: [
-                              SizedBox(width: 24),
-                              Expanded(child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text("Company", style: TextStyle(
-                                      color: Color.fromRGBO(135, 141, 156, 1.0),
-                                      fontSize: 12,
-                                      fontFamily: "PoppinsRegular"
-                                  )),
-                                  SizedBox(height: 8),
-                                  Text("Ride The Bee", style: TextStyle(
-                                      color: Color.fromRGBO(63, 61, 86, 1.0),
-                                      fontSize: 16,
-                                      fontFamily: "PoppinsMedium"
-                                  ))
-                                ],
-                              ), flex: 1),
-                              Image.asset("assets/img_ridethebees.png",height: 30,width: 30, fit: BoxFit.cover),
-                              SizedBox(width: 16)
-                            ],
-                          ),
-
-                          Expanded(child: SizedBox(), flex: 1),
+                          SizedBox(height: 75),
 
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -290,7 +306,7 @@ class TicketDetailsBookView extends GetView<TicketDetailsBookController> {
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
-                                  Text("RM35.00", style: TextStyle(
+                                  Text("RM${detail_value.tripModel.price}", style: TextStyle(
                                       color: Color.fromRGBO(135, 141, 156, 1.0),
                                       fontSize: 14,
                                       fontFamily: "PoppinsRegular"
@@ -298,7 +314,7 @@ class TicketDetailsBookView extends GetView<TicketDetailsBookController> {
 
                                   SizedBox(height: 8),
 
-                                  Text("RM35.00", style: TextStyle(
+                                  Text("RM${detail_value.tripModel.price}", style: TextStyle(
                                       color: Color.fromRGBO(22, 212, 98, 1.0),
                                       fontSize: 20,
                                       fontFamily: "PoppinsBold"
@@ -376,12 +392,12 @@ class TicketDetailsBookView extends GetView<TicketDetailsBookController> {
                       title: "Book Now",
                       color: Color.fromRGBO(63, 61, 86, 1.0)),
                   onTap: (){
-                    Get.to(() => CarSeatsView());
+                    _ticketDetailsBookController.goToSeatBook();
                   },
                 )),
               ],
             ),
-          ),
+          ))
         ],
       ),
     );

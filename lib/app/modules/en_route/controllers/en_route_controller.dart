@@ -139,7 +139,7 @@ class EnRouteController extends GetxController {
   void moveToCurrentLocation(){
     if(locationDataUser != null && googleMapController != null){
       googleMapController.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
-        target: LatLng(locationDataUser.latitude, locationDataUser.longitude),
+        target: LatLng(locationDataUser.latitude ?? 0.0, locationDataUser.longitude ?? 0.0),
         zoom: 16.0,)));
       update(["update_map"]);
     }

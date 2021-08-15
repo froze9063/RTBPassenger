@@ -10,13 +10,29 @@ dependencies:
   get: 4.1.4
   smooth_page_indicator: ^0.2.0
   flutter_switch: ^0.3.1
-  google_maps_flutter: ^1.2.0
-  location: 3.1.0
   app_settings: 4.0.1+1
   maps_launcher: ^2.0.0
   intl: ^0.17.0
   flutter_rounded_date_picker: ^2.0.2
   flutter_dash:
+  dio: ^4.0.0
+  fluttertoast: ^8.0.7
+  device_id: ^0.2.0
+  shared_preferences: ^2.0.6
+
+  firebase_core: ^1.4.0
+  firebase_core_platform_interface: ^4.0.1
+  firebase_auth: ^3.0.1
+  firebase_messaging: ^10.0.4
+
+  google_maps_flutter: ^2.0.6
+  flutter_plugin_android_lifecycle: ^2.0.1
+  image_picker: ^0.8.3+2
+  http_parser: ^4.0.0
+  location_web: ^3.1.1
+  location: ^4.3.0
+
+  shimmer: ^2.0.0
 
   flutter: 
     sdk: flutter

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ridethebee/app/widgets/colored_button.dart';
+import 'package:shimmer/shimmer.dart';
 import '../controllers/filter_page_controller.dart';
 
 class FilterPageView extends GetView<FilterPageController> {
@@ -96,14 +97,16 @@ class FilterPageView extends GetView<FilterPageController> {
                                             ),
                                           ),
                                           onTap: (){
-                                            value.setShow(!value.companyShowed, 0);
+                                            if(!value.isLoading){
+                                              value.setShow(!value.companyShowed, 0);
+                                            }
                                           },
                                         ),
                                         SizedBox(width: 10),
                                       ],
                                     ),
 
-                                    Visibility(child: ListView.builder(itemBuilder: (context,index) {
+                                    value.isLoading ? loadingView() : Visibility(child: ListView.builder(itemBuilder: (context,index) {
                                       Map companyMap = value.companiesList[index];
                                       return GestureDetector(
                                         child: Container(
@@ -175,14 +178,16 @@ class FilterPageView extends GetView<FilterPageController> {
                                           ),
                                         ),
                                         onTap: (){
-                                          value.setShow(!value.pickUpShowed, 1);
+                                          if(!value.isLoading){
+                                            value.setShow(!value.pickUpShowed, 1);
+                                          }
                                         },
                                       ),
                                       SizedBox(width: 10)
                                     ],
                                   ),
 
-                                  Visibility(child: ListView.builder(itemBuilder: (context,index) {
+                                  value.isLoading ? loadingView() : Visibility(child: ListView.builder(itemBuilder: (context,index) {
                                     Map pickupMap = value.pickupList[index];
                                     return GestureDetector(
                                       child: Container(
@@ -254,14 +259,16 @@ class FilterPageView extends GetView<FilterPageController> {
                                             ),
                                           ),
                                           onTap: (){
-                                            value.setShow(!value.dropOffShowed, 2);
+                                             if(!value.isLoading){
+                                               value.setShow(!value.dropOffShowed, 2);
+                                             }
                                           },
                                         ),
                                         SizedBox(width: 10)
                                       ],
                                     ),
 
-                                    Visibility(child: ListView.builder(itemBuilder: (context,index) {
+                                    value.isLoading ? loadingView() : Visibility(child: ListView.builder(itemBuilder: (context,index) {
                                       Map dropMap = value.dropoffList[index];
                                       return GestureDetector(
                                         child: Container(
@@ -297,13 +304,6 @@ class FilterPageView extends GetView<FilterPageController> {
                                     ), visible: value.dropOffShowed),
 
                                     SizedBox(height: 16),
-
-                                    Container(
-                                      margin: EdgeInsets.only(left: 24, right: 24),
-                                      width: double.maxFinite,
-                                      height: 1,
-                                      color: Color.fromRGBO(236, 239, 241, 1.0),
-                                    ),
                                   ],
                                 ))
                               ],
@@ -313,7 +313,7 @@ class FilterPageView extends GetView<FilterPageController> {
                             child: ColoredButton(height: 55, width: double.maxFinite, title: "Filter",
                                 color: Color.fromRGBO(255, 205, 56, 1.0)),
                             onTap: (){
-                              Get.back();
+                              _filterPageController.filter();
                             },
                           ))
                         ],
@@ -345,6 +345,51 @@ class FilterPageView extends GetView<FilterPageController> {
                 SizedBox(height: 8),
               ],
             ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget loadingView(){
+    return Container(
+      width: double.maxFinite,
+      margin: EdgeInsets.only(left: 24, right: 24),
+      child: Shimmer.fromColors(
+        baseColor: Color.fromRGBO(236, 239, 241, 1.0),
+        highlightColor: Colors.white,
+        child: Column(
+          children: [
+            Container(
+              width: double.maxFinite,
+              height: 15,
+              decoration: BoxDecoration(
+                color: Color.fromRGBO(236, 239, 241, 1.0),
+                borderRadius: BorderRadius.all(Radius.circular(8.0))
+              ),
+            ),
+
+            SizedBox(height: 16),
+
+            Container(
+              width: double.maxFinite,
+              height: 15,
+              decoration: BoxDecoration(
+                  color: Color.fromRGBO(236, 239, 241, 1.0),
+                  borderRadius: BorderRadius.all(Radius.circular(8.0))
+              ),
+            ),
+
+            SizedBox(height: 16),
+
+            Container(
+              width: double.maxFinite,
+              height: 15,
+              decoration: BoxDecoration(
+                  color: Color.fromRGBO(236, 239, 241, 1.0),
+                  borderRadius: BorderRadius.all(Radius.circular(8.0))
+              ),
+            )
           ],
         ),
       ),
