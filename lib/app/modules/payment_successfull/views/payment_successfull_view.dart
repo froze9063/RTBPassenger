@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ridethebee/app/constant/my_constant.dart';
 import 'package:ridethebee/app/modules/en_route/views/en_route_view.dart';
+import 'package:ridethebee/app/modules/home/views/home_view.dart';
 import 'package:ridethebee/app/modules/ticket_details/views/ticket_details_view.dart';
 import 'package:ridethebee/app/widgets/colored_button.dart';
 
@@ -34,6 +35,7 @@ class PaymentSuccessfullView extends GetView<PaymentSuccessfullController> {
                       ),
                       onTap: (){
                         Get.back();
+                        Get.offAll(() => HomeView());
                       },
                     ),
                     SizedBox(width: 10),

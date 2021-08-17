@@ -30,6 +30,8 @@ import 'package:ridethebee/app/modules/payment_details/bindings/payment_details_
 import 'package:ridethebee/app/modules/payment_details/views/payment_details_view.dart';
 import 'package:ridethebee/app/modules/payment_successfull/bindings/payment_successfull_binding.dart';
 import 'package:ridethebee/app/modules/payment_successfull/views/payment_successfull_view.dart';
+import 'package:ridethebee/app/modules/payment_webview/bindings/payment_webview_binding.dart';
+import 'package:ridethebee/app/modules/payment_webview/views/payment_webview_view.dart';
 import 'package:ridethebee/app/modules/pit_stop/bindings/pit_stop_binding.dart';
 import 'package:ridethebee/app/modules/pit_stop/views/pit_stop_view.dart';
 import 'package:ridethebee/app/modules/profile/bindings/profile_binding.dart';
@@ -183,6 +185,11 @@ class AppPages {
       name: _Paths.FILTER_PAGE,
       page: () => FilterPageView(),
       binding: FilterPageBinding(),
+    ),
+    GetPage(
+      name: _Paths.PAYMENT_WEBVIEW,
+      page: () => PaymentWebviewView(),
+      binding: PaymentWebviewBinding(),
     ),
   ];
 }

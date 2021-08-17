@@ -2,18 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 
 import 'package:get/get.dart';
+import 'package:ridethebee/app/callback/book_trips_callback.dart';
 import 'package:ridethebee/app/constant/my_constant.dart';
-import 'package:ridethebee/app/modules/payment_successfull/views/payment_successfull_view.dart';
+import 'package:ridethebee/app/modules/payment_webview/views/payment_webview_view.dart';
 import 'package:ridethebee/app/widgets/colored_button.dart';
+import 'package:ridethebee/app/widgets/custom_loading.dart';
+import 'package:ridethebee/app/widgets/custom_toast.dart';
 
 import '../controllers/payment_details_controller.dart';
 
-class PaymentDetailsView extends GetView<PaymentDetailsController> {
+class PaymentDetailsView extends GetView<PaymentDetailsController> implements BookTripsCallback{
 
   PaymentDetailsController _paymentDetailsController = Get.put(PaymentDetailsController());
+  late BuildContext _buildContext;
 
   @override
   Widget build(BuildContext context) {
+    _buildContext = context;
     return Scaffold(
       backgroundColor: Colors.white,
       body: Column(
@@ -303,48 +308,58 @@ class PaymentDetailsView extends GetView<PaymentDetailsController> {
                       SizedBox(height: 16),
                       Row(
                         children: [
-                          Expanded(child: Text("Ticket x 1", style: TextStyle(
+                          Expanded(child: Text("Ticket x ${_paymentDetailsController.seatList.split(",").length}", style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.normal,
                               fontFamily: "PoppinsRegular"
                           )), flex: 1),
-                          Text("\$35.00", style: TextStyle(
+                          Text("\$${_paymentDetailsController.price}", style: TextStyle(
                               fontSize: 16,
                               fontFamily: "PoppinsMedium",
                               color: Color.fromRGBO(63, 61, 86, 1.0)
                           ))
                         ],
                       ),
-                      SizedBox(height: 16),
-                      Row(
+                      GetBuilder<PaymentDetailsController>(
+                        id: "payment_toogle",
+                        init: PaymentDetailsController(),
+                        builder: (value) => Visibility(child: Column(
                         children: [
-                          Expanded(child: Text("Used Cashback", style: TextStyle(
-                              fontSize: 16,
-                              fontFamily: "PoppinsRegular",
-                              color: Color.fromRGBO(63, 61, 86, 1.0)
-                          )), flex: 1),
-                          Text("-\$10.00", style: TextStyle(
-                              fontSize: 16,
-                              fontFamily: "PoppinsMedium",
-                              color: Color.fromRGBO(63, 61, 86, 1.0)
-                          ))
+                          SizedBox(height: 16),
+                          Row(
+                            children: [
+                              Expanded(child: Text("Used Cashback", style: TextStyle(
+                                  fontSize: 16,
+                                  fontFamily: "PoppinsRegular",
+                                  color: Color.fromRGBO(63, 61, 86, 1.0)
+                              )), flex: 1),
+                              Text("-\$10.00", style: TextStyle(
+                                  fontSize: 16,
+                                  fontFamily: "PoppinsMedium",
+                                  color: Color.fromRGBO(63, 61, 86, 1.0)
+                              ))
+                            ],
+                          )
                         ],
-                      ),
+                      ), visible: value.paymentToogle)),
                       SizedBox(height: 16),
-                      Row(
+                      GetBuilder<PaymentDetailsController>(
+                        id: "price",
+                        init: PaymentDetailsController(),
+                        builder: (value) => Row(
                         children: [
                           Expanded(child: Text("Total",style: TextStyle(
                               fontSize: 16,
                               fontFamily: "PoppinsBold",
                               color: Color.fromRGBO(63, 61, 86, 1.0)
                           )), flex: 1),
-                          Text("RM25.00",style: TextStyle(
+                          Text("RM${value.price}",style: TextStyle(
                               fontSize: 20,
                               fontFamily: "PoppinsBold",
                               color: Color.fromRGBO(22, 212, 98, 1.0)
                           ))
                         ],
-                      )
+                      ))
                     ],
                   ),
                 ),
@@ -412,11 +427,30 @@ class PaymentDetailsView extends GetView<PaymentDetailsController> {
             child: ColoredButton(height: 55, width: double.maxFinite, title: "Pay Now",
                 color: Color.fromRGBO(255, 205, 56, 1.0)),
             onTap: (){
-              Get.to(() => PaymentSuccessfullView());
+               _paymentDetailsController.book(this);
             },
           ))
         ],
       ),
     );
+  }
+
+  @override
+  void onBookTripsLoading() {
+    CustomLoading.showLoadingDialog(_buildContext);
+  }
+
+  @override
+  void onBookTripsSuccess(String message, String url, String status) {
+    Get.back();
+    CustomToast.showToast(message);
+    Get.back();
+    Get.to(() => PaymentWebviewView(), arguments: {"url" : url});
+  }
+
+  @override
+  void onBookTripsFailed(int errorCode, String message) {
+    Get.back();
+    CustomToast.showToast(message);
   }
 }

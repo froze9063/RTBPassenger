@@ -18,6 +18,7 @@ class HomeController extends GetxController {
 
   late TextEditingController fromController;
   late TextEditingController toController;
+  late TextEditingController paxController;
 
   late List<String> paxList;
   bool isPaxListShowed = false;
@@ -58,6 +59,7 @@ class HomeController extends GetxController {
     paxList = [];
     fromController = TextEditingController();
     toController = TextEditingController();
+    paxController = TextEditingController();
     setPaxList();
     loadUser();
     super.onInit();
@@ -255,8 +257,13 @@ class HomeController extends GetxController {
       date = selectedDate;
     }
 
+    String strPax = paxController.toString().trim();
     from = fromController.text.toString().trim();
     to = toController.text.toString().trim();
+
+    if(strPax.isNotEmpty){
+      pax = int.parse(strPax);
+    }
 
     tripModelList.clear();
 

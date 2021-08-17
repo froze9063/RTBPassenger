@@ -122,19 +122,26 @@ class HomeView extends GetView<HomeController> {
                           padding: EdgeInsets.only(left: 24, right: 24,top: 16,bottom: 16),
                           child: Row(
                             children: [
-                              Text(value.selectedPax, style: TextStyle(
-                                  color: Color.fromRGBO(63, 61, 86, 1.0),
-                                  fontFamily: "PoppinsMedium"
-                              )),
+                              Expanded(child: TextField(
+                                style: TextStyle(
+                                    color: Color.fromRGBO(63, 61, 86, 1.0),
+                                    fontFamily: "PoppinsMedium"
+                                ),
+                                decoration: InputDecoration.collapsed(
+                                    hintText: "No. Of Pax", hintStyle: TextStyle(
+                                    color: Color.fromRGBO(63, 61, 86, 1.0),
+                                    fontFamily: "PoppinsMedium"
+                                )),
+                              ), flex: 1),
                               SizedBox(width: 16),
-                              Image.asset("assets/ic_yellow_dropdown.png", height: 16, width: 16)
+                              //Image.asset("assets/ic_yellow_dropdown.png", height: 16, width: 16)
                             ],
                           ),
                         ),
                       ),
                     ),
                     onTap: (){
-                      value.setPaxListShow(true);
+
                     },
                   )),
                   SizedBox(width: 24),
@@ -248,8 +255,8 @@ class HomeView extends GetView<HomeController> {
             width: double.maxFinite,
             height: double.maxFinite,
             child: DraggableScrollableSheet(
-                initialChildSize: 0.55,
-                minChildSize: 0.55,
+                initialChildSize: 0.52,
+                minChildSize: 0.52,
                 maxChildSize: 1.0,
                 expand: false,
                 builder: (context, pageController){
@@ -706,7 +713,7 @@ class HomeView extends GetView<HomeController> {
                 }),
           ),
 
-          GetBuilder<HomeController>(
+          /*GetBuilder<HomeController>(
               id: "paxlist",
               init: HomeController(),
               builder: (value) => Visibility(child: GestureDetector(
@@ -783,7 +790,7 @@ class HomeView extends GetView<HomeController> {
                 onTap: (){
                   value.setPaxListShow(false);
                 },
-              ), visible: value.isPaxListShowed))
+              ), visible: value.isPaxListShowed))*/
         ],
       ),
     );

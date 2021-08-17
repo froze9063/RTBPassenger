@@ -1,11 +1,13 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ridethebee/app/connection/connection.dart';
 import 'package:ridethebee/app/constant/my_constant.dart';
 import 'package:ridethebee/app/model/trip_model.dart';
+import 'package:ridethebee/app/modules/ticket_details_seat/views/ticket_details_seat_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class CarSeatsController extends GetxController {
+class CarSeatsController extends GetxController with SingleGetTickerProviderMixin {
 
   final count = 0.obs;
 
@@ -34,8 +36,14 @@ class CarSeatsController extends GetxController {
   List<Map> selectedSeatList = [];
   late TripModel tripModel;
 
+  late TabController tabController;
+  bool isLoaded = false;
+  String seatType = "Single Deck";
+
   @override
   void onInit() {
+    tabController = TabController(vsync: this, length: 2);
+
     if(Get.arguments != null){
       if(Get.arguments["trip_id"] != null){
         tripId = Get.arguments["trip_id"];
@@ -63,6 +71,11 @@ class CarSeatsController extends GetxController {
       accessToken = prefs.getString("access_token") ?? "";
       loadSeats();
     });
+  }
+
+  void gotoDetailBookSeat(){
+    Get.to(() => TicketDetailsSeatView(), arguments: {"trip_model" : tripModel,
+      "seat_list" : strSelectedSeat, "price" : strPrice});
   }
 
   String parseSeatImage(int type){
@@ -128,6 +141,10 @@ class CarSeatsController extends GetxController {
   }
 
   void loadSeats(){
+    isLoaded = false;
+
+    update(["loading_state"]);
+
     this.singleAlphabet.clear();
     this.singleLowerAlphabet.clear();
     this.singleUpperAlphabet.clear();
@@ -139,6 +156,7 @@ class CarSeatsController extends GetxController {
       Map dataMap = responseMap["data"];
 
       String type = dataMap["type"];
+      seatType = type;
 
       if(type == "Single Deck") {
         List<dynamic> seatsList = dataMap["seats"];
@@ -179,31 +197,37 @@ class CarSeatsController extends GetxController {
           Map leftMap = seatMap["left"];
           Map rightMap = seatMap["right"];
 
-          bool left1 = leftMap["${singleAlphabet[i]}1"];
-          bool left2 = leftMap["${singleAlphabet[i]}2"];
+          if(leftMap["${singleAlphabet[i]}1"] != null){
+            bool left1 = leftMap["${singleAlphabet[i]}1"];
+            Map left1Map = Map();
+            left1Map["name"] = "${singleAlphabet[i]}1";
+            left1Map["type"] = left1 ? 0 : 1;
+            this.seatsList.add(left1Map);
+          }
 
-          bool right1 = rightMap["${singleAlphabet[i]}3"];
-          bool right2 = rightMap["${singleAlphabet[i]}4"];
+          if(leftMap["${singleAlphabet[i]}2"] != null){
+            bool left2 = leftMap["${singleAlphabet[i]}2"];
+            Map left2Map = Map();
+            left2Map["name"] = "${singleAlphabet[i]}2";
+            left2Map["type"] = left2 ? 0 : 1;
+            this.seatsList.add(left2Map);
+          }
 
-          Map left1Map = Map();
-          left1Map["name"] = "${singleAlphabet[i]}1";
-          left1Map["type"] = left1 ? 0 : 1;
-          this.seatsList.add(left1Map);
+          if(rightMap["${singleAlphabet[i]}3"] != null){
+            bool right1 = rightMap["${singleAlphabet[i]}3"];
+            Map right3Map = Map();
+            right3Map["name"] = "${singleAlphabet[i]}3";
+            right3Map["type"] = right1 ? 0 : 1;
+            this.seatsList.add(right3Map);
+          }
 
-          Map left2Map = Map();
-          left2Map["name"] = "${singleAlphabet[i]}2";
-          left2Map["type"] = left2 ? 0 : 1;
-          this.seatsList.add(left2Map);
-
-          Map right3Map = Map();
-          right3Map["name"] = "${singleAlphabet[i]}3";
-          right3Map["type"] = right1 ? 0 : 1;
-          this.seatsList.add(right3Map);
-
-          Map right4Map = Map();
-          right4Map["name"] = "${singleAlphabet[i]}4";
-          right4Map["type"] = right2 ? 0 : 1;
-          this.seatsList.add(right4Map);
+          if(rightMap["${singleAlphabet[i]}4"] != null){
+            bool right2 = rightMap["${singleAlphabet[i]}4"];
+            Map right4Map = Map();
+            right4Map["name"] = "${singleAlphabet[i]}4";
+            right4Map["type"] = right2 ? 0 : 1;
+            this.seatsList.add(right4Map);
+          }
         }
       }
       else{
@@ -216,31 +240,37 @@ class CarSeatsController extends GetxController {
           Map leftMap = seatMap["left"];
           Map rightMap = seatMap["right"];
 
-          bool left1 = leftMap["${singleLowerAlphabet[i]}1"];
-          bool left2 = leftMap["${singleLowerAlphabet[i]}2"];
+          if(leftMap["${singleLowerAlphabet[i]}1"] != null){
+            bool left1 = leftMap["${singleLowerAlphabet[i]}1"];
+            Map left1Map = Map();
+            left1Map["name"] = "${singleLowerAlphabet[i]}1";
+            left1Map["type"] = left1 ? 0 : 1;
+            this.seatsList.add(left1Map);
+          }
 
-          bool right1 = rightMap["${singleLowerAlphabet[i]}3"];
-          bool right2 = rightMap["${singleLowerAlphabet[i]}4"];
+          if(leftMap["${singleLowerAlphabet[i]}2"] != null){
+            bool left2 = leftMap["${singleLowerAlphabet[i]}2"];
+            Map left2Map = Map();
+            left2Map["name"] = "${singleLowerAlphabet[i]}2";
+            left2Map["type"] = left2 ? 0 : 1;
+            this.seatsList.add(left2Map);
+          }
 
-          Map left1Map = Map();
-          left1Map["name"] = "${singleLowerAlphabet[i]}1";
-          left1Map["type"] = left1 ? 0 : 1;
-          this.seatsList.add(left1Map);
+          if(rightMap["${singleLowerAlphabet[i]}3"] != null){
+            bool right1 = rightMap["${singleLowerAlphabet[i]}3"];
+            Map right3Map = Map();
+            right3Map["name"] = "${singleLowerAlphabet[i]}3";
+            right3Map["type"] = right1 ? 0 : 1;
+            this.seatsList.add(right3Map);
+          }
 
-          Map left2Map = Map();
-          left2Map["name"] = "${singleLowerAlphabet[i]}2";
-          left2Map["type"] = left2 ? 0 : 1;
-          this.seatsList.add(left2Map);
-
-          Map right3Map = Map();
-          right3Map["name"] = "${singleLowerAlphabet[i]}3";
-          right3Map["type"] = right1 ? 0 : 1;
-          this.seatsList.add(right3Map);
-
-          Map right4Map = Map();
-          right4Map["name"] = "${singleLowerAlphabet[i]}4";
-          right4Map["type"] = right2 ? 0 : 1;
-          this.seatsList.add(right4Map);
+          if(rightMap["${singleLowerAlphabet[i]}4"] != null){
+            bool right2 = rightMap["${singleLowerAlphabet[i]}4"];
+            Map right4Map = Map();
+            right4Map["name"] = "${singleLowerAlphabet[i]}4";
+            right4Map["type"] = right2 ? 0 : 1;
+            this.seatsList.add(right4Map);
+          }
         }
 
         for(int i = 0 ; i < upperList.length; i++){
@@ -248,35 +278,41 @@ class CarSeatsController extends GetxController {
           Map leftMap = seatMap["left"];
           Map rightMap = seatMap["right"];
 
-          bool left1 = leftMap["${singleUpperAlphabet[i]}1"];
-          bool left2 = leftMap["${singleUpperAlphabet[i]}2"];
+          if(leftMap["${singleUpperAlphabet[i]}1"] != null){
+            bool left1 = leftMap["${singleUpperAlphabet[i]}1"];
+            Map left1Map = Map();
+            left1Map["name"] = "${singleUpperAlphabet[i]}1";
+            left1Map["type"] = left1 ? 0 : 1;
+            this.upperList.add(left1Map);
+          }
 
-          bool right1 = rightMap["${singleUpperAlphabet[i]}3"];
-          bool right2 = rightMap["${singleUpperAlphabet[i]}4"];
+          if(leftMap["${singleUpperAlphabet[i]}2"] != null){
+            bool left2 = leftMap["${singleUpperAlphabet[i]}2"];
+            Map left2Map = Map();
+            left2Map["name"] = "${singleUpperAlphabet[i]}2";
+            left2Map["type"] = left2 ? 0 : 1;
+            this.upperList.add(left2Map);
+          }
 
-          Map left1Map = Map();
-          left1Map["name"] = "${singleUpperAlphabet[i]}1";
-          left1Map["type"] = left1 ? 0 : 1;
-          this.upperList.add(left1Map);
+          if(rightMap["${singleUpperAlphabet[i]}3"] != null){
+            bool right1 = rightMap["${singleUpperAlphabet[i]}3"];
+            Map right3Map = Map();
+            right3Map["name"] = "${singleUpperAlphabet[i]}3";
+            right3Map["type"] = right1 ? 0 : 1;
+            this.upperList.add(right3Map);
+          }
 
-          Map left2Map = Map();
-          left2Map["name"] = "${singleUpperAlphabet[i]}2";
-          left2Map["type"] = left2 ? 0 : 1;
-          this.upperList.add(left2Map);
-
-          Map right3Map = Map();
-          right3Map["name"] = "${singleUpperAlphabet[i]}3";
-          right3Map["type"] = right1 ? 0 : 1;
-          this.upperList.add(right3Map);
-
-          Map right4Map = Map();
-          right4Map["name"] = "${singleUpperAlphabet[i]}4";
-          right4Map["type"] = right2 ? 0 : 1;
-          this.upperList.add(right4Map);
+          if(rightMap["${singleUpperAlphabet[i]}4"] != null){
+            bool right2 = rightMap["${singleUpperAlphabet[i]}4"];
+            Map right4Map = Map();
+            right4Map["name"] = "${singleUpperAlphabet[i]}4";
+            right4Map["type"] = right2 ? 0 : 1;
+            this.upperList.add(right4Map);
+          }
         }
       }
-
-      update(["select_seat"]);
+      isLoaded = true;
+      update(["select_seat","loading_state"]);
     }).catchError((error){
       if(error is DioError){
         try{

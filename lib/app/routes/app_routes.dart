@@ -29,6 +29,7 @@ abstract class Routes {
   static const TICKET_DETAILS_SEAT = _Paths.TICKET_DETAILS_SEAT;
   static const CAR_SEATS_BOOKED = _Paths.CAR_SEATS_BOOKED;
   static const FILTER_PAGE = _Paths.FILTER_PAGE;
+  static const PAYMENT_WEBVIEW = _Paths.PAYMENT_WEBVIEW;
 }
 
 abstract class _Paths {
@@ -57,4 +58,5 @@ abstract class _Paths {
   static const TICKET_DETAILS_SEAT = '/ticket-details-seat';
   static const CAR_SEATS_BOOKED = '/car-seats-booked';
   static const FILTER_PAGE = '/filter-page';
+  static const PAYMENT_WEBVIEW = '/payment-webview';
 }
