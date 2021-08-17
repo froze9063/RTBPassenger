@@ -196,11 +196,21 @@ class EditProfileView extends GetView<EditProfileController> implements CustomEd
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        profile_value.urlImage.isNotEmpty ? CircleAvatar(
-                          backgroundColor: Colors.transparent,
-                          radius: 28.0,
-                          backgroundImage: NetworkImage("https://ridethebee-staging.vecapital.asia/storage/app/passengers/${profile_value.urlImage}"),
-                        ) : Image.asset("assets/img_default_profile.png", height: 55, width: 55)
+                        Stack(
+                          children: [
+                            profile_value.urlImage.isNotEmpty ? CircleAvatar(
+                              backgroundColor: Colors.transparent,
+                              radius: 28.0,
+                              backgroundImage: NetworkImage("https://ridethebee-staging.vecapital.asia/storage/app/passengers/${profile_value.urlImage}"),
+                            ) : Image.asset("assets/img_default_profile.png", height: 55, width: 55),
+
+                            CircleAvatar(
+                              backgroundColor: Colors.black.withOpacity(0.5),
+                              radius: 28.0,
+                              child: Image.asset("assets/ic_white_upload.png", width: 16, height: 16),
+                            )
+                          ],
+                        )
                       ],
                     ),
                   ),
@@ -326,6 +336,7 @@ class EditProfileView extends GetView<EditProfileController> implements CustomEd
   @override
   void onEditProfileSuccess(String message, String status) {
     if(status == "success"){
+      Get.back();
       Get.back();
       CustomToast.showToast(message);
     }

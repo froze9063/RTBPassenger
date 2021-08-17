@@ -257,7 +257,7 @@ class HomeController extends GetxController {
       date = selectedDate;
     }
 
-    String strPax = paxController.toString().trim();
+    String strPax = paxController.text.toString().trim();
     from = fromController.text.toString().trim();
     to = toController.text.toString().trim();
 

@@ -137,6 +137,7 @@ flutter:
     - assets/ic_triangleup_arrow.png
     - assets/ic_circle_down.png
     - assets/ic_circle_up.png
+    - assets/ic_white_upload.png
 
   fonts:
     - family: PoppinsBold

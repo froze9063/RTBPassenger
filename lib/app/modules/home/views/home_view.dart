@@ -17,10 +17,12 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Stack(
         children: [
           Image.asset("assets/img_home_background.png", width: double.maxFinite,
               height: double.maxFinite, fit: BoxFit.cover),
+
           Column(
             children: [
               SizedBox(height: MyConstant.headerTopMargin),
@@ -123,6 +125,7 @@ class HomeView extends GetView<HomeController> {
                           child: Row(
                             children: [
                               Expanded(child: TextField(
+                                keyboardType: TextInputType.number,
                                 style: TextStyle(
                                     color: Color.fromRGBO(63, 61, 86, 1.0),
                                     fontFamily: "PoppinsMedium"
@@ -132,6 +135,9 @@ class HomeView extends GetView<HomeController> {
                                     color: Color.fromRGBO(63, 61, 86, 1.0),
                                     fontFamily: "PoppinsMedium"
                                 )),
+                                onChanged: (text){
+                                  homeController.searchTrips();
+                                },
                               ), flex: 1),
                               SizedBox(width: 16),
                               //Image.asset("assets/ic_yellow_dropdown.png", height: 16, width: 16)
@@ -190,12 +196,12 @@ class HomeView extends GetView<HomeController> {
                                    homeController.searchTrips();
                                  },
                                  decoration: InputDecoration.collapsed(hintText:
-                                 "From"
+                                 "Location"
                                  ),
                                  style: TextStyle(
-                                     color: Color.fromRGBO(63, 61, 86, 1.0),
-                                     fontSize: 16,
-                                     fontFamily: "PoppinsMedium"
+                                     color: Color.fromRGBO(135, 141, 156, 1.0),
+                                     fontFamily: "PoppinsRegular",
+                                     fontSize: 16
                                  )
                              ),
                              SizedBox(height: 24),
@@ -217,12 +223,12 @@ class HomeView extends GetView<HomeController> {
                                    homeController.searchTrips();
                                  },
                                  decoration: InputDecoration.collapsed(hintText:
-                                 "To"
+                                 "Location"
                                  ),
                                  style: TextStyle(
-                                     color: Color.fromRGBO(63, 61, 86, 1.0),
-                                     fontSize: 16,
-                                     fontFamily: "PoppinsMedium"
+                                     color: Color.fromRGBO(135, 141, 156, 1.0),
+                                     fontFamily: "PoppinsRegular",
+                                     fontSize: 16
                                  )
                              ),
                            ],
@@ -255,8 +261,8 @@ class HomeView extends GetView<HomeController> {
             width: double.maxFinite,
             height: double.maxFinite,
             child: DraggableScrollableSheet(
-                initialChildSize: 0.52,
-                minChildSize: 0.52,
+                initialChildSize: 0.55,
+                minChildSize: 0.55,
                 maxChildSize: 1.0,
                 expand: false,
                 builder: (context, pageController){

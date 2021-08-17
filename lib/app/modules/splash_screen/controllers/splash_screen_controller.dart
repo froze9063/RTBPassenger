@@ -28,9 +28,11 @@ class SplashScreenController extends GetxController {
       SharedPreferences.getInstance().then((prefs) {
         String token = prefs.getString("access_token") ?? "";
         if(token.isNotEmpty){
+          Get.back();
           Get.to(HomeView());
         }
         else{
+          Get.back();
           Get.to(BoardingView());
         }
       });
