@@ -9,6 +9,9 @@ import 'package:ridethebee/app/widgets/colored_button.dart';
 import '../controllers/trip_completed_controller.dart';
 
 class TripCompletedView extends GetView<TripCompletedController> {
+
+  TripCompletedController _tripCompletedController = Get.put(TripCompletedController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -90,7 +93,7 @@ class TripCompletedView extends GetView<TripCompletedController> {
               child: ColoredButton(height: 45, width: double.maxFinite, title: "Write Review",
                   color: Color.fromRGBO(255, 205, 56, 1.0)),
               onTap: (){
-                Get.to(() => ReviewView());
+                Get.to(() => ReviewView(), arguments: {"trip_id" : _tripCompletedController.tripId});
               },
             )),
             Expanded(child: SizedBox(), flex: 1),

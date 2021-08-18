@@ -40,9 +40,23 @@ class PaymentWebviewView extends GetView<PaymentWebviewController> {
              if(url.startsWith("https://ridethebee-staging.vecapital.asia/senangpay/")){
                String parssedUrl = url.split("&")[1];
                String parssedStatusUrl = parssedUrl.split("=")[1];
+
+               String parssedTicketUrl = url.split("&")[2];
+               String strTicketId = parssedTicketUrl.split("=")[1];
+
+               String parssedTransactionUrl = url.split("&")[3];
+               String strTransactionId = parssedTransactionUrl.split("=")[1];
+
                if(parssedStatusUrl == "2"){
                  Get.back();
-                 Get.offAll(() => PaymentSuccessfullView());
+                 Get.offAll(() => PaymentSuccessfullView(), arguments: {
+                   "trip_model" : _paymentWebviewController.tripModel,
+                   "seat_list" : _paymentWebviewController.seatList,
+                   "price" : _paymentWebviewController.price,
+                   "selected_payment" : _paymentWebviewController.selectedPayment,
+                   "ticket_id" : strTicketId,
+                   "transaction_id" : strTransactionId,
+                 });
                }
              }
           },

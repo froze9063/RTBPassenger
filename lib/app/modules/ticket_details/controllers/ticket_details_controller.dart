@@ -1,16 +1,22 @@
 import 'package:get/get.dart';
+import 'package:ridethebee/app/model/trip_model.dart';
 
 class TicketDetailsController extends GetxController {
-  //TODO: Implement TicketDetailsController
 
   final count = 0.obs;
-  int fromStatus = 0;
+
+  late TripModel tripModel;
+  String seatList = "";
 
   @override
   void onInit() {
     if(Get.arguments != null){
-      if(Get.arguments["from_status"] != null){
-        fromStatus = Get.arguments["from_status"];
+      if(Get.arguments["trip_model"] != null){
+        tripModel = Get.arguments["trip_model"];
+      }
+
+      if(Get.arguments["seat_list"] != null){
+        seatList = Get.arguments["seat_list"];
       }
     }
     super.onInit();

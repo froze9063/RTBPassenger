@@ -99,7 +99,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                                   children: [
                                     Image.asset("assets/ic_bus.png", width: 16, height: 16, fit: BoxFit.cover),
                                     SizedBox(width: 8),
-                                    Text("SAB 4124",
+                                    Text(_ticketDetailsController.tripModel.bus_no  ,
                                         style: TextStyle(
                                             color: Color.fromRGBO(35, 35, 35, 1.0),
                                             fontSize: 14,
@@ -129,13 +129,13 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                                             color: Color.fromRGBO(135, 141, 156, 1.0)
                                         )),
 
-                                        Text("1:05 PM", style: TextStyle(
+                                        Text(_ticketDetailsController.tripModel.depart_time, style: TextStyle(
                                             fontSize: 20,
                                             fontFamily: "PoppinsBold",
                                             color: Color.fromRGBO(63, 61, 86, 1.0)
                                         )),
 
-                                        Text("12 June, Mon", style: TextStyle(
+                                        Text(_ticketDetailsController.tripModel.date, style: TextStyle(
                                             fontSize: 14,
                                             fontFamily: "PoppinsRegular",
                                             color: Color.fromRGBO(135, 141, 156, 1.0)
@@ -155,13 +155,13 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                                             color: Color.fromRGBO(135, 141, 156, 1.0)
                                         )),
 
-                                        Text("1:05 PM", style: TextStyle(
+                                        Text(_ticketDetailsController.tripModel.arrival_time, style: TextStyle(
                                             fontSize: 20,
                                             fontFamily: "PoppinsBold",
                                             color: Color.fromRGBO(63, 61, 86, 1.0)
                                         )),
 
-                                        Text("12 June, Mon", style: TextStyle(
+                                        Text(_ticketDetailsController.tripModel.date, style: TextStyle(
                                             fontSize: 14,
                                             fontFamily: "PoppinsRegular",
                                             color: Color.fromRGBO(135, 141, 156, 1.0)
@@ -200,13 +200,13 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                                         mainAxisAlignment: MainAxisAlignment.start,
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
-                                          Text("Kuala Lumpur", style: TextStyle(
+                                          Text(_ticketDetailsController.tripModel.from, style: TextStyle(
                                               color: Color.fromRGBO(135, 141, 156, 1.0),
                                               fontSize: 14,
                                               fontFamily: "PoppinsMedium"
                                           )),
                                           SizedBox(height: 8),
-                                          Text("TBS (Terminal Bersepadu Selatan)", style: TextStyle(
+                                          Text(_ticketDetailsController.tripModel.station_from, style: TextStyle(
                                               color: Color.fromRGBO(63, 61, 86, 1.0),
                                               fontSize: 16,
                                               fontFamily: "PoppinsMedium"
@@ -218,13 +218,13 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                                             color: Color.fromRGBO(236, 239, 241, 1.0),
                                           ),
                                           SizedBox(height: 16),
-                                          Text("Penang", style: TextStyle(
+                                          Text(_ticketDetailsController.tripModel.to, style: TextStyle(
                                               color: Color.fromRGBO(135, 141, 156, 1.0),
                                               fontSize: 14,
                                               fontFamily: "PoppinsMedium"
                                           )),
                                           SizedBox(height: 8),
-                                          Text("Sungai Nibong Bus Terminal", style: TextStyle(
+                                          Text(_ticketDetailsController.tripModel.station_to, style: TextStyle(
                                               color: Color.fromRGBO(63, 61, 86, 1.0),
                                               fontSize: 16,
                                               fontFamily: "PoppinsMedium"
@@ -257,14 +257,22 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                                             fontFamily: "PoppinsRegular"
                                         )),
                                         SizedBox(height: 8),
-                                        Text("Ride The Bee", style: TextStyle(
+                                        Text(_ticketDetailsController.tripModel.client, style: TextStyle(
                                             color: Color.fromRGBO(63, 61, 86, 1.0),
                                             fontSize: 16,
                                             fontFamily: "PoppinsMedium"
                                         ))
                                       ],
                                     ), flex: 1),
-                                    Image.asset("assets/img_ridethebees.png",height: 30,width: 30, fit: BoxFit.cover),
+                                    CircleAvatar(
+                                      backgroundColor: Color.fromRGBO(255, 205, 56, 1.0),
+                                      radius: 22.0,
+                                      child: CircleAvatar(
+                                        backgroundColor: Colors.transparent,
+                                        radius: 20.0,
+                                        backgroundImage: NetworkImage(_ticketDetailsController.tripModel.client_img),
+                                      ),
+                                    ),
                                     SizedBox(width: 16)
                                   ],
                                 ),
@@ -283,7 +291,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                                             fontSize: 12,
                                             fontFamily: "PoppinsRegular"
                                         )),
-                                        Text("D3", style: TextStyle(
+                                        Text(_ticketDetailsController.seatList, style: TextStyle(
                                             color: Color.fromRGBO(63, 61, 86, 1.0),
                                             fontSize: 16,
                                             fontFamily: "PoppinsBold"
@@ -306,7 +314,8 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                                         ],
                                       ),
                                       onTap: (){
-                                        Get.to(() => CarSeatsBookedView());
+                                        Get.to(() => CarSeatsBookedView(), arguments:
+                                        {"trip_id" : _ticketDetailsController.tripModel.id, "selected_seat" : _ticketDetailsController.seatList});
                                       },
                                     ),
                                   ],
@@ -432,7 +441,8 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                       title: "View Map",
                       color: Color.fromRGBO(63, 61, 86, 1.0)),
                   onTap: (){
-                    Get.to(() => EnRouteView());
+                    Get.back();
+                    Get.offAll(() => EnRouteView(), arguments: {"trip_model" : _ticketDetailsController.tripModel});
                   },
                 )),
               ],

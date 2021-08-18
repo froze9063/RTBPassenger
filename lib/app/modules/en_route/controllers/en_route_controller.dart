@@ -2,10 +2,16 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:app_settings/app_settings.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
+import 'package:ridethebee/app/callback/en_route_callback.dart';
+import 'package:ridethebee/app/connection/connection.dart';
+import 'package:ridethebee/app/constant/my_constant.dart';
+import 'package:ridethebee/app/model/trip_model.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class EnRouteController extends GetxController {
   //TODO: Implement EnRouteController
@@ -30,8 +36,17 @@ class EnRouteController extends GetxController {
 
   late PageController pageController;
 
+  String accessToken = "";
+  late TripModel tripModel;
+
   @override
   void onInit() {
+    if(Get.arguments != null){
+      if(Get.arguments["trip_model"] != null){
+        tripModel = Get.arguments["trip_model"];
+      }
+    }
+    loadUser();
     pageController = new PageController();
     gmapController = Completer();
     kGooglePlex = CameraPosition(target: LatLng(1.3567349, 103.9683205), zoom: 16);
@@ -47,12 +62,15 @@ class EnRouteController extends GetxController {
   void onClose() {}
   void increment() => count.value++;
 
+  void loadUser(){
+    SharedPreferences.getInstance().then((prefs){
+      accessToken = prefs.getString("access_token") ?? "";
+    });
+  }
+
   void setArrivalType(int reminderType){
     this.reminderType = reminderType;
     update(["reminder_color"]);
-    if(reminderType == 0){
-      setConfirm(!isConfirmShowed);
-    }
   }
 
   void setReminderArrivalType(int reminderType){
@@ -191,6 +209,38 @@ class EnRouteController extends GetxController {
     else{
       print("NULL");
     }
+  }
+
+  void checkIn(EnRouteCallback enRouteCallback, int from){
+    setArrivalType(from);
+
+    enRouteCallback.onEnRouteLoading();
+
+    MyConnection myConnection = new MyConnection();
+    Map body = Map();
+    body["id"] = tripModel.id;
+    body["arrival_reminder"] = 1;
+
+    myConnection.getDioConnection(accessToken).post("${MyConstant.CHECK_IN}", data: body).then((response) {
+      Map responseMap = response.data;
+      if(responseMap["success"] != null){
+        String message = "Successfully Checkin!";
+        enRouteCallback.onEnRouteSuccess(message,"success");
+      }
+      else{
+        String message = responseMap["error"];
+        enRouteCallback.onEnRouteSuccess(message,"error");
+      }
+    }).catchError((error){
+      if(error is DioError){
+        enRouteCallback.onEnRouteFailed(0,MyConstant.UNKNOWN_ERROR);
+        print(error);
+      }
+      else{
+        enRouteCallback.onEnRouteFailed(0,MyConstant.UNKNOWN_ERROR);
+        print(error);
+      }
+    });
   }
 }
 

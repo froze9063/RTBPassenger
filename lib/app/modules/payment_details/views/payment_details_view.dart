@@ -445,7 +445,12 @@ class PaymentDetailsView extends GetView<PaymentDetailsController> implements Bo
     Get.back();
     CustomToast.showToast(message);
     Get.back();
-    Get.to(() => PaymentWebviewView(), arguments: {"url" : url});
+    Get.to(() => PaymentWebviewView(), arguments: {"url" : url,
+      "trip_model" : _paymentDetailsController.tripModel,
+      "seat_list" : _paymentDetailsController.seatList,
+      "price" : _paymentDetailsController.price,
+      "selected_payment" : _paymentDetailsController.selectedPayment,
+    });
   }
 
   @override

@@ -1,16 +1,24 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:ridethebee/app/callback/rate_callback.dart';
 import 'package:ridethebee/app/constant/my_constant.dart';
 import 'package:ridethebee/app/modules/home/views/home_view.dart';
 import 'package:ridethebee/app/modules/thank_you/views/thank_you_view.dart';
 import 'package:ridethebee/app/widgets/colored_button.dart';
+import 'package:ridethebee/app/widgets/custom_loading.dart';
+import 'package:ridethebee/app/widgets/custom_toast.dart';
 
 import '../controllers/review_controller.dart';
 
-class ReviewView extends GetView<ReviewController> {
+class ReviewView extends GetView<ReviewController> implements RateCallback{
+
+  late BuildContext _buildContext;
+  ReviewController _reviewController = Get.put(ReviewController());
+
   @override
   Widget build(BuildContext context) {
+    _buildContext = context;
     return Scaffold(
       backgroundColor: Colors.white,
       body: Container(
@@ -206,6 +214,7 @@ class ReviewView extends GetView<ReviewController> {
                   child: Padding(
                     padding: EdgeInsets.all(16),
                     child: TextField(
+                      controller: _reviewController.rateEditingController,
                       decoration: InputDecoration.collapsed(
                         hintText: "Input Feedback",
                         hintStyle: TextStyle(
@@ -232,7 +241,7 @@ class ReviewView extends GetView<ReviewController> {
                 child: ColoredButton(height: 55, width: double.maxFinite, title: "Submit",
                     color: Color.fromRGBO(255, 205, 56, 1.0)),
                 onTap: (){
-                  Get.to(() => ThankYouView());
+                   _reviewController.review(this);
                 },
               ))
             ],
@@ -240,5 +249,31 @@ class ReviewView extends GetView<ReviewController> {
         ),
       ),
     );
+  }
+
+  @override
+  void onRateLoading() {
+    CustomLoading.showLoadingDialog(_buildContext);
+  }
+
+  @override
+  void onRateSuccess(String message, String status) {
+    if(status == "success"){
+      Get.back();
+      Get.back();
+      CustomToast.showToast(message);
+      Get.to(() => ThankYouView());
+    }
+    else {
+      Get.back();
+      CustomToast.showToast(message);
+    }
+    print(message);
+  }
+
+  @override
+  void onRateFailed(int errorCode, String message) {
+    Get.back();
+    CustomToast.showToast(message);
   }
 }

@@ -5,22 +5,27 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:maps_launcher/maps_launcher.dart';
+import 'package:ridethebee/app/callback/en_route_callback.dart';
 import 'package:ridethebee/app/constant/my_constant.dart';
 import 'package:ridethebee/app/modules/menus/views/menus_view.dart';
 import 'package:ridethebee/app/modules/messages/views/messages_view.dart';
 import 'package:ridethebee/app/modules/notification/views/notification_view.dart';
 import 'package:ridethebee/app/modules/trip_completed/views/trip_completed_view.dart';
 import 'package:ridethebee/app/widgets/colored_button.dart';
+import 'package:ridethebee/app/widgets/custom_loading.dart';
+import 'package:ridethebee/app/widgets/custom_toast.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../controllers/en_route_controller.dart';
 
-class EnRouteView extends GetView<EnRouteController> {
+class EnRouteView extends GetView<EnRouteController> implements EnRouteCallback {
 
   EnRouteController _enRouteController = Get.put(EnRouteController());
+  late BuildContext _buildContext;
 
   @override
   Widget build(BuildContext context) {
+    _buildContext = context;
     return Scaffold(
       body: Container(
         width: double.maxFinite,
@@ -140,7 +145,7 @@ class EnRouteView extends GetView<EnRouteController> {
                             fontFamily: "PoppinsRegular",
                           )),
 
-                          Text("Kuala Lumpur", style: TextStyle(
+                          Text(_enRouteController.tripModel.from, style: TextStyle(
                             color: Color.fromRGBO(63, 61, 86, 1.0),
                             fontSize: 14,
                             fontFamily: "PoppinsMedium",
@@ -151,7 +156,7 @@ class EnRouteView extends GetView<EnRouteController> {
                             fontSize: 12,
                             fontFamily: "PoppinsRegular",
                           )),
-                          Text("Penang", style: TextStyle(
+                          Text(_enRouteController.tripModel.to, style: TextStyle(
                             color: Color.fromRGBO(63, 61, 86, 1.0),
                             fontSize: 14,
                             fontFamily: "PoppinsMedium",
@@ -433,7 +438,7 @@ class EnRouteView extends GetView<EnRouteController> {
                           value.setPitStop(true);
                         }
                         else{
-                          Get.to(() => TripCompletedView());
+                          Get.to(() => TripCompletedView(), arguments: {"trip_id" : _enRouteController.tripModel.id});
                         }
                       },
                     )
@@ -614,7 +619,7 @@ class EnRouteView extends GetView<EnRouteController> {
                                                   ),
                                                 ),
                                                 onTap: (){
-                                                  value.setArrivalType(0);
+                                                   value.checkIn(this, 0);
                                                 },
                                               )),
                                               Expanded(child: GestureDetector(
@@ -638,7 +643,7 @@ class EnRouteView extends GetView<EnRouteController> {
                                                   ),
                                                 ),
                                                 onTap: (){
-                                                  value.setArrivalType(1);
+                                                  value.checkIn(this, 1);
                                                 },
                                               ),
                                               )
@@ -884,5 +889,22 @@ class EnRouteView extends GetView<EnRouteController> {
         ),
       ),
     );
+  }
+
+  @override
+  void onEnRouteLoading() {
+    CustomLoading.showLoadingDialog(_buildContext);
+  }
+
+  @override
+  void onEnRouteSuccess(String message, String status) {
+    Get.back();
+    _enRouteController.setConfirm(false);
+  }
+
+  @override
+  void onEnRouteFailed(int errorCode, String message) {
+    Get.back();
+    CustomToast.showToast(message);
   }
 }

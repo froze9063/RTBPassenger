@@ -261,8 +261,8 @@ class HomeView extends GetView<HomeController> {
             width: double.maxFinite,
             height: double.maxFinite,
             child: DraggableScrollableSheet(
-                initialChildSize: 0.55,
-                minChildSize: 0.55,
+                initialChildSize: 0.52,
+                minChildSize: 0.52,
                 maxChildSize: 1.0,
                 expand: false,
                 builder: (context, pageController){
