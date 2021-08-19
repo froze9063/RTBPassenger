@@ -8,6 +8,7 @@ import 'package:ridethebee/app/modules/payment_webview/views/payment_webview_vie
 import 'package:ridethebee/app/widgets/colored_button.dart';
 import 'package:ridethebee/app/widgets/custom_loading.dart';
 import 'package:ridethebee/app/widgets/custom_toast.dart';
+import 'package:shimmer/shimmer.dart';
 
 import '../controllers/payment_details_controller.dart';
 
@@ -158,11 +159,14 @@ class PaymentDetailsView extends GetView<PaymentDetailsController> implements Bo
                   color: Color.fromRGBO(250, 250, 250, 1.0),
                 ),
 
-                Container(
+                GetBuilder<PaymentDetailsController>(
+                  id: "balance",
+                  init: PaymentDetailsController(),
+                  builder: (value) => Container(
                   width: double.maxFinite,
                   padding: EdgeInsets.all(24),
                   color: Colors.white,
-                  child: Column(
+                  child: value.isLoading ? loadingView() : Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -222,7 +226,7 @@ class PaymentDetailsView extends GetView<PaymentDetailsController> implements Bo
                                         color: Color.fromRGBO(135, 141, 156, 1.0)
                                     )),
                                 SizedBox(width: 4),
-                                Text("RM10.00",
+                                Text("RM${value.cashbackBalance}",
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                         fontSize: 16,
@@ -234,55 +238,67 @@ class PaymentDetailsView extends GetView<PaymentDetailsController> implements Bo
 
                             SizedBox(height: 16),
 
-                            Container(
-                              width: double.maxFinite,
-                              height: 55,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.all(Radius.circular(8)),
-                                  border: Border.all(
-                                    color: Color.fromRGBO(240, 240, 239, 1.0),
-                                  )
-                              ),
-                              child: Row(
-                                children: [
-                                  SizedBox(width: 16),
-                                  Expanded(child: TextField(
-                                    decoration: InputDecoration.collapsed(
-                                        hintText: "Input Amount",
-                                        hintStyle: TextStyle(
+                            GetBuilder<PaymentDetailsController>(
+                                init: PaymentDetailsController(),
+                                id: "cashback_apply",
+                                builder: (apply_value) => Container(
+                                  width: double.maxFinite,
+                                  height: 55,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.all(Radius.circular(8)),
+                                      border: Border.all(
+                                        color: Color.fromRGBO(240, 240, 239, 1.0),
+                                      )
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      SizedBox(width: 16),
+                                      Expanded(child: TextField(
+                                        keyboardType: TextInputType.numberWithOptions(decimal: true),
+                                        controller: apply_value.cashbackEditingController,
+                                        decoration: InputDecoration.collapsed(
+                                            hintText: "Input Amount",
+                                            hintStyle: TextStyle(
+                                                fontSize: 16,
+                                                color: Color.fromRGBO(135, 141,156, 1.0),
+                                                fontFamily: "PoppinsMedium"
+                                            )
+                                        ),
+                                        style: TextStyle(
                                             fontSize: 16,
-                                            color: Color.fromRGBO(135, 141,156, 1.0),
-                                            fontFamily: "PoppinsMedium"
-                                        )
-                                    ),
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        fontFamily: "PoppinsMedium",
-                                        color: Color.fromRGBO(63, 61, 86, 1.0)
-                                    ),
-                                  )),
-                                  Container(
-                                    padding: EdgeInsets.only(top: 16, bottom: 16, left: 24, right: 24),
-                                    decoration: BoxDecoration(
-                                        color: Color.fromRGBO(255, 205, 56, 1.0),
-                                        borderRadius: BorderRadius.only(topRight: Radius.circular(8),
-                                            bottomRight: Radius.circular(8))
-                                    ),
-                                    child: Text("Apply", style: TextStyle(
-                                        fontSize: 16,
-                                        color: Colors.white,
-                                        fontFamily: "PoppinsBold"
-                                    )),
-                                  )
-                                ],
-                              ),
-                            )
+                                            fontFamily: "PoppinsMedium",
+                                            color: Color.fromRGBO(63, 61, 86, 1.0)
+                                        ),
+                                      )),
+
+                                      GestureDetector(
+                                        child: Container(
+                                          padding: EdgeInsets.only(top: 16, bottom: 16, left: 24, right: 24),
+                                          decoration: BoxDecoration(
+                                              color: !apply_value.isCashbackApplied ? Color.fromRGBO(255, 205, 56, 1.0) : Color.fromRGBO(255, 0, 0, 1.0),
+                                              borderRadius: BorderRadius.only(topRight: Radius.circular(8),
+                                                  bottomRight: Radius.circular(8))
+                                          ),
+                                          child: Text(!apply_value.isCashbackApplied ? "Apply" : "Remove", style: TextStyle(
+                                              fontSize: 16,
+                                              color: Colors.white,
+                                              fontFamily: "PoppinsBold"
+                                          )),
+                                        ),
+                                        onTap: (){
+                                          apply_value.setCashbackApplied();
+                                        },
+                                      )
+                                    ],
+                                  ),
+                                ))
+
                           ],
                         ), visible: value.paymentToogle),
                       )
                     ],
-                  ),
-                ),
+                  )
+                )),
 
                 Container(
                   width: double.maxFinite,
@@ -333,11 +349,14 @@ class PaymentDetailsView extends GetView<PaymentDetailsController> implements Bo
                                   fontFamily: "PoppinsRegular",
                                   color: Color.fromRGBO(63, 61, 86, 1.0)
                               )), flex: 1),
-                              Text("-\$10.00", style: TextStyle(
+                              GetBuilder<PaymentDetailsController>(
+                                  id: "cashback_apply",
+                                  init: PaymentDetailsController(),
+                                  builder: (apply_value) => Text("-\$${apply_value.cashbackAmount}", style: TextStyle(
                                   fontSize: 16,
                                   fontFamily: "PoppinsMedium",
                                   color: Color.fromRGBO(63, 61, 86, 1.0)
-                              ))
+                              )))
                             ],
                           )
                         ],
@@ -435,6 +454,24 @@ class PaymentDetailsView extends GetView<PaymentDetailsController> implements Bo
     );
   }
 
+  Widget loadingView(){
+    return Container(
+      width: double.maxFinite,
+      child: Shimmer.fromColors(
+        baseColor: Color.fromRGBO(236, 239, 241, 1.0),
+        highlightColor: Colors.white,
+        child: Container(
+          width: double.maxFinite,
+          height: 35,
+          decoration: BoxDecoration(
+              color: Color.fromRGBO(236, 239, 241, 1.0),
+              borderRadius: BorderRadius.all(Radius.circular(8.0))
+          ),
+        ),
+      ),
+    );
+  }
+
   @override
   void onBookTripsLoading() {
     CustomLoading.showLoadingDialog(_buildContext);
@@ -442,15 +479,21 @@ class PaymentDetailsView extends GetView<PaymentDetailsController> implements Bo
 
   @override
   void onBookTripsSuccess(String message, String url, String status) {
-    Get.back();
-    CustomToast.showToast(message);
-    Get.back();
-    Get.to(() => PaymentWebviewView(), arguments: {"url" : url,
-      "trip_model" : _paymentDetailsController.tripModel,
-      "seat_list" : _paymentDetailsController.seatList,
-      "price" : _paymentDetailsController.price,
-      "selected_payment" : _paymentDetailsController.selectedPayment,
-    });
+    if(status == "success"){
+      Get.back();
+      CustomToast.showToast(message);
+      Get.back();
+      Get.to(() => PaymentWebviewView(), arguments: {"url" : url,
+        "trip_model" : _paymentDetailsController.tripModel,
+        "seat_list" : _paymentDetailsController.seatList,
+        "price" : _paymentDetailsController.price,
+        "selected_payment" : _paymentDetailsController.selectedPayment,
+      });
+    }
+    else{
+      Get.back();
+      CustomToast.showToast(message);
+    }
   }
 
   @override

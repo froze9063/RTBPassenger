@@ -16,10 +16,12 @@ class TripModel {
   String station_from = "";
   String station_to = "";
   String bus_no = "";
+  String pickup_point = "";
+  String dropoff_point = "";
   DriverModel driverModel;
 
   TripModel(this.id, this.bus_id, this.driver_id, this.date, this.depart_time,
     this.arrival_time, this.price, this.hotline_no, this. client, this.client_img,
-    this.from, this.to, this.station_from, this.station_to, this.bus_no,
+    this.from, this.to, this.station_from, this.station_to, this.bus_no,this.pickup_point, this.dropoff_point,
     this.driverModel);
 }

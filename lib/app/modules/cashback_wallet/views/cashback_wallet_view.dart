@@ -99,10 +99,13 @@ class CashbackWalletView extends GetView<CashbackWalletController> {
 
                             SizedBox(height: 8),
 
-                            Text("RM10.00", style: TextStyle(
+                            GetBuilder<CashbackWalletController>(
+                                id: "balance",
+                                init: CashbackWalletController(),
+                                builder: (value) => Text("RM${value.cashbackBalance}", style: TextStyle(
                                 color: Color.fromRGBO(63, 61, 86, 1.0), fontSize: 36,
                                 fontFamily: "PoppinsBold"
-                            ))
+                            )))
                           ],
                         )
                       ],

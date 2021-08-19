@@ -61,6 +61,7 @@ class LoginController extends GetxController {
 
   Future<void> getToken() async {
     firebase_token = await FirebaseMessaging.instance.getToken() ?? "";
+    print("firebase token ==> $firebase_token");
   }
 
   setPasswordSecured(String type){
@@ -99,7 +100,7 @@ class LoginController extends GetxController {
     String email = emailController.text.toString().trim();
     String password = passwordController.text.toString().trim();
     String deviceId = await DeviceId.getID;
-
+    print("device id ==> $deviceId");
     if(email.isEmpty){
       CustomToast.showToast("Please input email!");
       return;
@@ -154,6 +155,8 @@ class LoginController extends GetxController {
         prefs.setString("last_active", last_active);
         prefs.setString("status", status);
         prefs.setString("created_at", created_at);
+        prefs.setString("device_id", deviceId);
+        prefs.setString("firebase_token", firebase_token);
 
         if(isRememberMe){
           prefs.setBool("is_remember",true);

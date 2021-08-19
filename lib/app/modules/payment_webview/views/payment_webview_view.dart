@@ -47,7 +47,7 @@ class PaymentWebviewView extends GetView<PaymentWebviewController> {
                String parssedTransactionUrl = url.split("&")[3];
                String strTransactionId = parssedTransactionUrl.split("=")[1];
 
-               if(parssedStatusUrl == "2"){
+               if(parssedStatusUrl == "1"){
                  Get.back();
                  Get.offAll(() => PaymentSuccessfullView(), arguments: {
                    "trip_model" : _paymentWebviewController.tripModel,

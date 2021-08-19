@@ -343,7 +343,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
 
                                   SizedBox(height: 8),
 
-                                  Text("Bay 5", style: TextStyle(
+                                  Text("${_ticketDetailsController.tripModel.pickup_point}", style: TextStyle(
                                       color: Color.fromRGBO(63, 61, 86, 1.0),
                                       fontSize: 18,
                                       fontFamily: "PoppinsMedium"
@@ -365,7 +365,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
 
                                   SizedBox(height: 8),
 
-                                  Text("Bay 1", style: TextStyle(
+                                  Text("${_ticketDetailsController.tripModel.dropoff_point}", style: TextStyle(
                                       color: Color.fromRGBO(63, 61, 86, 1.0),
                                       fontSize: 18,
                                       fontFamily: "PoppinsMedium"

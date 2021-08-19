@@ -54,7 +54,7 @@ class HomeController extends GetxController {
     tripModelList = [];
     driverModel = DriverModel(0,"","","","");
     tripModel = TripModel(0, 0, 0, "", "", "", "", "", "", "", "", "",
-        "", "", "", driverModel);
+        "", "", "","","", driverModel);
 
     paxList = [];
     fromController = TextEditingController();
@@ -80,7 +80,7 @@ class HomeController extends GetxController {
       companyid = prefs.getString("company_id") ?? "";
       pickupPoints = prefs.getString("pickup_points") ?? "";
       dropoffPoints = prefs.getString("dropoff_points") ?? "";
-
+      print("access_token => $accessToken");
       totalFilter = 0;
 
       if(companyid.isNotEmpty){
@@ -320,7 +320,7 @@ class HomeController extends GetxController {
 
         tripModel = TripModel(id, 0, 0, date, depart_time, arrival_time,
             price, "", client, client_img, from, to, "", "",
-            bus_no, driverModel);
+            bus_no,"","", driverModel);
         tripModelList.add(tripModel);
       }
 

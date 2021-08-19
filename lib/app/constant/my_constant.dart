@@ -1,6 +1,7 @@
 class MyConstant{
   static String BASE_URL = "https://ridethebee-staging.vecapital.asia/";
   static String LOGIN = "passenger/login";
+  static String AUTHENTICATE = "passenger/authenticate";
   static String REGISTER = "passenger/signup";
   static String PROFILE = "passenger/profile";
   static String EDIT_PROFILE = "passenger/profile/edit";
@@ -12,6 +13,10 @@ class MyConstant{
   static String BOOK = "passenger/trips/book";
   static String CHECK_IN = "passenger/trips/checkin";
   static String RATE = "passenger/trips/rate";
+  static String UPCOMING_TICKET = "passenger/tickets/upcoming";
+  static String COMPLETED_TICKET = "passenger/tickets/completed";
+  static String EARNED_CASHBACK = "passenger/cashbacks/earned";
+  static String REDEEMED_CASHBACK = "/passenger/cashbacks/redeemed";
 
   static double headerTopMargin = 40;
   static String UNKNOWN_ERROR = "Unable to process request, please try again";

@@ -5,6 +5,7 @@ import 'package:ridethebee/app/connection/connection.dart';
 import 'package:ridethebee/app/constant/my_constant.dart';
 import 'package:ridethebee/app/model/trip_model.dart';
 import 'package:ridethebee/app/modules/ticket_details_seat/views/ticket_details_seat_view.dart';
+import 'package:ridethebee/app/widgets/custom_toast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class CarSeatsController extends GetxController with SingleGetTickerProviderMixin {
@@ -74,6 +75,10 @@ class CarSeatsController extends GetxController with SingleGetTickerProviderMixi
   }
 
   void gotoDetailBookSeat(){
+    if(strSelectedSeat == "-"){
+      CustomToast.showToast("Please select seat first!");
+      return;
+    }
     Get.to(() => TicketDetailsSeatView(), arguments: {"trip_model" : tripModel,
       "seat_list" : strSelectedSeat, "price" : strPrice});
   }

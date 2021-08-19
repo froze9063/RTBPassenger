@@ -7,6 +7,7 @@ import 'package:ridethebee/app/modules/home/views/home_view.dart';
 import 'package:ridethebee/app/modules/my_tickets/views/my_tickets_view.dart';
 import 'package:ridethebee/app/modules/profile/views/profile_view.dart';
 import 'package:ridethebee/app/modules/ticket_details/views/ticket_details_view.dart';
+import 'package:shimmer/shimmer.dart';
 
 import '../controllers/menus_controller.dart';
 
@@ -262,11 +263,14 @@ class MenusView extends GetView<MenusController> {
                                                color: Color.fromRGBO(63, 61, 86, 1.0)
                                            )),
                                            SizedBox(height: 8),
-                                           Text("Kuala Lumpur - Malaysia", style: TextStyle(
-                                               fontSize: 12,
-                                               fontFamily: "PoppinsRegular",
-                                               color: Color.fromRGBO(135, 141, 156, 1.0)
-                                           ))
+                                           GetBuilder<MenusController>(
+                                               id: "trip_id",
+                                               init: MenusController(),
+                                               builder: (ongoing_value) => ongoing_value.isLoading ? loadingView() : Text(ongoing_value.trip_id == 0 ? "No ongoing trip" : "", style: TextStyle(
+                                                   fontSize: 12,
+                                                   fontFamily: "PoppinsRegular",
+                                                   color: Color.fromRGBO(135, 141, 156, 1.0)
+                                               )))
                                          ],
                                        ), flex: 1),
                                        Image.asset("assets/ic_graycircle_arrow.png", height: 24, width: 24),
@@ -275,7 +279,9 @@ class MenusView extends GetView<MenusController> {
                                    ),
                                  ),
                                  onTap: (){
-                                   Get.to(() => TicketDetailsView());
+                                   if(value.trip_id != 0){
+                                     Get.to(() => TicketDetailsView());
+                                   }
                                    value.setOnGoing(Colors.white);
                                  },
                                  onTapCancel: (){
@@ -396,6 +402,25 @@ class MenusView extends GetView<MenusController> {
            ),
          ),
         ],
+      ),
+    );
+  }
+
+  Widget loadingView(){
+    return Container(
+      margin: EdgeInsets.only(right: 36),
+      width: double.maxFinite,
+      child: Shimmer.fromColors(
+        baseColor: Color.fromRGBO(236, 239, 241, 1.0),
+        highlightColor: Colors.white,
+        child: Container(
+          width: double.maxFinite,
+          height: 16,
+          decoration: BoxDecoration(
+              color: Color.fromRGBO(236, 239, 241, 1.0),
+              borderRadius: BorderRadius.all(Radius.circular(8.0))
+          ),
+        ),
       ),
     );
   }

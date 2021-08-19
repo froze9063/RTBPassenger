@@ -1,7 +1,10 @@
 import 'dart:ui';
 
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ridethebee/app/connection/connection.dart';
+import 'package:ridethebee/app/constant/my_constant.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class MenusController extends GetxController {
@@ -18,6 +21,12 @@ class MenusController extends GetxController {
   String name = "";
   String email = "";
   String urlImage = "";
+
+  bool isLoading = true;
+  String accessToken = "";
+  String deviceId = "";
+  String deviceToken = "";
+  int trip_id = 0;
 
   @override
   void onInit() {
@@ -36,9 +45,13 @@ class MenusController extends GetxController {
 
   void loadUser(){
     SharedPreferences.getInstance().then((prefs){
+      accessToken = prefs.getString("access_token") ?? "";
       name = prefs.getString("name") ?? "";
       email = prefs.getString("email") ?? "";
       urlImage = prefs.getString("img") ?? "";
+      deviceId = prefs.getString("device_id") ?? "";
+      deviceToken = prefs.getString("firebase_token") ?? "";
+      getOnGoingTrip();
       update(["profile"]);
     });
   }
@@ -66,5 +79,37 @@ class MenusController extends GetxController {
   void setCompletedColor(Color color){
     this.completedColor = color;
     update(["completed_color"]);
+  }
+
+  Future<void> getOnGoingTrip() async {
+    isLoading = true;
+    update(["trip_id"]);
+
+    Map body = new Map();
+    body["device_id"] = deviceId;
+    body["device_token"] = deviceToken;
+    body["app_version"] = "1.0.0";
+
+    MyConnection myConnection = new MyConnection();
+    myConnection.getDioConnection(accessToken).post(MyConstant.AUTHENTICATE,
+        data: body).then((response) {
+
+      Map responseMap = response.data;
+      Map userMap = responseMap["user"];
+
+      if(userMap["trip_id"] != null){
+        trip_id = userMap["trip_id"];
+      }
+
+      isLoading = false;
+      update(["trip_id"]);
+    }).catchError((error){
+      if(error is DioError){
+        print(error);
+      }
+      else{
+        print(error);
+      }
+    });
   }
 }

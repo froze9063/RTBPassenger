@@ -27,7 +27,7 @@ class TicketDetailsBookController extends GetxController {
     }
     driverModel = DriverModel(0,"","","","");
     tripModel = TripModel(0, 0, 0, "", "", "", "", "", "", "", "", "",
-        "", "", "", driverModel);
+        "", "", "", "", "", driverModel);
     loadUser();
     super.onInit();
   }
@@ -76,6 +76,8 @@ class TicketDetailsBookController extends GetxController {
       String station_from = dataMap["station_from"] ?? "";
       String station_to = dataMap["station_to"] ?? "";
       String bus_no = dataMap["bus_no"] ?? "";
+      String pickup_point =  dataMap["pickup_point"] ?? "";
+      String dropoff_point =  dataMap["dropoff_point"] ?? "";
 
       if(dataMap["driver"] != null){
         Map driverMap = dataMap["driver"];
@@ -89,7 +91,7 @@ class TicketDetailsBookController extends GetxController {
 
       tripModel = TripModel(id, bus_id, driver_id, date, depart_time, arrival_time,
           price, hotline_no, client, client_img, from, to, station_from, station_to,
-          bus_no, driverModel);
+          bus_no, pickup_point, dropoff_point, driverModel);
 
       isLoaded = true;
       update(["detail_trip"]);
