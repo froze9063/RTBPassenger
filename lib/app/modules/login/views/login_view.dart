@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:ridethebee/app/callback/custom_edittext_callback.dart';
 import 'package:ridethebee/app/callback/login_callback.dart';
 import 'package:ridethebee/app/callback/password_callback.dart';
+import 'package:ridethebee/app/modules/forgot_passworrd/views/forgot_passworrd_view.dart';
 import 'package:ridethebee/app/modules/home/views/home_view.dart';
 import 'package:ridethebee/app/modules/register/views/register_view.dart';
 import 'package:ridethebee/app/widgets/colored_button.dart';
@@ -179,10 +180,15 @@ class LoginView extends GetView<LoginController> implements CustomEdittextCallba
 
                                   Expanded(child: SizedBox(), flex: 1),
 
-                                  Text("Forgot Password?", style: TextStyle(
-                                      fontSize: 14,
-                                      color: Color.fromRGBO(255, 205, 56, 1.0),
-                                      fontFamily: "PoppinsMedium"))
+                                  GestureDetector(
+                                    child: Text("Forgot Password?", style: TextStyle(
+                                        fontSize: 14,
+                                        color: Color.fromRGBO(255, 205, 56, 1.0),
+                                        fontFamily: "PoppinsMedium")),
+                                    onTap: (){
+                                      Get.to(() => ForgotPassworrdView());
+                                    },
+                                  )
                                 ],
                               )),
 

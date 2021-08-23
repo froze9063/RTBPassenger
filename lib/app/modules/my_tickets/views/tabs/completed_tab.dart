@@ -21,7 +21,7 @@ class CompletedView extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              margin: EdgeInsets.all(24),
+              margin: EdgeInsets.only(left: 16, right: 16, top: 24, bottom: 24),
               width: double.maxFinite,
               height: 55,
               child: Card(

@@ -12,7 +12,7 @@ class PaymentDetailsController extends GetxController {
 
   final count = 0.obs;
 
-  int selectedPayment = -1;
+  int selectedPayment = 0;
 
   bool paymentToogle = false;
   bool isChecked = false;
@@ -145,11 +145,6 @@ class PaymentDetailsController extends GetxController {
   }
 
   Future<void> book(BookTripsCallback bookTripsCallback) async {
-
-    if(selectedPayment == -1){
-      CustomToast.showToast("Please choose payment method!");
-      return;
-    }
 
     if(!isChecked){
       CustomToast.showToast("Please check the ticketing policy!");

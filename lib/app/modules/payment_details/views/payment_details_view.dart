@@ -66,105 +66,12 @@ class PaymentDetailsView extends GetView<PaymentDetailsController> implements Bo
                   ],
                 ),
 
-                Container(
-                  width: double.maxFinite,
-                  padding: EdgeInsets.only(bottom: 24,
-                      right: 24,left: 24),
-                  color: Colors.white,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(height: 24),
-
-                      Text("Select Payment Method",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontSize: 16,
-                              fontFamily: "PoppinsMedium",
-                              color: Color.fromRGBO(135, 141, 156, 1.0)
-                          )),
-
-                      GetBuilder<PaymentDetailsController>(
-                        id: "payment",
-                        init: PaymentDetailsController(),
-                        builder: (value) => ListView.builder(itemBuilder: (context, index){
-                        Map paymentMap = _paymentDetailsController.paymentList[index];
-                        return GestureDetector(
-                          child: Container(
-                            color: Colors.white,
-                            child: Padding(
-                              padding: EdgeInsets.only(top: 24),
-                              child: Column(
-                                children: [
-                                  Row(
-                                    children: [
-                                      Image.asset(paymentMap["image"],
-                                          height: 36,width: 36),
-                                      SizedBox(width: 16),
-                                      Expanded(child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.start,
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          Row(
-                                            children: [
-                                              Text(paymentMap["name"],
-                                                  style: TextStyle(
-                                                      color: Color.fromRGBO(58, 58, 58, 1.0),
-                                                      fontSize: 16,
-                                                      fontFamily: "PoppinsMedium"
-                                                  ))
-                                            ],
-                                          ),
-                                          SizedBox(height: 8),
-                                          Row(
-                                            children: [
-                                              Text(paymentMap["description"],
-                                                  style: TextStyle(
-                                                    color: Color.fromRGBO(135, 141, 156, 1.0),
-                                                    fontSize: 14,
-                                                    fontFamily: "PoppinsRegular",
-                                                  ))
-                                            ],
-                                          ),
-                                          SizedBox(width: 24)
-                                        ],
-                                      ),flex: 1),
-                                      SizedBox(width: 16),
-                                      Image.asset(value.selectedPayment == index ? "assets/ic_yellow_check.png" :
-                                      "assets/ic_unselected_payment.png", width: 24, height: 24, fit: BoxFit.cover)
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                          onTap: (){
-                            value.setSelectedPayment(index);
-                          },
-                        );
-                      },
-                        shrinkWrap: true,
-                        padding: EdgeInsets.zero,
-                        itemCount: _paymentDetailsController.paymentList.length,
-                        primary: false,
-                      ))
-                    ],
-                  ),
-                ),
-
-                Container(
-                  width: double.maxFinite,
-                  height: 10,
-                  color: Color.fromRGBO(250, 250, 250, 1.0),
-                ),
-
                 GetBuilder<PaymentDetailsController>(
                   id: "balance",
                   init: PaymentDetailsController(),
                   builder: (value) => Container(
                   width: double.maxFinite,
-                  padding: EdgeInsets.all(24),
+                  padding: EdgeInsets.only(left: 24, right: 24, bottom: 24, top: 16),
                   color: Colors.white,
                   child: value.isLoading ? loadingView() : Column(
                     mainAxisAlignment: MainAxisAlignment.start,

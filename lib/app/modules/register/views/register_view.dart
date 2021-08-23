@@ -112,6 +112,53 @@ class RegisterView extends GetView<RegisterController> implements CustomEdittext
                                             passwordCallback: this,
                                         )),
 
+
+                                    Padding(padding: EdgeInsets.only(top: 10), child: Card(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.all(Radius.circular(8))
+                                      ),
+                                      child: Row(
+                                        children: [
+                                          SizedBox(width: 16),
+                                          Expanded(child: TextField(
+                                            keyboardType: TextInputType.numberWithOptions(decimal: true),
+                                            decoration: InputDecoration.collapsed(
+                                                hintText: "Referral Code",
+                                                hintStyle: TextStyle(
+                                                    color: Color.fromRGBO(135, 141, 156, 1.0),
+                                                    fontFamily: "PoppinsRegular",
+                                                    fontSize: 15
+                                                )
+                                            ),
+                                            style: TextStyle(
+                                                fontSize: 15,
+                                                fontFamily: "PoppinsMedium",
+                                                color: Color.fromRGBO(63, 61, 86, 1.0)
+                                            ),
+                                          )),
+
+                                          GestureDetector(
+                                            child: Container(
+                                              padding: EdgeInsets.only(top: 16, bottom: 16, left: 24, right: 24),
+                                              decoration: BoxDecoration(
+                                                  color: Color.fromRGBO(255, 205, 56, 1.0),
+                                                  borderRadius: BorderRadius.only(topRight: Radius.circular(8),
+                                                      bottomRight: Radius.circular(8))
+                                              ),
+                                              child: Text("Apply", style: TextStyle(
+                                                  fontSize: 16,
+                                                  color: Colors.white,
+                                                  fontFamily: "PoppinsBold"
+                                              )),
+                                            ),
+                                            onTap: (){
+
+                                            },
+                                          )
+                                        ],
+                                      ),
+                                    )),
+
                                     Padding(padding: EdgeInsets.only(top: 16),
                                         child: CustomEditText(height: 55, width: double.maxFinite, placeholder:
                                         "Password", textEditingController: registerController.passwordController,

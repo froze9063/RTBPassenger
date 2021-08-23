@@ -30,6 +30,8 @@ abstract class Routes {
   static const CAR_SEATS_BOOKED = _Paths.CAR_SEATS_BOOKED;
   static const FILTER_PAGE = _Paths.FILTER_PAGE;
   static const PAYMENT_WEBVIEW = _Paths.PAYMENT_WEBVIEW;
+  static const FORGOT_PASSWORRD = _Paths.FORGOT_PASSWORRD;
+  static const CREATE_PASSWORD = _Paths.CREATE_PASSWORD;
 }
 
 abstract class _Paths {
@@ -59,4 +61,6 @@ abstract class _Paths {
   static const CAR_SEATS_BOOKED = '/car-seats-booked';
   static const FILTER_PAGE = '/filter-page';
   static const PAYMENT_WEBVIEW = '/payment-webview';
+  static const FORGOT_PASSWORRD = '/forgot-passworrd';
+  static const CREATE_PASSWORD = '/create-password';
 }

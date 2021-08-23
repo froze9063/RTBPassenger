@@ -8,12 +8,16 @@ import 'package:ridethebee/app/modules/car_seats_booked/bindings/car_seats_booke
 import 'package:ridethebee/app/modules/car_seats_booked/views/car_seats_booked_view.dart';
 import 'package:ridethebee/app/modules/cashback_wallet/bindings/cashback_wallet_binding.dart';
 import 'package:ridethebee/app/modules/cashback_wallet/views/cashback_wallet_view.dart';
+import 'package:ridethebee/app/modules/create_password/bindings/create_password_binding.dart';
+import 'package:ridethebee/app/modules/create_password/views/create_password_view.dart';
 import 'package:ridethebee/app/modules/edit_profile/bindings/edit_profile_binding.dart';
 import 'package:ridethebee/app/modules/edit_profile/views/edit_profile_view.dart';
 import 'package:ridethebee/app/modules/en_route/bindings/en_route_binding.dart';
 import 'package:ridethebee/app/modules/en_route/views/en_route_view.dart';
 import 'package:ridethebee/app/modules/filter_page/bindings/filter_page_binding.dart';
 import 'package:ridethebee/app/modules/filter_page/views/filter_page_view.dart';
+import 'package:ridethebee/app/modules/forgot_passworrd/bindings/forgot_passworrd_binding.dart';
+import 'package:ridethebee/app/modules/forgot_passworrd/views/forgot_passworrd_view.dart';
 import 'package:ridethebee/app/modules/home/bindings/home_binding.dart';
 import 'package:ridethebee/app/modules/home/views/home_view.dart';
 import 'package:ridethebee/app/modules/login/bindings/login_binding.dart';
@@ -190,6 +194,16 @@ class AppPages {
       name: _Paths.PAYMENT_WEBVIEW,
       page: () => PaymentWebviewView(),
       binding: PaymentWebviewBinding(),
+    ),
+    GetPage(
+      name: _Paths.FORGOT_PASSWORRD,
+      page: () => ForgotPassworrdView(),
+      binding: ForgotPassworrdBinding(),
+    ),
+    GetPage(
+      name: _Paths.CREATE_PASSWORD,
+      page: () => CreatePasswordView(),
+      binding: CreatePasswordBinding(),
     ),
   ];
 }

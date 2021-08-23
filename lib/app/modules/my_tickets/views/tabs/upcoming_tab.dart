@@ -21,6 +21,45 @@ class UpcomingView extends StatelessWidget{
           children: [
             Column(
               children: [
+                Container(
+                  margin: EdgeInsets.only(left: 16, right: 16, top: 24),
+                  width: double.maxFinite,
+                  height: 55,
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10))
+                    ),
+                    elevation: 2,
+                    child: Container(
+                      width: double.maxFinite,
+                      height: double.maxFinite,
+                      child: Center(
+                        child: Row(
+                          children: [
+                            SizedBox(width: 16),
+                            Expanded(child: TextField(
+                              style: TextStyle(
+                                color: Color.fromRGBO(63, 61, 86, 1.0),
+                                fontFamily: "PoppinsMedium",
+                              ),
+                              decoration: new InputDecoration.collapsed(
+                                  hintText: 'Search',
+                                  hintStyle: TextStyle(
+                                      fontFamily: "PoppinsRegular",
+                                      color: Color.fromRGBO(135, 141, 156, 1.0)
+                                  )
+                              ),
+                            ), flex: 1),
+                            SizedBox(width: 16),
+                            Image.asset("assets/ic_search_white.png"),
+                            SizedBox(width: 16),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+
                 GetBuilder<MyTicketsController>(
                     id: "filter",
                     init: MyTicketsController(),
