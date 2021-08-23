@@ -92,7 +92,7 @@ class PaymentDetailsController extends GetxController {
       if(!isCashbackApplied && strCashbackAmount.isNotEmpty){
         double currentCashbackAmount = double.parse(strCashbackAmount);
         if(currentCashbackAmount > cashbackBalance){
-          CustomToast.showToast("Usable amount cant not more than cashback amount!");
+          CustomToast.showToast("You have input more than the available cashback amount!");
           return;
         }
       }
